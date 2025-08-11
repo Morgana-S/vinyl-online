@@ -1,0 +1,7 @@
+venv
+env.py
+*.drawio
+*.bkp
+*.bmpr
+documentation/diagram-files/vinyl-online-user-pathway.png
+__pycache__/
