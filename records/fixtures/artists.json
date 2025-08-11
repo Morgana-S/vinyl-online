@@ -1,0 +1,52 @@
+[
+  {
+    "model": "records.artist",
+    "pk": 1,
+    "fields": {
+      "name": "The Beatles",
+      "slug": "the-beatles",
+      "debut_year": 1960,
+      "bio": "Formed in Liverpool in 1960, The Beatles revolutionized popular music with their innovative songwriting and cultural influence."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 2,
+    "fields": {
+      "name": "David Bowie",
+      "slug": "david-bowie",
+      "debut_year": 1964,
+      "bio": "A pioneer of glam rock and one of music’s most innovative figures, David Bowie’s career spanned decades of reinvention and artistry."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 3,
+    "fields": {
+      "name": "Nirvana",
+      "slug": "nirvana",
+      "debut_year": 1987,
+      "bio": "Arriving on the grunge scene in the late 1980s, Nirvana reshaped rock music with raw energy, introspective lyrics, and a rebellious spirit."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 4,
+    "fields": {
+      "name": "Beyoncé",
+      "slug": "beyonce",
+      "debut_year": 1997,
+      "bio": "Emerging in the late 1990s with Destiny’s Child, Beyoncé has become one of the world’s most influential pop and R&B artists."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 5,
+    "fields": {
+      "name": "Radiohead",
+      "slug": "radiohead",
+      "debut_year": 1985,
+      "bio": "Known for pushing the boundaries of rock and electronic music, Radiohead’s experimental sound and thought-provoking lyrics have earned critical acclaim."
+    }
+  }
+]
