@@ -22,7 +22,7 @@ class Command(BaseCommand):
             self.stdout.write(f'Search for artist: {artist.name}')
 
             # Checks if the artist has an image already set
-            if artist.image and artist.image != DEFAULT_ARTIST_IMAGE:
+            if artist.image and DEFAULT_ARTIST_IMAGE not in artist.image.url:
                 self.stdout.write(
                     f'Skipping {artist.name}, custom image already set')
                 continue
