@@ -53,3 +53,19 @@ class Record(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class RecordImage(models.Model):
+    IMAGE_TYPES = [
+        ('Front Cover', 'Front Cover'),
+        ('Back Cover', 'Back Cover'),
+        ('Disk', 'Disk'),
+        ('Insert/Leaflet', 'Insert/Leaflet'),
+        ('Other', 'Other'),
+        ]
+    record = models.ForeignKey(
+        Record, on_delete=models.CASCADE, related_name='images')
+    image = CloudinaryField(
+        'image', default='default-record_rjj3wh')
+    image_type = models.CharField(
+        max_length=50, choices=IMAGE_TYPES, default='Front Cover')
