@@ -31,3 +31,25 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Record(models.Model):
+    RECORD_SIZES = [('7"', '7 Inch'), ('10"', '10 Inch'), ('12"', '12 Inch')]
+    RECORD_RPM = [('33', '33RPM'), ('45', '45RPM'), ('78', '78RPM')]
+    title = models.CharField(
+        max_length=100, validators=[MinLengthValidator(1)])
+    slug = models.SlugField(max_length=100, unique=True)
+    artist = models.ForeignKey(
+        Artist, on_delete=models.PROTECT, related_name='records_by_artist')
+    release_date = models.DateField(blank=True, null=True)
+    genre = models.ManyToManyField(
+        Genre, blank=True, related_name='records_by_genre')
+    size = models.CharField(max_length=10, choices=RECORD_SIZES)
+    rpm = models.CharField(max_length=10, choices=RECORD_RPM)
+    description = models.CharField(max_length=1000, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.title
