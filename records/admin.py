@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Artist, Genre, Record
+from .models import Artist, Genre, Record, RecordImage
 # Register your models here.
 
 
@@ -20,7 +20,14 @@ class GenreAdmin(SummernoteModelAdmin):
 
 @admin.register(Record)
 class RecordAdmin(SummernoteModelAdmin):
-    list_display = ('id', 'artist__name', 'title', 'release_date',)
+    list_display = ('id', 'title', 'artist__name', 'release_date',)
     search_fields = ['title', 'artist__name']
     list_filter = ('artist__name',)
     summernote_fields = ('description',)
+
+
+@admin.register(RecordImage)
+class RecordImageAdmin(SummernoteModelAdmin):
+    list_display = ('id', 'record__artist__name',
+                    'record__title',  'image_type')
+    search_fields = ['record__title', 'record__artist__name']
