@@ -8,6 +8,7 @@ import os
 # Documentation for discogs can be found here - https://www.discogs.com/developers
 if os.path.isfile('env.py'):
     DISCOGS_USER_TOKEN = os.environ.get('DISCOGS_USER_TOKEN')
+    DEFAULT_ARTIST_IMAGE = os.environ.get('DEFAULT_ARTIST_IMAGE')
 
 
 class Command(BaseCommand):
@@ -19,6 +20,12 @@ class Command(BaseCommand):
 
         for artist in Artist.objects.all():
             self.stdout.write(f'Search for artist: {artist.name}')
+
+            # Checks if the artist has an image already set
+            if artist.image and artist.image != DEFAULT_ARTIST_IMAGE:
+                self.stdout.write(
+                    f'Skipping {artist.name}, custom image already set')
+                continue
 
             # Search for the artist on Discogs
             results = d.search(artist.name, type='artist')
