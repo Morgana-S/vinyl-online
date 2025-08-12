@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'django_summernote',
+    'colorfield',
 ]
 
 MIDDLEWARE = [
