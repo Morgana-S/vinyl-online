@@ -1,0 +1,137 @@
+[
+  {
+    "model": "records.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Rock",
+      "color": "#FF5733",
+      "description": "A broad genre of popular music characterized by a strong rhythm, simple chord progressions, and often electric guitar-driven sound."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Pop",
+      "color": "#FFC300",
+      "description": "Mainstream music with catchy melodies, accessible lyrics, and polished production aimed at a wide audience."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Hip Hop",
+      "color": "#C70039",
+      "description": "A cultural movement and music genre featuring rhythmic spoken lyrics over beats, often exploring social and personal themes."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Jazz",
+      "color": "#900C3F",
+      "description": "Improvisation-driven music with swing rhythms, complex harmonies, and roots in African-American communities."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 5,
+    "fields": {
+      "name": "Blues",
+      "color": "#1F618D",
+      "description": "A soulful genre originating in the Deep South, characterized by expressive melodies and the twelve-bar chord progression."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 6,
+    "fields": {
+      "name": "Country",
+      "color": "#F5B041",
+      "description": "Music rooted in American folk traditions with storytelling lyrics, acoustic instrumentation, and distinctive twang."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 7,
+    "fields": {
+      "name": "Electronic",
+      "color": "#5DADE2",
+      "description": "Music produced primarily using electronic instruments, synthesizers, and digital audio workstations."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 8,
+    "fields": {
+      "name": "Reggae",
+      "color": "#28B463",
+      "description": "Jamaican music with a distinctive offbeat rhythm, often carrying messages of love, unity, and resistance."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 9,
+    "fields": {
+      "name": "Classical",
+      "color": "#B7950B",
+      "description": "A tradition of Western art music encompassing orchestral, chamber, and solo works spanning centuries."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 10,
+    "fields": {
+      "name": "Funk",
+      "color": "#884EA0",
+      "description": "Dance-oriented music with groovy bass lines, syncopated rhythms, and a strong backbeat."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 11,
+    "fields": {
+      "name": "Soul",
+      "color": "#AF7AC5",
+      "description": "Emotionally rich music blending gospel, rhythm and blues, and jazz influences."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 12,
+    "fields": {
+      "name": "Metal",
+      "color": "#34495E",
+      "description": "Heavy, aggressive music with distorted guitars, powerful drums, and intense vocals."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 13,
+    "fields": {
+      "name": "Punk",
+      "color": "#E74C3C",
+      "description": "Fast, rebellious rock music with raw sound, anti-establishment themes, and DIY ethos."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 14,
+    "fields": {
+      "name": "R&B",
+      "color": "#7D3C98",
+      "description": "Smooth, soulful music blending rhythm and blues with modern pop influences."
+    }
+  },
+  {
+    "model": "records.genre",
+    "pk": 15,
+    "fields": {
+      "name": "Folk",
+      "color": "#27AE60",
+      "description": "Acoustic-based music rooted in traditional storytelling and cultural heritage."
+    }
+  }
+]
