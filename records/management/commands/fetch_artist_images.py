@@ -30,7 +30,7 @@ class Command(BaseCommand):
             # Search for the artist on Discogs
             results = d.search(artist.name, type='artist')
             if not results:
-                self.stdout.write(f'No results found for {artist.name}')
+                self.stderr.write(f'No results found for {artist.name}')
                 continue
 
             discogs_artist = results[0]
@@ -38,7 +38,7 @@ class Command(BaseCommand):
             # Check if the artist has images
             if not (hasattr(discogs_artist, 'images')
                     or not discogs_artist.images):
-                self.stdout.write(f'No images found for {artist.name}')
+                self.stderr.write(f'No images found for {artist.name}')
                 continue
 
             first_image_url = discogs_artist.images[0]['uri']
@@ -53,5 +53,5 @@ class Command(BaseCommand):
                 artist.save()
                 self.stdout.write(f'Saved image for {artist.name}')
             except Exception as e:
-                self.stdout.write(
+                self.stderr.write(
                     f'Failed to upload image for {artist.name}: {e}')
