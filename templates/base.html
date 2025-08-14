@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for Search Engines, Author, Keywords, etc. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unlock a world of music. Vinyl Online is the definitive record-purchasing website, where we put you first.">
+    <meta name="keywords" content="Vinyl Online, vinyl records, buy records online, classic records">
+    <!-- Title -->
+    <title>Vinyl Online</title>
+    <!-- Stylesheets and Imported Frameworks -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Header Content -->
+    <header class="container-fluid bg-light border-bottom border-3 border-danger">
+        <div class="row py-2">
+            <!-- Navigation Hamburger -->
+            <div class="col-auto">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fa-solid fa-bars fa-xl d-md-none"></i>
+                </button>
+            </div>
+            <!-- Logo -->
+            <div class="col text-center">
+                <a href="{% url 'index' %}" aria-label="Click to go to the Vinyl Online homepage">
+                    <img id="brand-logo" class="img-fluid" src="https://res.cloudinary.com/dum08a287/image/upload/v1755118167/vinyl-online-logo_fboyeg.png" alt="Vinyl Online Logo">
+                </a>
+            </div>
+            <!-- Shopping Basket -->
+            <div class="col-auto pr-2">
+                <i class="fa-solid fa-basket-shopping fa-xl"></i>
+            </div>
+        </div>
+        <!-- Search Bar -->
+        <div class="row">
+            <div class="col">
+                <form action="" class="d-flex justify-content-center">
+                    <input type="search" class="form-control w-50" name="q" placeholder="Enter Artist / Record Name">
+                    <button class="btn btn-danger ms-2" type="submit">Search</button>
+                </form>
+            </div>
+        </div
+        <!-- Navigation Bar -->
+        <div class="row">
+            <nav class="navbar navbar-expand-md">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar nav mx-auto flex-column flex-md-row">
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'index' %}">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="#">SIGN UP</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="#">LOG IN</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="#">ALL RECORDS</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="#">LATEST RELEASES</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-black dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">BROWSE BY GENRE</a>
+                            <ul class="dropdown-menu dropdown-menu-center p-3">
+                                <div class="row justify-content-center">
+                                    <!-- Column 1 -->
+                                    <div class="col-4">
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Rock</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Pop</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Hip Hop</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Jazz</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Blues</a>
+                                    </div>
+                                    <!-- Column 2 -->
+                                    <div class="col-4">
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Country</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Electronic</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Reggae</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Classical</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Funk</a>
+                                    </div>
+                                    <!-- Column 3 -->
+                                    <div class="col-4">
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Metal</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Punk</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">R&B</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Folk</a>
+                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Soul</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Header Content Ends -->
+    <!-- Main Content -->
+    <main class="container-fluid bg-dark">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <!-- Main Content Ends -->
+    <!-- Footer Content -->
+    <footer class="container-fluid fixed-bottom bg-light border-top border-3 border-danger text-black">
+        <div class="row mt-1">
+            <div class="col text-center">
+                <h3>FREE DELIVERY ON ALL ORDERS OVER £100</h3>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-between text-center">
+            <div class="col-4">
+                <nav>
+                    <h3>SUPPORT</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">CONTACT US</a></li>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-4">
+                <nav>
+                    <h3>COMMUNITY</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">WHO WE ARE</a></li>
+                        <li><a href="#">JOIN OUR NEWSLETTER</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-4">
+                <h3>CONTACT</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-phone"></i> 0123 456 7890</li>
+                    <li><i class="fa-solid fa-envelope"></i> help.vinylonline@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Content Ends -->
+    <!-- Scripts -->
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/dedbf6d909.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
