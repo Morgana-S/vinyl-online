@@ -1,0 +1,52 @@
+/* General Rules ------------------------------------------------------------ */
+body {
+    margin: 0;
+}
+
+/* base.html Header Rules --------------------------------------------------- */
+
+#brand-logo {
+    max-width: 100px;
+}
+
+/* Navigation Bar Rules ----------------------------------------------------- */
+
+header .nav-link {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem
+}
+
+.dropdown-menu {
+    min-width: 30vw; 
+    max-width: 90vw;
+}
+
+/* Footer Rules ------------------------------------------------------------- */
+
+footer h3 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+}
+
+footer a, li {
+    font-family: "Oswald", sans-serif;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+/* Media Queries ------------------------------------------------------------ */
+
+@media (max-width: 767px) {
+
+    /* Center the navbar dropdown on small screens */
+    .dropdown-menu {
+        width: 90vw;
+    }
+
+    .dropdown-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
