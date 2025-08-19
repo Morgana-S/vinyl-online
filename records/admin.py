@@ -20,7 +20,7 @@ class GenreAdmin(SummernoteModelAdmin):
 
 @admin.register(Record)
 class RecordAdmin(SummernoteModelAdmin):
-    list_display = ('id', 'title', 'artist__name', 'release_date',)
+    list_display = ('id', 'title', 'artist__name', 'release_year',)
     search_fields = ['title', 'artist__name']
     list_filter = ('artist__name',)
     summernote_fields = ('description',)
