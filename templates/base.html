@@ -24,7 +24,7 @@
 
 <body>
     <!-- Header Content -->
-    <header class="container-fluid bg-light border-bottom border-3 border-danger">
+    <header id="navigation-header" class="container-fluid sticky-top bg-light border-bottom border-3 border-danger">
         <div class="row py-2">
             <!-- Navigation Hamburger -->
             <div class="col-auto">
@@ -51,7 +51,7 @@
                     <button class="btn btn-danger ms-2" type="submit">Search</button>
                 </form>
             </div>
-        </div
+        </div>
         <!-- Navigation Bar -->
         <div class="row">
             <nav class="navbar navbar-expand-md">
@@ -99,38 +99,39 @@
     </header>
     <!-- Header Content Ends -->
     <!-- Main Content -->
-    <main class="container-fluid bg-dark">
+    <main class="container-fluid border-top border-bottom border-3 border-danger bg-black pt-2">
         {% block content %}
         {% endblock %}
     </main>
     <!-- Main Content Ends -->
     <!-- Footer Content -->
-    <footer class="container-fluid fixed-bottom bg-light border-top border-3 border-danger text-black">
+    <footer class="container-fluid bg-light border-top border-3 border-danger text-black">
         <div class="row mt-1">
             <div class="col text-center">
                 <h3>FREE DELIVERY ON ALL ORDERS OVER £100</h3>
             </div>
         </div>
+        <hr class="mx-5">
         <div class="row d-flex justify-content-between text-center">
-            <div class="col-4">
+            <div class="col-xs-12 col-md-4">
                 <nav>
                     <h3>SUPPORT</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">CONTACT US</a></li>
-                        <li><a href="#">PRIVACY POLICY</a></li>
+                        <li><a href="#" class="nav-link">CONTACT US</a></li>
+                        <li><a href="#" class="nav-link">PRIVACY POLICY</a></li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-4">
+            <div class="col-xs-12 col-md-4">
                 <nav>
                     <h3>COMMUNITY</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#">WHO WE ARE</a></li>
-                        <li><a href="#">JOIN OUR NEWSLETTER</a></li>
+                        <li><a href="#" class="nav-link">WHO WE ARE</a></li>
+                        <li><a href="#" class="nav-link">JOIN OUR NEWSLETTER</a></li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-4">
+            <div class="col-xs-12 col-md-4">
                 <h3>CONTACT</h3>
                 <ul class="list-unstyled">
                     <li><i class="fa-solid fa-phone"></i> 0123 456 7890</li>
@@ -145,6 +146,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/dedbf6d909.js" crossorigin="anonymous"></script>
+    <!-- Custom Scripts -->
+     <script src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>
