@@ -5,7 +5,7 @@ import cloudinary.uploader
 import os
 
 # Command requires an application to be created on https://www.discogs.com.
-# Documentation for discogs can be found here - https://www.discogs.com/developers
+# Documentation for the python3 discogs client can be found here - https://python3-discogs-client.readthedocs.io/en/latest/authentication.html
 if os.path.isfile('env.py'):
     DISCOGS_USER_TOKEN = os.environ.get('DISCOGS_USER_TOKEN')
     DEFAULT_ARTIST_IMAGE = os.environ.get('DEFAULT_ARTIST_IMAGE')
