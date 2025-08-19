@@ -5,48 +5,218 @@
     "fields": {
       "name": "The Beatles",
       "slug": "the-beatles",
+      "image": "default-artist_fw2mea",
       "debut_year": 1960,
-      "bio": "Formed in Liverpool in 1960, The Beatles revolutionized popular music with their innovative songwriting and cultural influence."
+      "bio": "Rock band from Liverpool, England, pioneering melodic rock and pop music."
     }
   },
   {
     "model": "records.artist",
     "pk": 2,
     "fields": {
-      "name": "David Bowie",
-      "slug": "david-bowie",
+      "name": "Michael Jackson",
+      "slug": "michael-jackson",
+      "image": "default-artist_fw2mea",
       "debut_year": 1964,
-      "bio": "A pioneer of glam rock and one of music’s most innovative figures, David Bowie’s career spanned decades of reinvention and artistry."
+      "bio": "Pop and R&B singer from Gary, Indiana, USA, known for his dance moves and iconic pop sound."
     }
   },
   {
     "model": "records.artist",
     "pk": 3,
     "fields": {
-      "name": "Nirvana",
-      "slug": "nirvana",
-      "debut_year": 1987,
-      "bio": "Arriving on the grunge scene in the late 1980s, Nirvana reshaped rock music with raw energy, introspective lyrics, and a rebellious spirit."
+      "name": "Elvis Presley",
+      "slug": "elvis-presley",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1954,
+      "bio": "Rock and roll singer from Tupelo, Mississippi, USA, combining blues, country, and gospel influences."
     }
   },
   {
     "model": "records.artist",
     "pk": 4,
     "fields": {
-      "name": "Beyoncé",
-      "slug": "beyonce",
-      "debut_year": 1997,
-      "bio": "Emerging in the late 1990s with Destiny’s Child, Beyoncé has become one of the world’s most influential pop and R&B artists."
+      "name": "Madonna",
+      "slug": "madonna",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1979,
+      "bio": "Pop and dance music singer from Bay City, Michigan, USA, known for reinventing her style over decades."
     }
   },
   {
     "model": "records.artist",
     "pk": 5,
     "fields": {
-      "name": "Radiohead",
-      "slug": "radiohead",
+      "name": "Led Zeppelin",
+      "slug": "led-zeppelin",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1968,
+      "bio": "Hard rock and blues band from London, England, influential in developing heavy metal and rock."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 6,
+    "fields": {
+      "name": "Taylor Swift",
+      "slug": "taylor-swift",
+      "image": "default-artist_fw2mea",
+      "debut_year": 2006,
+      "bio": "Singer-songwriter from Wyomissing, Pennsylvania, USA, blending country, pop, and indie music."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 7,
+    "fields": {
+      "name": "Beyoncé",
+      "slug": "beyonce",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1997,
+      "bio": "R&B and pop singer from Houston, Texas, USA, known for powerful vocals and performance artistry."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 8,
+    "fields": {
+      "name": "The Rolling Stones",
+      "slug": "the-rolling-stones",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1962,
+      "bio": "Rock band from London, England, combining blues, rock, and psychedelic influences."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 9,
+    "fields": {
+      "name": "Adele",
+      "slug": "adele",
+      "image": "default-artist_fw2mea",
+      "debut_year": 2006,
+      "bio": "Soul and pop singer from Tottenham, London, England, known for powerful ballads and emotional voice."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 10,
+    "fields": {
+      "name": "Bob Dylan",
+      "slug": "bob-dylan",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1961,
+      "bio": "Folk and rock singer-songwriter from Duluth, Minnesota, USA, influential in lyrical storytelling."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 11,
+    "fields": {
+      "name": "Elton John",
+      "slug": "elton-john",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1964,
+      "bio": "Pop and rock singer-songwriter from Pinner, Middlesex, England, known for piano-driven hits."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 12,
+    "fields": {
+      "name": "Queen",
+      "slug": "queen",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1970,
+      "bio": "Rock band from London, England, blending opera, hard rock, and pop styles."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 13,
+    "fields": {
+      "name": "Stevie Wonder",
+      "slug": "stevie-wonder",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1961,
+      "bio": "Soul, R&B, and pop singer from Saginaw, Michigan, USA, multi-instrumentalist known for innovative music."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 14,
+    "fields": {
+      "name": "Whitney Houston",
+      "slug": "whitney-houston",
+      "image": "default-artist_fw2mea",
       "debut_year": 1985,
-      "bio": "Known for pushing the boundaries of rock and electronic music, Radiohead’s experimental sound and thought-provoking lyrics have earned critical acclaim."
+      "bio": "Pop and R&B singer from Newark, New Jersey, USA, known for vocal range and chart-topping hits."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 15,
+    "fields": {
+      "name": "Frank Sinatra",
+      "slug": "frank-sinatra",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1935,
+      "bio": "Traditional pop and jazz singer from Hoboken, New Jersey, USA, iconic in 20th-century music."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 16,
+    "fields": {
+      "name": "David Bowie",
+      "slug": "david-bowie",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1964,
+      "bio": "Glam rock and pop singer from Brixton, London, England, known for artistic reinvention."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 17,
+    "fields": {
+      "name": "Lady Gaga",
+      "slug": "lady-gaga",
+      "image": "default-artist_fw2mea",
+      "debut_year": 2001,
+      "bio": "Pop and dance singer from Manhattan, New York City, USA, known for theatrical performances."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 18,
+    "fields": {
+      "name": "Bruce Springsteen",
+      "slug": "bruce-springsteen",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1973,
+      "bio": "Rock singer-songwriter from Long Branch, New Jersey, USA, blending heartland rock and storytelling."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 19,
+    "fields": {
+      "name": "U2",
+      "slug": "u2",
+      "image": "default-artist_fw2mea",
+      "debut_year": 1976,
+      "bio": "Rock band from Dublin, Ireland, known for atmospheric guitar-driven rock and political lyrics."
+    }
+  },
+  {
+    "model": "records.artist",
+    "pk": 20,
+    "fields": {
+      "name": "The Weeknd",
+      "slug": "the-weeknd",
+      "image": "default-artist_fw2mea",
+      "debut_year": 2010,
+      "bio": "R&B and pop singer from Toronto, Ontario, Canada, known for atmospheric production and falsetto vocals."
     }
   }
 ]
