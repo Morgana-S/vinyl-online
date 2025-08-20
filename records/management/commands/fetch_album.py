@@ -80,6 +80,7 @@ class Command(BaseCommand):
         self.stdout.write(f"Record {record.title} has now been created.")
         self.stdout.write(f"Fetching RecordImages for {record.title}...")
 
+        # Collects 5 images from the release images
         for image in release.images[:5]:
             if image['type'] == 'primary':
                 try:
@@ -115,5 +116,5 @@ class Command(BaseCommand):
                         f'Failed to upload image for {record.title}: {e}'
                     )
                     continue
-        
+
         self.stdout.write(f'All images for {record.title} uploaded.')
