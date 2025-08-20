@@ -49,7 +49,7 @@ class Command(BaseCommand):
             # Upload image to Cloudinary
             try:
                 upload_result = cloudinary.uploader.upload(first_image_url)
-                artist.image = upload_result["secure_url"]
+                artist.image = upload_result['secure_url']
                 artist.save()
                 self.stdout.write(f'Saved image for {artist.name}')
             except Exception as e:
