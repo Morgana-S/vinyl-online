@@ -5,3 +5,4 @@ env.py
 *.bmpr
 documentation/diagram-files/vinyl-online-user-pathway.png
 __pycache__/
+.coverage
