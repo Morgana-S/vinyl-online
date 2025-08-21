@@ -23,6 +23,11 @@ body {
 	color: #dc3545 !important;
 }
 
+.artist-thumbnail {
+	max-width: 20vh;
+	max-height: 20vh;
+}
+
 /* base.html Header Rules --------------------------------------------------- */
 
 #brand-logo {
