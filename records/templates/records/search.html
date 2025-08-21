@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Query Results - Artists -->
+<div id="query-artists" class="mt-4">
+    <div class="row">
+        <h1 class="text-white text-center category-header">ARTISTS</h1>
+    </div>
+    <div class="row">
+        {% for artist in artists %}
+        <p>{{ artist.name }}</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- Query Results - Records -->
+<div id="query-records" class="mt-4 mb-4">
+    <div class="row">
+        <h1 class="text-white text-center category-header">RECORDS</h1>
+        {% for record in results %}
+        <div class="col">
+            <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            <p><strong>{{ record.title }}</strong></p>
+            <p>{{ record.artist.name }}</p>
+            <p>£{{ record.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
