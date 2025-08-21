@@ -35,7 +35,7 @@ def search_records_view(request):
     input on the search bar. Then displays both artists and records that match
     the search terms.
     """
-    
+
     SORT_OPTIONS_ARTISTS = {
         'name_asc': 'name',
         'name_desc': '-name',
