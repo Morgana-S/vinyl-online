@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Record Information -->
+<div id="record-information" class="container mt-4 d-flex flex-column flex-md-row">
+    <div class="row gx-3">
+        <!-- Record Images -->
+        <div class="col-12 col-md-6 d-flex flex-column flex-md-row">
+            <!-- Thumbnail Gallery -->
+            <div id="record-thumbnails" class="d-flex flex-row flex-md-column gap-2 mt-2 mb-2 mt-md-0 justify-content-between justify-content-md-start">
+                {% for image in record.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ record.title }} - {{image.image_type}} Image" class="record-thumbnail rounded clickable">
+                {% endfor %}
+            </div>
+            <div class="flex-grow-1">
+                <img id="main-image" class="img img-fluid rounded" src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }} - Front Cover Image">
+            </div>
+        </div>
+        <!-- Record Descriptions -->
+        <div class="col-xs-12 col-md-6 ml-0 text-white">
+            <h1 class="category-header">{{ record.title }}</h1>
+            <h2 class="category-header">{{ record.artist.name }}</h2>
+            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
+            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger">Add to Basket</button></h3>
+            <div id="record-description">
+                {{ record.description|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+<div id="record-reviews" class="container mt-4 mb-5">
+    <!-- Average User Rating -->
+    <div class="row">
+        <h3 class="category-header text-white text-center">REVIEWS</h3>
+        {% if reviews %}
+        <div class="text-center">
+            <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
+            <p class="text-white text-center">Average User Rating</p>
+        </div>
+        <!-- Reviews -->
+        <div id="review-cards" class="row justify-content-evenly">
+            {% for review in reviews_page %}
+            <div class="card text-center col-md-4">
+                <div class="card-body">
+                    <p>
+                        <strong>Record Rating:</strong>
+                    </p>
+                    <p>
+                        <strong>Delivery Rating:</strong>
+                    </p>
+                    <p>
+                        <strong>Quality Rating:</strong>
+                    </p>
+                    {% if review.review_text %}
+                    <p>
+                        {{ review.review_text|safe }}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-white text-center">Nobody has left a review for this record yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
+{% block custom-scripts %}
+<script src="{% static 'js/record_detail.js' %}"></script>
+{% endblock %}
