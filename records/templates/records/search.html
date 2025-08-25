@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if artists %}
 <!-- Query Results - Artists -->
 <div id="query-artists" class="mt-4">
-    <h1 class="text-white text-center category-header">ARTISTS - {{ artists|length }} FOUND</h1>
+    <h2 class="text-white text-center category-header">ARTISTS - {{ artists|length }} FOUND</h1>
     <!-- Artists Sort By Selector -->
     <form method="get" id="sort-form-artists" class="text-center mb-4">
         <input type="hidden" name="q" value="{{ query }}">
@@ -31,16 +32,18 @@
 <!-- Artists Pagination -->
 <div id="pagination-artists" class="text-center text-white">
     {% if artists_results.has_previous %}
-    <a href="?artists_page={{ artists_results.previous_page_number }}&sort_artist={{ request.GET.sort_artist }}&records_page={{ records_results.number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Artists Page">⟪</a>
+    <a href="?artists_page={{ artists_results.previous_page_number }}&sort_artist={{ request.GET.sort_artist }}&records_page={{ records_results.number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Artists Page" class="text-decoration-none text-white fw-bold">⟪</a>
     {% endif%}
-    <span>Page {{ artists_results.number }} of {{ artists_results.paginator.num_pages }}</span>
+    <span>{{ artists_results.number }} of {{ artists_results.paginator.num_pages }}</span>
     {% if artists_results.has_next %}
-    <a href="?artists_page={{ artists_results.next_page_number }}&sort_artist={{ request.GET.sort_artist }}&records_page={{ records_results.number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Artists Page">⟫</a>
+    <a href="?artists_page={{ artists_results.next_page_number }}&sort_artist={{ request.GET.sort_artist }}&records_page={{ records_results.number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Artists Page" class="text-decoration-none text-white fw-bold">⟫</a>
     {% endif %}
 </div>
+{% endif %}
+{% if records %}
 <!-- Query Results - Records -->
 <div id="query-records" class="mt-4 mb-4">
-    <h1 class="text-white text-center category-header">RECORDS - {{ records|length }} FOUND</h1>
+    <h2 class="text-white text-center category-header">RECORDS - {{ records|length }} FOUND</h2>
     <!-- Records Sort By Selector -->
     <form method="get" id="sort-form-records" class="text-center mb-4">
         <input type="hidden" name="q" value="{{ query }}">
@@ -71,11 +74,19 @@
 <!-- Records Pagination -->
 <div id="pagination-records" class="text-center text-white mb-4">
     {% if records_results.has_previous %}
-    <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}&artists_page={{ artists_results.number }}&sort_artist={{ request.GET.sort_artist }}" aria-label="Previous Records Page">⟪</a>
+    <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}&artists_page={{ artists_results.number }}&sort_artist={{ request.GET.sort_artist }}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold">⟪</a>
     {% endif%}
-    <span>Page {{ records_results.number }} of {{ records_results.paginator.num_pages }}</span>
+    <span>{{ records_results.number }} of {{ records_results.paginator.num_pages }}</span>
     {% if records_results.has_next %}
-    <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}&artists_page={{ artists_results.number }}&sort_artist={{ request.GET.sort_artist }}" aria-label="Next Records Page">⟫</a>
+    <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}&artists_page={{ artists_results.number }}&sort_artist={{ request.GET.sort_artist }}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
     {% endif %}
 </div>
+{% endif %}
+{% if not artists and not records %}
+<!-- No Results Found -->
+<div id="no-results" class="mt-4 mb-5 pb-5">
+    <h2 class="text-white text-center category-header">No Results Found For: {{query}}</h2>
+    <p class="text-white text-center">There are no records or artists which match your search terms. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
+</div>
+{% endif %}
 {% endblock %}
