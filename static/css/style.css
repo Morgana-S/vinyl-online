@@ -91,6 +91,27 @@ footer .nav-link:hover {
 	min-height: 50vh;
 }
 
+/* Record Detail Page Rules ------------------------------------------------- */
+
+#record-description p,
+#record-description li, 
+#record-description ol, 
+#record-description strong{
+	color: white
+}
+
+#record-description li  {
+	list-style: none;
+}
+
+.clickable{
+	max-width: 80px;
+}
+
+.clickable:hover {
+	cursor: pointer;
+}
+
 /* Media Queries ------------------------------------------------------------ */
 
 @media (max-width: 1024px) {
