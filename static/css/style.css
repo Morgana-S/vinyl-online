@@ -85,6 +85,12 @@ footer .nav-link:hover {
 	max-width: 20vh;
 }
 
+/* Search Page Rules -------------------------------------------------------- */
+
+#no-results {
+	min-height: 50vh;
+}
+
 /* Media Queries ------------------------------------------------------------ */
 
 @media (max-width: 1024px) {
