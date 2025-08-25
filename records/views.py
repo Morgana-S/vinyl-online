@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Record, Artist, RecordImage, Genre
+from .models import Record, Artist, RecordImage, Genre, Review
 
 # Create your views here.
 
@@ -83,3 +83,25 @@ def search_records_view(request):
     }
 
     return render(request, 'records/search.html', context)
+
+
+def record_detail_view(request, record_slug):
+    """
+    View for individual record pages. Obtains information from the record
+    instance in the database and populates it.
+    """
+    queryset = Record.objects.all()
+    record = get_object_or_404(queryset, slug=record_slug)
+    reviews = Review.objects.all().filter(record=record)
+
+    paginator = Paginator(reviews, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'record': record,
+        'reviews': reviews,
+        'reviews_page': page_obj
+    }
+
+    return render(request, 'records/record_detail.html', context)
