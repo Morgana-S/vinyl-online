@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
@@ -64,6 +65,15 @@ class Record(models.Model):
     def get_front_cover(self):
         return self.images.filter(image_type="Front Cover").first()
 
+    def get_average_rating(self):
+        reviews = self.record_reviews.all()
+        ratings = []
+        for review in reviews:
+            ratings.append(review.record_rating)
+
+        average_rating = sum(ratings) / len(ratings)
+        return average_rating
+
 
 class RecordImage(models.Model):
     IMAGE_TYPES = [
@@ -79,3 +89,50 @@ class RecordImage(models.Model):
         'image', default='default-record_rjj3wh')
     image_type = models.CharField(
         max_length=50, choices=IMAGE_TYPES, default='Front Cover')
+
+
+class Review(models.Model):
+    RATING_CHOICES = [
+        (1, '1 Star'),
+        (2, '2 Stars'),
+        (3, '3 Stars'),
+        (4, '4 Stars'),
+        (5, '5 Stars'),
+    ]
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
+    record = models.ForeignKey(
+        Record,
+        on_delete=models.CASCADE,
+        related_name='record_reviews'
+    )
+    delivery_rating = models.PositiveSmallIntegerField(
+        choices=RATING_CHOICES,
+        help_text=('Rate the delivery from 1-5, with 5 being perfect.')
+    )
+    quality_rating = models.PositiveSmallIntegerField(
+        choices=RATING_CHOICES,
+        help_text=('Rate the quality of the record condition from 1-5, with '
+                   '5 being perfect.')
+    )
+    record_rating = models.PositiveSmallIntegerField(
+        choices=RATING_CHOICES,
+        help_text='Rate how much you enjoyed the record, from 1-5.'
+    )
+    store_feedback = models.TextField(
+        blank=True,
+        help_text=(
+            'Feel free to add any additional feedback about your '
+            'purchase here.'
+        ))
+    review_text = models.TextField(
+        blank=True,
+        help_text=(
+            'Feel free to describe your thoughts on the record here.'
+        )
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_approved = models.BooleanField(default=False)
