@@ -105,3 +105,18 @@ def record_detail_view(request, record_slug):
     }
 
     return render(request, 'records/record_detail.html', context)
+
+
+def artist_detail_view(request, artist_slug):
+    """
+    View for individual artist pages. Obtains information from the artist
+    instance in the database and populates the page with it.
+    """
+    queryset = Artist.objects.all()
+    artist = get_object_or_404(queryset, slug=artist_slug)
+
+    context = {
+        'artist': artist
+    }
+
+    return render(request, 'records/artist_detail.html', context)
