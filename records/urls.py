@@ -9,4 +9,8 @@ urlpatterns = [
         views.record_detail_view,
         name='record_detail'
         ),
+    path('artist/<slug:artist_slug>',
+         views.artist_detail_view,
+         name='artist_detail'
+         ),
 ]
