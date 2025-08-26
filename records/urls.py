@@ -16,4 +16,5 @@ urlpatterns = [
     path('genre/<slug:genre_name>',
          views.browse_by_genre_view,
          name='browse_by_genre'),
+    path('all-records/', views.all_records_view, name='all_records'),
 ]
