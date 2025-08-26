@@ -22,7 +22,7 @@
     <div class="row justify-content-center mx-auto">
         {% for artist in artists_results %}
         <div class="col-6 col-md-3 text-center text-white">
-            <a href="#">
+            <a href="{% url 'artist_detail' artist.slug %}">
                 <img src="{{ artist.image }}" alt="{{ artist.name }}" class="artist-thumbnail">
             </a>
             <p><strong>{{ artist.name }}</strong></p>
