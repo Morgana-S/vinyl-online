@@ -94,22 +94,30 @@ footer .nav-link:hover {
 /* Record Detail Page Rules ------------------------------------------------- */
 
 #record-description p,
-#record-description li, 
-#record-description ol, 
-#record-description strong{
-	color: white
+#record-description li,
+#record-description ol,
+#record-description strong {
+	color: white;
 }
 
-#record-description li  {
+#record-description li {
 	list-style: none;
 }
 
-.clickable{
+.clickable {
 	max-width: 80px;
 }
 
 .clickable:hover {
 	cursor: pointer;
+}
+
+/* Artist Detail Page Rules ------------------------------------------------- */
+
+.artist-profile {
+	max-height: 40vh;
+	width: auto;
+	object-fit: contain;
 }
 
 /* Media Queries ------------------------------------------------------------ */

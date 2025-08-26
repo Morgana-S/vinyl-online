@@ -112,6 +112,13 @@ footer .nav-link:hover {
 	cursor: pointer;
 }
 
+/* Artist Detail Page Rules ------------------------------------------------- */
+
+.artist-profile {
+	max-height: 20vh;
+	width: auto;
+}
+
 /* Media Queries ------------------------------------------------------------ */
 
 @media (max-width: 1024px) {
