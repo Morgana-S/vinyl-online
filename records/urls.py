@@ -17,4 +17,8 @@ urlpatterns = [
          views.browse_by_genre_view,
          name='browse_by_genre'),
     path('all-records/', views.all_records_view, name='all_records'),
+    path('latest-releases/',
+         views.latest_releases_view,
+         name='latest_releases'
+         ),
 ]
