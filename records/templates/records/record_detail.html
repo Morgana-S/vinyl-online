@@ -20,8 +20,8 @@
         <div class="col-xs-12 col-md-6 ml-0 text-white">
             <h1 class="category-header">{{ record.title }}</h1>
             <h2 class="category-header">{{ record.artist.name }}</h2>
-            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
-            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger">Add to Basket</button></h3>
+            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong> {% for genre in record.genre.all %} <button type="button" class="btn btn-sm text-black border-0 rounded-pill" style="background-color: {{genre.color}}">{{ genre.name }}</button>{% endfor %}</p>
+            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger"><i class="fa-solid fa-basket-shopping"></i> </button></h3>
             <div id="record-description">
                 {{ record.description|safe }}
             </div>
@@ -31,7 +31,7 @@
 <div id="record-reviews" class="container mt-4 mb-5">
     <!-- Average User Rating -->
     <div class="row">
-        <h3 class="category-header text-white text-center">REVIEWS</h3>
+        <h3 class="category-header text-white text-center">REVIEWS - {{ reviews|length }}</h3>
         {% if reviews %}
         <div class="text-center">
             <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
@@ -40,16 +40,17 @@
         <!-- Reviews -->
         <div id="review-cards" class="row justify-content-evenly">
             {% for review in reviews_page %}
-            <div class="card text-center col-md-4">
+            {% if review.is_approved %}
+            <div class="card text-center col-md-4 border-danger border-2">
                 <div class="card-body">
                     <p>
-                        <strong>Record Rating:</strong>
+                        <strong>Record Rating: {{ review.record_rating_stars }}</strong>
                     </p>
                     <p>
-                        <strong>Delivery Rating:</strong>
+                        <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
                     </p>
                     <p>
-                        <strong>Quality Rating:</strong>
+                        <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
                     </p>
                     {% if review.review_text %}
                     <p>
@@ -61,7 +62,18 @@
                     <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }}</small>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
+        </div>
+        <!-- Review Pagination Controls -->
+        <div id="pagination-reviews" class="text-center text-white mt-4">
+            {% if reviews_page.has_previous %}
+            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Previous Reviews Page" class="text-decoration-none text-white fw-bold">⟪</a>
+            {% endif%}
+            <span>{{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}</span>
+            {% if reviews_page.has_next %}
+            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Next Reviews Page" class="text-decoration-none text-white fw-bold">⟫</a>
+            {% endif %}
         </div>
         {% else %}
         <p class="text-white text-center">Nobody has left a review for this record yet.</p>
