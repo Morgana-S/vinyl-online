@@ -24,6 +24,14 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def genres(self):
+        """
+        Looks through all of the artist's records and returns their distinct
+        genres.
+        """
+        return Genre.objects.filter(records_by_genre__artist=self).distinct()
 
 
 class Genre(models.Model):
