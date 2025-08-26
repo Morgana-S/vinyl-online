@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if records %}
+<!-- Query Results - Records -->
+<div id="latest-records" class="mt-4 mb-4">
+    <h2 class="text-white text-center category-header mb-4">LATEST RELEASES</h2>
+    <div class="row justify-content-center mx-auto">
+        {% for record in records %}
+        <div class="col-6 col-md-3 text-center text-white">
+            <a href="{% url 'record_detail' record.slug %}">
+                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            </a>
+            <p class="mb-0"><strong>{{ record.title }}</strong></p>
+            <p class="mb-0">{{ record.artist.name }}</p>
+            <p>£{{ record.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<!-- No Results Found -->
+<div id="no-results" class="mt-4 mb-5 pb-5">
+    <h2 class="text-white text-center category-header">No Results Found</h2>
+    <p class="text-white text-center">There are no records yet. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
+</div>
+{% endif %}
+{% endblock %}
