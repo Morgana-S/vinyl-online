@@ -24,7 +24,7 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def genres(self):
         """
@@ -36,8 +36,14 @@ class Artist(models.Model):
 
 class Genre(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(blank=True, unique=True)
     color = ColorField(format='hex')
     description = models.TextField(max_length=1000)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
