@@ -66,10 +66,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar nav mx-auto flex-column flex-md-row">
                         <li class="nav-item"><a class="nav-link text-black" href="{% url 'index' %}">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link text-black" href="#">SIGN UP</a></li>
-                        <li class="nav-item"><a class="nav-link text-black" href="#">LOG IN</a></li>
-                        <li class="nav-item"><a class="nav-link text-black" href="#">ALL RECORDS</a></li>
-                        <li class="nav-item"><a class="nav-link text-black" href="#">LATEST RELEASES</a></li>
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'account_signup' %}">SIGN UP</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'account_login' %}">LOG IN</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link text-black" href="#">YOUR PROFILE</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'account_logout' %}">SIGN OUT</a></li>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'all_records' %}" aria-label="Click here to browse all Records">ALL RECORDS</a></li>
+                        <li class="nav-item"><a class="nav-link text-black" href="{% url 'latest_releases' %}" aria-label="Click here to browse the latest releases">LATEST RELEASES</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link text-black dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">BROWSE BY GENRE</a>
                             <ul class="dropdown-menu dropdown-menu-center p-3">
@@ -77,24 +82,24 @@
                                     <!-- Column 1 -->
                                     <div class="col-4">
                                         <a href="{% url 'browse_by_genre' 'rock' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Rock Records">Rock</a>
-                                        <a href="{% url 'browse_by_genre' 'pop' %}" class="dropdown-item btn btn-light w-100 text-center">Pop</a>
-                                        <a href="{% url 'browse_by_genre' 'hip-hop' %}" class="dropdown-item btn btn-light w-100 text-center">Hip Hop</a>
-                                        <a href="{% url 'browse_by_genre' 'jazz' %}" class="dropdown-item btn btn-light w-100 text-center">Jazz</a>
-                                        <a href="{% url 'browse_by_genre' 'blues' %}" class="dropdown-item btn btn-light w-100 text-center">Blues</a>
+                                        <a href="{% url 'browse_by_genre' 'pop' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Pop Records">Pop</a>
+                                        <a href="{% url 'browse_by_genre' 'hip-hop' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Hip Hop Records">Hip Hop</a>
+                                        <a href="{% url 'browse_by_genre' 'jazz' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Jazz Records">Jazz</a>
+                                        <a href="{% url 'browse_by_genre' 'blues' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Blues Records">Blues</a>
                                     </div>
                                     <!-- Column 2 -->
                                     <div class="col-4">
-                                        <a href="{% url 'browse_by_genre' 'folk-world-country' %}" class="dropdown-item btn btn-light w-100 text-center">Folk / World / Country</a>
-                                        <a href="{% url 'browse_by_genre' 'electronic' %}" class="dropdown-item btn btn-light w-100 text-center">Electronic</a>
-                                        <a href="{% url 'browse_by_genre' 'reggae' %}" class="dropdown-item btn btn-light w-100 text-center">Reggae</a>
-                                        <a href="{% url 'browse_by_genre' 'classical' %}" class="dropdown-item btn btn-light w-100 text-center">Classical</a>
-                                        <a href="{% url 'browse_by_genre' 'funk-soul' %}" class="dropdown-item btn btn-light w-100 text-center">Funk / Soul</a>
+                                        <a href="{% url 'browse_by_genre' 'folk-world-country' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Folk, World & Country Records">Folk / World / Country</a>
+                                        <a href="{% url 'browse_by_genre' 'electronic' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Electronic Records">Electronic</a>
+                                        <a href="{% url 'browse_by_genre' 'reggae' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Reggae Records">Reggae</a>
+                                        <a href="{% url 'browse_by_genre' 'classical' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Classical Records">Classical</a>
+                                        <a href="{% url 'browse_by_genre' 'funk-soul' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Funk & Soul Records">Funk / Soul</a>
                                     </div>
                                     <!-- Column 3 -->
                                     <div class="col-4">
-                                        <a href="{% url 'browse_by_genre' 'metal' %}" class="dropdown-item btn btn-light w-100 text-center">Metal</a>
-                                        <a href="{% url 'browse_by_genre' 'punk' %}" class="dropdown-item btn btn-light w-100 text-center">Punk</a>
-                                        <a href="{% url 'browse_by_genre' 'rb' %}" class="dropdown-item btn btn-light w-100 text-center">R&B</a>
+                                        <a href="{% url 'browse_by_genre' 'metal' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Metal Records">Metal</a>
+                                        <a href="{% url 'browse_by_genre' 'punk' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Punk Records">Punk</a>
+                                        <a href="{% url 'browse_by_genre' 'rb' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse R&B Records">R&B</a>
                                     </div>
                                 </div>
                             </ul>
