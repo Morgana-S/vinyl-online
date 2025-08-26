@@ -13,4 +13,7 @@ urlpatterns = [
          views.artist_detail_view,
          name='artist_detail'
          ),
+    path('genre/<slug:genre_name>',
+         views.browse_by_genre_view,
+         name='browse_by_genre'),
 ]
