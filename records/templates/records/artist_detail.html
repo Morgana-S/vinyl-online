@@ -31,7 +31,7 @@
             </h3>
             <p>
                 {% for genre in artist.genres %}
-                <button type="button" class="btn text-black border-0 rounded-pill" style="background-color: {{ genre.color }}"> {{ genre.name }}</button>
+                <a href="{% url 'browse_by_genre' genre.slug %}" class="btn text-black border-0 rounded-pill" style="background-color: {{ genre.color }}"> {{ genre.name }}</a>
                 {% endfor %}
             </p>
         </div>
@@ -57,7 +57,7 @@
         {% endif%}
         <span>{{ record_results.number }} of {{ record_results.paginator.num_pages }}</span>
         {% if record_results.has_next %}
-        <a href="?page={{ record_results.previous_page_number }}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
+        <a href="?page={{ record_results.next_page_number }}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
         {% endif %}
     </div>
 </div>
