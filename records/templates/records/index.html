@@ -31,7 +31,9 @@
     <div class="row text-center text-white">
         {% for record in latest_releases %}
         <div class="col">
-            <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            <a href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            </a>
             <p><strong>{{ record.title }}</strong></p>
             <p>{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
@@ -52,7 +54,9 @@
     <div class="row text-center text-white">
         {% for record in featured_genre_records %}
         <div class="col">
-            <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            <a href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            </a>
             <p><strong>{{ record.title }}</strong></p>
             <p>{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
