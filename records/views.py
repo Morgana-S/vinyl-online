@@ -158,3 +158,32 @@ def browse_by_genre_view(request, genre_name):
     }
 
     return render(request, 'records/browse_by_genre.html', context)
+
+
+def all_records_view(request):
+    """
+    View for browsing all records, with sorting.
+    """
+    SORT_OPTIONS_RECORDS = {
+        'title_asc': 'title',
+        'title_desc': '-title',
+        'release_year_asc': 'release_year',
+        'release_year_desc': '-release_year',
+        'price_asc': 'price',
+        'price_desc': '-price'
+    }
+
+    sort_by_records = request.GET.get('sort_record', 'title')
+    order_field_records = SORT_OPTIONS_RECORDS.get(sort_by_records, 'title')
+
+    records = Record.objects.all().order_by(order_field_records)
+    paginator = Paginator(records, 16)
+    page_number = request.GET.get('page')
+    records_results = paginator.get_page(page_number)
+
+    context = {
+        'records': records,
+        'records_results': records_results
+    }
+
+    return render(request, 'records/all_records.html', context)
