@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Artist Information -->
+<div id="artist-information" class="container text-center">
+    <div class="row">
+        <h1 class="text-white category-header mt-4"> {{ artist.name }}</h1>
+    </div>
+    {% if user.is_authenticated and user.is_staff %}
+    <!-- Artist Management -->
+    <div class="row justify-content-center mb-2">
+        <div class="col-auto"><button type="button" class="btn bg-warning text-black rounded">Edit Artist Details</button></div>
+        <div class="col-auto"><button type="button" class="btn bg-danger text-white rounded">Delete Artist</button></div>
+    </div>
+    {% endif %}
+    <!-- Artist Image -->
+    <div class="row justify-content-center mb-2">
+        <img src="{{ artist.image.url }}" alt="{{ artist.name }}" class="img img-fluid artist-profile">
+    </div>
+    <!-- Artist Information -->
+    <div class="row text-white">
+        <div class="col">
+            <h2 class="category-header">
+                Debut Year: {{ artist.debut_year }}
+            </h2>
+            <p>
+                {{ artist.bio|safe }}
+            </p>
+            <h3 class="category-header">
+                Genres
+            </h3>
+            <p>
+                {% for genre in artist.genres %}
+                <button type="button" class="btn text-black border-0 rounded-pill" style="background-color: {{ genre.color }}"> {{ genre.name }}</button>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <!-- Records -->
+    <div class="row justify-content-center mx-auto">
+        <h3 class="category-header text-white">Records</h3>
+        {% for record in record_results %}
+        <div class="col-6 col-md-3 text-center text-white">
+            <a href="{% url 'record_detail' record.slug %}">
+                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            </a>
+            <p class="mb-0"><strong>{{ record.title }}</strong></p>
+            <p class="mb-0">{{ record.artist.name }}</p>
+            <p>£{{ record.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Review Pagination Controls -->
+    <div id="pagination-records" class="text-center text-white mt-4 mb-4">
+        {% if record_results.has_previous %}
+        <a href="?page={{ record_results.previous_page_number }}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold">⟪</a>
+        {% endif%}
+        <span>{{ record_results.number }} of {{ record_results.paginator.num_pages }}</span>
+        {% if record_results.has_next %}
+        <a href="?page={{ record_results.previous_page_number }}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
