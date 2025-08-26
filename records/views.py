@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from .models import Record, Artist, RecordImage, Genre, Review
 
@@ -18,7 +18,9 @@ def index_view(request):
     latest_releases = Record.objects.order_by('-created_at')[:5]
     featured_genre = 'Pop'
     featured_genre_records = Record.objects.filter(
-        genre__name='Pop').order_by('-release_year')[:5]
+        genre__name=featured_genre).annotate(
+            avg_rating=Avg('record_reviews__record_rating')).order_by(
+                'avg_rating')[:5]
 
     context = {
         'latest_releases': latest_releases,
@@ -187,3 +189,16 @@ def all_records_view(request):
     }
 
     return render(request, 'records/all_records.html', context)
+
+
+def latest_releases_view(request):
+    """
+    View for browsing the 16 latest releases.
+    """
+    records = Record.objects.all().order_by('-created_at')[:16]
+
+    context = {
+        'records': records,
+    }
+
+    return render(request, 'records/latest_records.html', context)
