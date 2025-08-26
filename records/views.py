@@ -114,9 +114,14 @@ def artist_detail_view(request, artist_slug):
     """
     queryset = Artist.objects.all()
     artist = get_object_or_404(queryset, slug=artist_slug)
+    records = Record.objects.all().filter(artist=artist)
+    paginator = Paginator(records, 6)
+    page_number = request.GET.get('page')
+    record_results = paginator.get_page(page_number)
 
     context = {
-        'artist': artist
+        'artist': artist,
+        'record_results': record_results
     }
 
     return render(request, 'records/artist_detail.html', context)
