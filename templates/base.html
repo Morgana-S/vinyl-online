@@ -76,25 +76,25 @@
                                 <div class="row justify-content-center">
                                     <!-- Column 1 -->
                                     <div class="col-4">
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Rock</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Pop</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Hip Hop</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Jazz</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Blues</a>
+                                        <a href="{% url 'browse_by_genre' 'rock' %}" class="dropdown-item btn btn-light w-100 text-center" aria-label="Click here to browse Rock Records">Rock</a>
+                                        <a href="{% url 'browse_by_genre' 'pop' %}" class="dropdown-item btn btn-light w-100 text-center">Pop</a>
+                                        <a href="{% url 'browse_by_genre' 'hip-hop' %}" class="dropdown-item btn btn-light w-100 text-center">Hip Hop</a>
+                                        <a href="{% url 'browse_by_genre' 'jazz' %}" class="dropdown-item btn btn-light w-100 text-center">Jazz</a>
+                                        <a href="{% url 'browse_by_genre' 'blues' %}" class="dropdown-item btn btn-light w-100 text-center">Blues</a>
                                     </div>
                                     <!-- Column 2 -->
                                     <div class="col-4">
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Folk / World / Country</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Electronic</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Reggae</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Classical</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Funk / Soul</a>
+                                        <a href="{% url 'browse_by_genre' 'folk-world-country' %}" class="dropdown-item btn btn-light w-100 text-center">Folk / World / Country</a>
+                                        <a href="{% url 'browse_by_genre' 'electronic' %}" class="dropdown-item btn btn-light w-100 text-center">Electronic</a>
+                                        <a href="{% url 'browse_by_genre' 'reggae' %}" class="dropdown-item btn btn-light w-100 text-center">Reggae</a>
+                                        <a href="{% url 'browse_by_genre' 'classical' %}" class="dropdown-item btn btn-light w-100 text-center">Classical</a>
+                                        <a href="{% url 'browse_by_genre' 'funk-soul' %}" class="dropdown-item btn btn-light w-100 text-center">Funk / Soul</a>
                                     </div>
                                     <!-- Column 3 -->
                                     <div class="col-4">
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Metal</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">Punk</a>
-                                        <a href="#" class="dropdown-item btn btn-light w-100 text-center">R&B</a>
+                                        <a href="{% url 'browse_by_genre' 'metal' %}" class="dropdown-item btn btn-light w-100 text-center">Metal</a>
+                                        <a href="{% url 'browse_by_genre' 'punk' %}" class="dropdown-item btn btn-light w-100 text-center">Punk</a>
+                                        <a href="{% url 'browse_by_genre' 'rb' %}" class="dropdown-item btn btn-light w-100 text-center">R&B</a>
                                     </div>
                                 </div>
                             </ul>
