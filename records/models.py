@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 from colorfield.fields import ColorField
@@ -136,3 +137,51 @@ class Review(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
+
+    @property
+    def record_rating_stars(self):
+        """
+        Render record_rating as star icons.
+        """
+        stars_html = ''.join(
+            '<i class="fa-solid fa-star text-warning"></i>'
+            for i in range(self.record_rating)
+        )
+        stars_html += ''.join(
+            '<i class="fa-regular fa-star text-warning"></i>'
+            for i in range(5 - self.record_rating)
+        )
+
+        return mark_safe(stars_html)
+
+    @property
+    def delivery_rating_stars(self):
+        """
+        Render delivery_rating as star icons.
+        """
+        stars_html = ''.join(
+            '<i class="fa-solid fa-star text-warning"></i>'
+            for i in range(self.delivery_rating)
+        )
+        stars_html += ''.join(
+            '<i class="fa-regular fa-star text-warning"></i>'
+            for i in range(5 - self.delivery_rating)
+        )
+
+        return mark_safe(stars_html)
+
+    @property
+    def quality_rating_stars(self):
+        """
+        Render quality_rating as star icons.
+        """
+        stars_html = ''.join(
+            '<i class="fa-solid fa-star text-warning"></i>'
+            for i in range(self.quality_rating)
+        )
+        stars_html += ''.join(
+            '<i class="fa-regular fa-star text-warning"></i>'
+            for i in range(5 - self.quality_rating)
+        )
+
+        return mark_safe(stars_html)
