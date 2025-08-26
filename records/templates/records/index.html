@@ -26,7 +26,7 @@
 <!-- Out Now -->
 <div id="out-now" class="mt-4">
     <div class="row">
-        <h1 class="text-white text-center category-header">OUT NOW</h1>
+        <h1 class="text-white text-center category-header mb-2">OUT NOW</h1>
     </div>
     <div class="row text-center text-white">
         {% for record in latest_releases %}
@@ -40,14 +40,14 @@
     </div>
     <div class="row text-center">
         <div class="col">
-            <a href="#" class="view-all-link text-white fs-3">VIEW ALL NEW RELEASES</a>
+            <a href="{% url 'latest_releases' %}" aria-label="Click here to view all latest releases" class="view-all-link text-white fs-3">VIEW ALL NEW RELEASES</a>
         </div>
     </div>
 </div>
 <!-- Best Of: Featured Genre -->
 <div id="featured-genre" class="mt-4 mb-4">
     <div class="row">
-        <h1 class="text-white text-center category-header">BEST OF {{ featured_genre|upper }}</h1>
+        <h1 class="text-white text-center category-header mb-2">BEST OF {{ featured_genre|upper }}</h1>
     </div>
     <div class="row text-center text-white">
         {% for record in featured_genre_records %}
@@ -61,7 +61,7 @@
     </div>
     <div class="row text-center">
         <div class="col">
-            <a href="#" class="view-all-link text-white fs-3">VIEW ALL {{ featured_genre|upper }}</a>
+            <a href="{% url 'browse_by_genre' 'pop' %}" class="view-all-link text-white fs-3">VIEW ALL {{ featured_genre|upper }}</a>
         </div>
     </div>
 </div>
