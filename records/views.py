@@ -125,3 +125,36 @@ def artist_detail_view(request, artist_slug):
     }
 
     return render(request, 'records/artist_detail.html', context)
+
+
+def browse_by_genre_view(request, genre_name):
+    """
+    View for browsing records by genre. Gets the genre name and obtains
+    paginated results for all records with that genre.
+    """
+    SORT_OPTIONS = {
+        'title_asc': 'title',
+        'title_desc': '-title',
+        'release_year_asc': 'release_year',
+        'release_year_desc': '-release_year',
+        'price_asc': 'price',
+        'price_desc': '-price'
+    }
+
+    sort_by_records = request.GET.get('sort_record', 'title')
+    order_field_records = SORT_OPTIONS.get(sort_by_records, 'title')
+    genre = get_object_or_404(Genre, slug=genre_name)
+    records = Record.objects.filter(genre=genre).order_by(
+        order_field_records
+    )
+    paginator = Paginator(records, 16)
+    page_number = request.GET.get('page')
+    records_results = paginator.get_page(page_number)
+
+    context = {
+        'genre': genre,
+        'records': records,
+        'records_results': records_results,
+    }
+
+    return render(request, 'records/browse_by_genre.html', context)
