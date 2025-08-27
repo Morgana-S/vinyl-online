@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load account %}
+{% load allauth %}
+{% block content %}
+<!-- Confirm Email -->
+<div class="container mt-2 mb-5 pb-5">
+    <div class="row">
+        <div class="col-12 col-md-4 text-center mx-auto">
+            <h1 class="text-white category-header text-center mb-5">Confirm Email Address</h1>
+            {% if confirmation %}
+            {% if can_confirm %}
+            <p class="text-white">
+                Please confirm your email: <a class="text-white" href="{{ activate_url }}">{{ confirmation.email_address.email }}</a>
+            </p>
+            <form action="{% url 'account_confirm_email' confirmation.key %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Confirm Email</button>
+            </form>
+            {% else %}
+            <p class="text-white">
+                This email has already been confirmed or the link is invalid.
+                Please <a href="{% url 'account_email' %}">request a new confirmation</a>.
+            </p>
+            {% endif %}
+            {% else %}
+            <p class="text-white">Invalid confirmation. Please <a href="{% url 'account_email' %}">request a new confirmation</a>.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
