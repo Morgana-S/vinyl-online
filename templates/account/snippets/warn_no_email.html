@@ -1,4 +1,7 @@
 {% load i18n allauth %}
-{% element p %}
-    <strong>{% trans 'Warning:' %}</strong> {% trans "You currently do not have any email address set up. You should really add an email address so you can receive notifications, reset your password, etc." %}
-{% endelement %}
+<p class="text-center">
+    <strong class="bg-warning ps-2 pe-2">Warning:</strong>
+</p>
+<p class="text-white text-center">
+    You currently do not have any email address set up. You should really add an email address so you can receive notifications, reset your password, etc.
+</p>
