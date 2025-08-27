@@ -5,11 +5,11 @@
 <div class="container mt-2 mb-5 pb-5">
     <div class="row">
         <div class="col-12 col-md-4 text-center mx-auto">
-            <h1 class="text-white category-header text-center">Sign Out</h1>
+            <h1 class="text-white category-header text-center mb-5">Sign Out</h1>
             <p class="text-white">Are you sure you want to log out of your account?</p>
-            <form method="POST" action="{% url 'account_logout' %}" class="mb-5">
+            <form method="POST" action="{% url 'account_logout' %}" class="mb-5 pb-5">
                 {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Log Out</button>
+                    <button type="submit" class="btn btn-danger mb-5">Log Out</button>
                 </div>
             </form>
         </div>
