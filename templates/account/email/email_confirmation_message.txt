@@ -1,0 +1,10 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+
+{% block content %}
+
+Please click the link below to confirm your email address:
+
+{{ activate_url }}
+
+{% endblock content %}

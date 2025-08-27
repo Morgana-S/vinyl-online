@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}Vinyl Online - Account Already Exists{% endblocktrans %}
+{% endautoescape %}

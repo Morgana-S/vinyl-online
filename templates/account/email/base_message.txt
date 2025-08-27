@@ -1,0 +1,6 @@
+Hello from Vinyl Online!
+
+{% block content %}{% endblock content %}
+
+Thank you for browsing with us!
+Vinyl Online Support
