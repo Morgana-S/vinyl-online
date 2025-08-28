@@ -41,7 +41,7 @@ class DeliveryAddress(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
     user = models.ForeignKey(
-        UserProfile,
+        User,
         on_delete=models.CASCADE,
         related_name='delivery_addresses'
     )
