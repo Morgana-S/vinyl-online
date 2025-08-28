@@ -4,7 +4,12 @@
 {% block content %}
 <div id="create-profile" class="container text-center mt-2 mb-5">
     <div class="row">
-        <h1 class="text-white category-header"> CREATE OR EDIT PROFILE </h1>
+        {% if profile and profile.first_name %}
+        <h1 class="text-white category-header">EDIT PROFILE</h1>
+        {% else %}
+        <h1 class="text-white category-header">CREATE PROFILE</h1>
+        {% endif %}
+        <p class="text-white small">All fields with an asterisk next to the label are required.</p>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
