@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'widget_tweaks',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -178,3 +179,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# PhoneNumbers
+# https://django-phonenumber-field.readthedocs.io/en/latest/index.html
+
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'GB'
