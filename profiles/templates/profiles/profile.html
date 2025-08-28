@@ -18,7 +18,7 @@
                 <p>{{ profile.contact_email }}</p>
                 <div class="row mx-auto mb-2">
                     <div class="col-6">
-                        <a href="#" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Profile Information"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{% url 'create_edit_profile' %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Profile Information"><i class="fa-solid fa-pencil"></i></a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="card bg-black border-danger border-2 text-white">
                 <p><strong>No User Profile Found</strong></p>
                 <p>Why not add your contact details? It makes checkout easier, and helps us get in contact with you about your delivery.</p>
-                <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Profile Information" href="#"><i class="fa-solid fa-plus text-white"></i></a>
+                <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Profile Information" href="{% url 'create_edit_profile' %}"><i class="fa-solid fa-plus text-white"></i></a>
             </div>
             {% endif %}
         </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="col-12 col-md-6">
             <h3 class="text-white category-header">YOUR SUPPORT TICKETS</h3>
-            
+
         </div>
     </div>
 </div>
