@@ -19,9 +19,10 @@
         <!-- Record Descriptions -->
         <div class="col-xs-12 col-md-6 ml-0 text-white">
             <h1 class="category-header">{{ record.title }}</h1>
-            <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
-            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong> {% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
-            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger"><i class="fa-solid fa-basket-shopping"></i> </button></h3>
+            <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}" data-bs-toggle="tooltip" title="View Artist Page" class="btn btn-danger"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
+            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
+            <p>{% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
+            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger" data-bs-toggle="tooltip" title="Add to basket"><i class="fa-solid fa-basket-shopping"></i> </button></h3>
             <div id="record-description">
                 {{ record.description|safe }}
             </div>
