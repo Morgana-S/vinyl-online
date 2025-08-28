@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="profile-information" class="container text-center mt-2 mb-5">
+    <div class="row">
+        <h1 class="text-white category-header"> YOUR PROFILE </h1>
+    </div>
+    <div class="row d-flex flex-column md-flex-row">
+        <div class="col-4">
+            <h2 class="text-white category-header">PERSONAL INFO</h2>
+            {% if profile %}
+            <div class="card bg-black border-danger border-2 text-white">
+                <p class="mb-0"><strong>Name</strong></p>
+                <p>{{ profile.full_name }}</p>
+                <p class="mb-0"><strong>Contact Phone Number</strong></p>
+                <p>{{ profile.contact_phone_number}}</p>
+                <p class="mb-0"><strong>Contact Email</strong></p>
+                <p>{{ profile.contact_email }}</p>
+                <a href="#" class="btn btn-warning"></a>
+            </div>
+            {% else %}
+            <div class="card bg-black border-danger border-2 text-white">
+                <p><strong>No User Profile Found</strong></p>
+                <p>Why not add your contact details? It makes checkout easier, and helps us get in contact with you about your delivery.</p>
+                <a class="btn btn-success" href="#"><i class="fa-solid fa-plus text-white"></i></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
