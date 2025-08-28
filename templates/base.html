@@ -104,6 +104,9 @@
                                 </div>
                             </ul>
                         </li>
+                        {% if user.is_authenticated and user.is_staff %}
+                        <li class="nav-item"><a class="nav-link text-black" href="" aria-label="Click here to go to staff functions">STAFF FUNCTIONS</a></li>
+                        {% endif %}
                 </div>
             </nav>
         </div>
