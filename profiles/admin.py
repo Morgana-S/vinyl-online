@@ -1,3 +1,10 @@
 from django.contrib import admin
-
+from django_summernote.admin import SummernoteModelAdmin
+from .models import UserProfile
 # Register your models here.
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(SummernoteModelAdmin):
+    list_display = ('user__username', 'full_name', 'contact_email')
+    search_fields = ['user__username', 'full_name', 'contact_email']
