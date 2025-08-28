@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
+from django.core.validators import (MinLengthValidator,
+                                    MinValueValidator, MaxValueValidator)
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
