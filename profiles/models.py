@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 from allauth.account.models import EmailAddress
 from phonenumber_field.modelfields import PhoneNumberField
+
 # Create your models here.
 
 
@@ -33,3 +34,23 @@ class UserProfile(models.Model):
 
     def full_name(self):
         return self.first_name + ' ' + self.last_name
+
+
+class DeliveryAddress(models.Model):
+    UUID = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False, unique=True
+    )
+    user = models.ForeignKey(
+        UserProfile,
+        on_delete=models.CASCADE,
+        related_name='delivery_addresses'
+    )
+    label = models.CharField(
+        blank=True, max_length=30, help_text=(
+            'A useful label to describe what this address is, '
+            'e.g. "Home", "Work"')
+    )
+    address_line1 = models.CharField(max_length=255)
+    address_line2 = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    postcode = models.CharField(max_length=20)
