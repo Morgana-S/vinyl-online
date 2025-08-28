@@ -12,5 +12,5 @@ class UserProfileAdmin(SummernoteModelAdmin):
 
 @admin.register(DeliveryAddress)
 class DeliveryAddressAdmin(SummernoteModelAdmin):
-    list_display = ('user__user__username', 'label', 'city', 'postcode')
-    search_fields = ['user__user__username', 'city', 'postcode']
+    list_display = ('user__username', 'label', 'city', 'postcode')
+    search_fields = ['user__username', 'city', 'postcode']
