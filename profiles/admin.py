@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import UserProfile
+from .models import UserProfile, DeliveryAddress
 # Register your models here.
 
 
@@ -8,3 +8,9 @@ from .models import UserProfile
 class UserProfileAdmin(SummernoteModelAdmin):
     list_display = ('user__username', 'full_name', 'contact_email')
     search_fields = ['user__username', 'full_name', 'contact_email']
+
+
+@admin.register(DeliveryAddress)
+class DeliveryAddressAdmin(SummernoteModelAdmin):
+    list_display = ('user__user__username', 'label', 'city', 'postcode')
+    search_fields = ['user__user__username', 'city', 'postcode']
