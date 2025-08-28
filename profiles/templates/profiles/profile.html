@@ -5,8 +5,8 @@
     <div class="row">
         <h1 class="text-white category-header"> YOUR PROFILE </h1>
     </div>
-    <div class="row d-flex flex-column md-flex-row">
-        <div class="col-4">
+    <div class="row mb-2">
+        <div class="col-12 col-md-6 mx-auto">
             <h2 class="text-white category-header">PERSONAL INFO</h2>
             {% if profile %}
             <div class="card bg-black border-danger border-2 text-white">
@@ -16,15 +16,65 @@
                 <p>{{ profile.contact_phone_number}}</p>
                 <p class="mb-0"><strong>Contact Email</strong></p>
                 <p>{{ profile.contact_email }}</p>
-                <a href="#" class="btn btn-warning"></a>
+                <div class="row mx-auto mb-2">
+                    <div class="col-6">
+                        <a href="#" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Profile Information"><i class="fa-solid fa-pencil"></i></a>
+                    </div>
+                </div>
             </div>
             {% else %}
             <div class="card bg-black border-danger border-2 text-white">
                 <p><strong>No User Profile Found</strong></p>
                 <p>Why not add your contact details? It makes checkout easier, and helps us get in contact with you about your delivery.</p>
-                <a class="btn btn-success" href="#"><i class="fa-solid fa-plus text-white"></i></a>
+                <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Profile Information" href="#"><i class="fa-solid fa-plus text-white"></i></a>
             </div>
             {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-white category-header">DELIVERY ADDRESSES</h3>
+        </div>
+    </div>
+    <div class="row g-3 mb-2">
+        {% if addresses %}
+        {% for address in addresses %}
+        <div class="col-12 col-md-6">
+            <div class="card bg-black border-danger border-2 text-white h-100">
+                <div class="card-header">
+                    <p class="mb-0"><strong>{{ address.label }}</strong></p>
+                </div>
+                <div class="card-body">
+                    <p class="mt-1 mb-0">{{ address.address_line1 }}</p>
+                    {% if address.address_line2 %}
+                    <p class="mb-0">{{ address.address_line2 }}</p>
+                    {% endif %}
+                    {% if address.city %}
+                    <p class="mb-0">{{ address.city }}</p>
+                    {% endif %}
+                    <p>{{ address.postcode }}</p>
+                </div>
+                <div class="row mx-auto mb-2">
+                    <div class="col-6">
+                        <a href="#" class="btn btn-warning w-100" data-bs-toggle="tooltip" title="Edit Address Information"><i class="fa-solid fa-pencil"></i></a>
+                    </div>
+                    <div class="col-6">
+                        <a href="#" class="btn btn-danger w-100" data-bs-toggle="tooltip" title="Delete Delivery Address"><i class="fa-solid fa-trash"></i></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <!-- Order History & Support -->
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3 class="text-white category-header">ORDER HISTORY</h3>
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="text-white category-header">YOUR SUPPORT TICKETS</h3>
+            
         </div>
     </div>
 </div>
