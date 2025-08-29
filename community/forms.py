@@ -66,7 +66,7 @@ class NewsletterSubscriptionForm(forms.ModelForm):
                 self.fields['email'].initial = profile.contact_email
             else:
                 self.fields['email'].initial = user.email
-    
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if NewsletterSubscriber.objects.filter(email=email).exists():
