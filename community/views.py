@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
-from .forms import SupportTicketForm
+from .forms import SupportTicketForm, NewsletterSubscriptionForm
 from .models import SupportTicket
 # Create your views here.
 
@@ -103,3 +103,89 @@ def ticket_detail_view(request, pk):
     }
 
     return render(request, 'community/ticket_detail.html', context)
+
+
+def about_page_view(request):
+    """
+    View for the 'Who we are' page.
+    """
+    return render(request, 'community/about_us.html')
+
+
+def newsletter_subscribe_view(request):
+    """
+    View for serving the form for users to subscribe to the newsletter.
+    """
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = NewsletterSubscriptionForm(request.POST, user=request.user)
+            if form.is_valid():
+                subscription = form.save(commit=False)
+                subscription.user = request.user
+                subscription.save()
+
+                # Confirmation Email
+                subject = 'Vinyl Online - Newsletter Subscription Confirmation'
+                html_message = render_to_string(
+                    'emails/newsletter_subscription_confirmation.html',
+                    {
+                        'subscription': subscription,
+                        'user': request.user
+                    }
+                )
+                plain_message = strip_tags(html_message)
+
+                send_mail(
+                    subject,
+                    plain_message,
+                    None,
+                    [subscription.email],
+                    html_message=html_message
+                )
+
+                messages.success(request,
+                                 "Thank you for subscribing! You'll receive "
+                                 "an email confirmation of your subscription "
+                                 "shortly.")
+                return redirect('index')
+        else:
+            form = NewsletterSubscriptionForm(user=request.user)
+    else:
+        if request.method == 'POST':
+            form = NewsletterSubscriptionForm(request.POST)
+            if form.is_valid():
+                subscription = form.save()
+
+                # Confirmation Email
+                subject = 'Vinyl Online - Newsletter Subscription Confirmation'
+                html_message = render_to_string(
+                    'emails/newsletter_subscription_confirmation.html',
+                    {
+                        'subscription': subscription,
+                        'user': request.user
+                    }
+                )
+                plain_message = strip_tags(html_message)
+
+                send_mail(
+                    subject,
+                    plain_message,
+                    None,
+                    [subscription.email],
+                    html_message=html_message
+                )
+
+                messages.success(request,
+                                 "Thank you for subscribing! You'll receive "
+                                 "an email confirmation of your subscription "
+                                 "shortly.")
+                return redirect('index')
+        else:
+            form = NewsletterSubscriptionForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'community/newsletter_subscribe.html', context)
