@@ -33,3 +33,12 @@ class SupportTicket(models.Model):
         help_text='Please let us know how we can help you.')
     status = models.CharField(
         max_length=10, choices=STATUS_CATEGORIES, default='open')
+
+
+class NewsletterSubscriber(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='newsletter',
+        blank=True,
+    )
+    name = models.CharField(max_length=50, blank=True)
+    email = models.EmailField(blank=True)
