@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
 from django.db.models import Q, Avg
 from django.core.paginator import Paginator
-from .models import Record, Artist, RecordImage, Genre, Review
+from .models import Record, Artist, Genre, Review
 
 # Create your views here.
 
@@ -85,6 +86,35 @@ def search_records_view(request):
     }
 
     return render(request, 'records/search.html', context)
+
+
+def search_records_ajax(request):
+    """
+    Async view for the search artists/records search bar.
+    """
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        records = Record.objects.filter(title__icontains=query)[:5]
+        artists = Artist.objects.filter(name__icontains=query)[:2]
+
+        for result in records:
+            results.append({
+                'type': 'record',
+                'slug': result.slug,
+                'name': result.title,
+                'artist': result.artist.name,
+            })
+
+        for result in artists:
+            results.append({
+                'type': 'artist',
+                'slug': result.slug,
+                'name': result.name,
+            })
+
+        return JsonResponse(results, safe=False)
 
 
 def record_detail_view(request, record_slug):
