@@ -1,5 +1,5 @@
 from django import forms
-from .models import SupportTicket
+from .models import SupportTicket, NewsletterSubscriber
 from profiles.models import UserProfile
 
 
@@ -36,3 +36,41 @@ class SupportTicketForm(forms.ModelForm):
                     self.fields['email'].initial = profile.contact_email
                 else:
                     self.fields['email'].initial = user.email
+
+
+class NewsletterSubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscriber
+        fields = [
+            'name', 'email',
+        ]
+        labels = {
+            'name': 'Name*',
+            'email': 'Email*'
+        }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
+            field.widget.attrs['class'] = 'form-control'
+        if user and user.is_authenticated:
+            try:
+                profile = user.profile
+            except UserProfile.DoesNotExist:
+                profile = None
+
+            if profile:
+                self.fields['name'].initial = profile.full_name()
+                self.fields['email'].initial = profile.contact_email
+            else:
+                self.fields['email'].initial = user.email
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if NewsletterSubscriber.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                "This email address is already subscribed to the newsletter."
+            )
+        return email
