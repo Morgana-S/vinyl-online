@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from community.models import SupportTicket
 from .models import UserProfile, DeliveryAddress
 from .forms import UserProfileForm, DeliveryAddressForm
 # Create your views here.
@@ -18,10 +19,12 @@ def user_profile_view(request):
         profile = None
 
     addresses = DeliveryAddress.objects.filter(user=request.user)
+    support_tickets = SupportTicket.objects.filter(user=request.user)
 
     context = {
         'profile': profile,
         'addresses': addresses,
+        'support_tickets': support_tickets
     }
 
     return render(request, 'profiles/profile.html', context)
@@ -93,6 +96,7 @@ def edit_delivery_address_view(request, pk):
         'form': form
     }
     return render(request, 'profiles/edit_delivery_address.html', context)
+
 
 @login_required
 def delete_delivery_address_view(request, pk):
