@@ -51,8 +51,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Vinyl Online Apps
     'records',
     'profiles',
+    'community',
+    # Additional apps/libraries
     'cloudinary',
     'cloudinary_storage',
     'django_summernote',
