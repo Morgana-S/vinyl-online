@@ -47,7 +47,7 @@
     <div class="row g-3 mb-2">
         {% if addresses %}
         {% for address in addresses %}
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 mx-auto">
             <div class="card bg-black border-danger border-2 text-white h-100">
                 <div class="card-header">
                     <p class="mb-0"><strong>{{ address.label }}</strong></p>
@@ -98,7 +98,26 @@
         </div>
         <div class="col-12 col-md-6">
             <h3 class="text-white category-header">YOUR SUPPORT TICKETS</h3>
-
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in support_tickets %}
+                    <tr>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.category }}</td>
+                        <td>{{ ticket.pk }}</td>
+                        <td><a data-bs-toggle="tooltip" title="View Ticket" class="text-white" href="{% url 'ticket_detail' ticket.pk %}"><i class="fa-solid fa-eye"></i></a>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
