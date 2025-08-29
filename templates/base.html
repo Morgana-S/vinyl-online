@@ -53,11 +53,14 @@
         </div>
         <!-- Search Bar -->
         <div class="row">
-            <div class="col">
-                <form action="{% url 'search' %}" class="d-flex justify-content-center">
-                    <input type="search" class="form-control w-50" name="q" placeholder="Enter Artist / Record Name">
-                    <button class="btn btn-danger ms-2" type="submit">Search</button>
-                </form>
+            <div class="col-10 col-md-4 mx-auto">
+                <div class="position-relative">
+                    <form action="{% url 'search' %}" class="d-flex justify-content-center">
+                        <input type="search" autocomplete="off" class="form-control" name="q" id="search-input" placeholder="Enter Artist / Record Name">
+                        <button class="btn btn-danger ms-2" type="submit">Search</button>
+                    </form>
+                    <div id="search-results" class="list-group position-absolute"></div>
+                </div>
             </div>
         </div>
         <!-- Navigation Bar -->
@@ -131,7 +134,7 @@
                 <nav>
                     <h3>SUPPORT</h3>
                     <ul class="list-unstyled">
-                        <li><a  aria-label="Click here to go to the page for creating a support ticket." href="{% url 'create_support_ticket' %}" class="nav-link">CONTACT US</a></li>
+                        <li><a aria-label="Click here to go to the page for creating a support ticket." href="{% url 'create_support_ticket' %}" class="nav-link">CONTACT US</a></li>
                         <li><a href="#" class="nav-link">PRIVACY POLICY</a></li>
                     </ul>
                 </nav>
@@ -151,6 +154,11 @@
                     <li><i class="fa-solid fa-phone"></i> 0123 456 7890</li>
                     <li><i class="fa-solid fa-envelope"></i> help.vinylonline@gmail.com</li>
                 </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p class="small text-muted">©2025 Morgana Stone | <a class="small" href="https://github.com/Morgana-S/vinyl-online" aria-label="Click here to go to this site's GitHub page"><i class="fa-brands fa-github"></i></a></p>
             </div>
         </div>
     </footer>
