@@ -131,7 +131,7 @@
                 <nav>
                     <h3>SUPPORT</h3>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'create_support_ticket' %}" class="nav-link">CONTACT US</a></li>
+                        <li><a  aria-label="Click here to go to the page for creating a support ticket." href="{% url 'create_support_ticket' %}" class="nav-link">CONTACT US</a></li>
                         <li><a href="#" class="nav-link">PRIVACY POLICY</a></li>
                     </ul>
                 </nav>
@@ -140,8 +140,8 @@
                 <nav>
                     <h3>COMMUNITY</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="nav-link">WHO WE ARE</a></li>
-                        <li><a href="#" class="nav-link">JOIN OUR NEWSLETTER</a></li>
+                        <li><a href="{% url 'about' %}" aria-label="Click here to learn more about Vinyl Online." class="nav-link">WHO WE ARE</a></li>
+                        <li><a href="{% url 'newsletter' %}" aria-label="Click here to go to the newsletter subscription page" class="nav-link">JOIN OUR NEWSLETTER</a></li>
                     </ul>
                 </nav>
             </div>
