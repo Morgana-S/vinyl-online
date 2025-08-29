@@ -28,6 +28,11 @@ body {
 	max-height: 20vh;
 }
 
+#search-results {
+	z-index: 2000;
+	top: 100%;
+}
+
 /* base.html Header Rules --------------------------------------------------- */
 
 #brand-logo {
