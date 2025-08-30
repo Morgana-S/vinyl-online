@@ -113,6 +113,31 @@
                 </div>
             </nav>
         </div>
+        <!-- Messages -->
+        {% if messages %}
+        <aside id="messages">
+            <div class="container mt-2 position-fixed top-0 start-50 translate-middle-x text-center">
+                {% for message in messages %}
+                {% if "success" in message.tags %}
+                <div class="alert alert-success alert-dismissible fade show z-3">
+                    {{ message }}
+                    <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+                </div>
+                {% elif "error" in message.tags %}
+                <div class="alert alert-danger alert-dismissible fade show z-3">
+                    {{ message }}
+                    <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+                </div>
+                {% else %}
+                <div class="alert alert-info alert-dismissible fade show z-3">
+                    {{ message }}
+                    <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </aside>
+        {% endif %}
     </header>
     <!-- Header Content Ends -->
     <!-- Main Content -->
