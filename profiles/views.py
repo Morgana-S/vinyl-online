@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from community.models import SupportTicket
 from .models import UserProfile, DeliveryAddress
 from .forms import UserProfileForm, DeliveryAddressForm
@@ -42,6 +43,8 @@ def create_edit_profile_view(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your personal information has now'
+                             'been updated.')
             return redirect('profile')
     else:
         form = UserProfileForm(instance=profile)
@@ -66,6 +69,7 @@ def create_delivery_address_view(request):
             address = form.save(commit=False)
             address.user = request.user
             address.save()
+            messages.success(request, 'This address has now been saved.')
             return redirect('profile')
     else:
         form = DeliveryAddressForm()
@@ -88,6 +92,8 @@ def edit_delivery_address_view(request, pk):
         form = DeliveryAddressForm(request.POST, instance=address)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Address details have now been '
+                             'changed.')
             return redirect('profile')
     else:
         form = DeliveryAddressForm(instance=address)
@@ -107,6 +113,7 @@ def delete_delivery_address_view(request, pk):
 
     if request.method == 'POST':
         address.delete()
+        messages.success(request, 'Address has now been deleted.')
         return redirect('profile')
     else:
         return redirect('profile')
