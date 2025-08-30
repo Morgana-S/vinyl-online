@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
+from django.contrib import messages
 from django.db.models import Q, Avg
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from .models import Record, Artist, Genre, Review
+from .forms import EditRecordForm, RecordImageFormSet
 
 # Create your views here.
 
@@ -137,6 +140,42 @@ def record_detail_view(request, record_slug):
     }
 
     return render(request, 'records/record_detail.html', context)
+
+
+@login_required
+def edit_record_view(request, record_slug):
+    """
+    View for editing record pages. Serves the EditRecordForm to the user
+    and enables them to change record details.
+    """
+    queryset = Record.objects.all()
+    record = get_object_or_404(queryset, slug=record_slug)
+
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = EditRecordForm(request.POST, instance=record)
+            formset = RecordImageFormSet(
+                request.POST, request.FILES, instance=record)
+            if form.is_valid() and formset.is_valid():
+                form.save()
+                formset.save()
+                messages.success(request,
+                                 'Record details successfully edited.')
+                return redirect('record_detail', record_slug=record_slug)
+        else:
+            form = EditRecordForm(instance=record)
+            formset = RecordImageFormSet(instance=record)
+    else:
+        messages.error(request, 'You must be a member of staff to access this '
+                       'part of the website.')
+        return redirect('record_detail', record_slug=record_slug)
+
+    context = {
+        'form': form,
+        'formset': formset
+    }
+
+    return render(request, 'records/edit_record.html', context)
 
 
 def artist_detail_view(request, artist_slug):
