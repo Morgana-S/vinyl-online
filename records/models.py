@@ -55,7 +55,9 @@ class Record(models.Model):
     RECORD_RPM = [('33', '33RPM'), ('45', '45RPM'), ('78', '78RPM')]
     title = models.CharField(
         max_length=100, validators=[MinLengthValidator(1)])
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    slug = models.SlugField(max_length=100, unique=True, blank=True,
+                            help_text='Slug will automatically generate if '
+                            'left blank.')
     artist = models.ForeignKey(
         Artist, on_delete=models.PROTECT, related_name='records_by_artist')
     release_year = models.PositiveSmallIntegerField(
@@ -69,6 +71,7 @@ class Record(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     quantity = models.PositiveIntegerField()
+    hidden = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
