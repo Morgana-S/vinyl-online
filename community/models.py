@@ -38,7 +38,7 @@ class SupportTicket(models.Model):
 class NewsletterSubscriber(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='newsletter',
-        blank=True,
+        blank=True, null=True
     )
     name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(blank=True)

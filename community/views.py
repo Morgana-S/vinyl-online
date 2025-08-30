@@ -163,7 +163,6 @@ def newsletter_subscribe_view(request):
                     'emails/newsletter_subscription_confirmation.html',
                     {
                         'subscription': subscription,
-                        'user': request.user
                     }
                 )
                 plain_message = strip_tags(html_message)
