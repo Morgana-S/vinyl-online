@@ -1,5 +1,4 @@
 import uuid
-from decimal import Decimal
 from django.db.models import Sum
 from django.conf import settings
 from django.db import models
@@ -68,7 +67,8 @@ class OrderItem(models.Model):
     record = models.ForeignKey(
         Record,
         null=False,
-        blank=False)
+        blank=False,
+        on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField(
         null=False,
         blank=False,
