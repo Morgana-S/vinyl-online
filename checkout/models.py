@@ -1,5 +1,7 @@
 import uuid
 from decimal import Decimal
+from django.db.models import Sum
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -40,6 +42,21 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.uuid} | Total: {self.grand_total_cost}'
+
+    def update_total(self):
+        """
+        Updates the total each time a line item is added.
+        """
+        self.subtotal_cost = self.items.aggregate(Sum('item_total'))[
+            'item_total__sum'] or 0
+        if self.subtotal_cost < settings.FREE_DELIVERY_THRESHOLD:
+            self.delivery_cost = (
+                self.subtotal_cost * settings.STANDARD_DELIVERY_MODIFIER)
+        else:
+            self.delivery_cost = 0
+
+        self.grand_total_cost = self.subtotal_cost + self.delivery_cost
+        self.save()
 
 
 class OrderItem(models.Model):
