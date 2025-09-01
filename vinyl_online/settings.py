@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'records',
     'profiles',
     'community',
+    'checkout'
     # Additional apps/libraries
     'cloudinary',
     'cloudinary_storage',
