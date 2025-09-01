@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from records.models import Record
-from django.contrib import messages
 from django.views.decorators.http import require_POST
 # Create your views here.
 
@@ -40,8 +38,8 @@ def add_to_basket_async(request):
 
     if new_quantity > 9:
         toast_header = 'Maximum Quantity Reached'
-        toast_message = (f'Unable to add record to basket -'
-                   f' purchases capped at 9 per order.')
+        toast_message = ('Unable to add record to basket -'
+                         ' purchases capped at 9 per order.')
     else:
         toast_header = 'Added to Basket'
         toast_message = f'Added {quantity} x {record.title} to your basket!'
