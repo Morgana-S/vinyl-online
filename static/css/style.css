@@ -36,13 +36,17 @@ body {
 #basket-count {
 	bottom: 0;
 	left: 0;
-	transform: translate(-50%, 50%)
+	transform: translate(-50%, 50%);
 }
 
 /* base.html Header Rules --------------------------------------------------- */
 
 #brand-logo {
 	max-width: 100px;
+}
+
+#mobile-logo {
+	max-height: 35px;
 }
 
 /* Navigation Bar Rules ----------------------------------------------------- */
