@@ -43,7 +43,8 @@
             <!-- Logo -->
             <div class="col text-center">
                 <a href="{% url 'index' %}" aria-label="Click to go to the Vinyl Online homepage">
-                    <img id="brand-logo" class="img-fluid" src="https://res.cloudinary.com/dum08a287/image/upload/v1755118167/vinyl-online-logo_fboyeg.png" alt="Vinyl Online Logo">
+                    <img id="brand-logo" class="img-fluid d-none d-md-inline" src="https://res.cloudinary.com/dum08a287/image/upload/v1755118167/vinyl-online-logo_fboyeg.png" alt="Vinyl Online Logo">
+                    <img id="mobile-logo" class="img-fluid d-inline d-md-none" src="https://res.cloudinary.com/dum08a287/image/upload/v1756738428/vinyl-online-logo-small_opdr1r.png" alt="Vinyl Online Logo">
                 </a>
             </div>
             <!-- Shopping Basket -->
@@ -148,23 +149,24 @@
         {% endif %}
     </header>
     <!-- Header Content Ends -->
+
     <!-- Main Content -->
     <main class="container-fluid border-top border-bottom border-3 border-danger bg-black pt-2">
         {% block content %}
         {% endblock %}
-        <!-- Toasts -->
-        <div class="position-fixed bottom-0 end-0 p-3">
-            <div id="basket-toast" class="toast" role="alert" , aria-live="assertive" aria-atomic="true">
-                <div class="toast-header bg-danger">
-                    <strong class="me-auto text-white" id="toast-header-text">
-                    </strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body bg-dark text-white" id="basket-toast-body"></div>
-            </div>
-        </div>
     </main>
     <!-- Main Content Ends -->
+    <!-- Toasts -->
+    <div class="position-fixed bottom-0 end-0 p-3 z-1055">
+        <div id="basket-toast" class="toast" role="alert" , aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger">
+                <strong class="me-auto text-white" id="toast-header-text">
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-dark text-white" id="basket-toast-body"></div>
+        </div>
+    </div>
     <!-- Footer Content -->
     <footer class="container-fluid bg-light border-top border-3 border-danger text-black">
         <div class="row mt-1">
