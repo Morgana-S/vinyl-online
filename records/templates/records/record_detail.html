@@ -22,7 +22,20 @@
             <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}" data-bs-toggle="tooltip" title="View Artist Page" class="btn btn-danger"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
             <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
             <p>{% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
-            <h3 class="category-header">£{{ record.price}} <button class="btn btn-danger" data-bs-toggle="tooltip" title="Add to basket"><i class="fa-solid fa-basket-shopping"></i> </button></h3>
+            <div class="d-flex align-items-center gap-3">
+                <h3 class="category-header">£{{ record.price}}</h3>
+                <form action="{% url 'add_to_basket' %}" method="POST" class="d-flex align-items-center add-to-basket-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="record_id" value="{{ record.id }}">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" name="quantity" value="1" min="1" max="9" class="form-control form-control-sm text-center qty_input w-25">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="Add to basket"><i class="fa-solid fa-basket-shopping"></i></button>
+                    </div>
+                </form>
+            </div>
+            <p class="small text-white">For the sake of fairness, there is a maximum of 9 records of the same type per order.</p>
             <div id="record-description">
                 {{ record.description|safe }}
             </div>
