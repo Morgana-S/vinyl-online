@@ -9,6 +9,45 @@
     </div>
     <div class="row">
         {% if basket_items %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle text-center table-dark table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Record</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in basket_items %}
+                        <tr>
+                            <td class="d-flex align-items-center">
+                                <img src="{{ item.record.get_front_cover.image.url }}" alt="{{ item.record.title }}" class="img-thumbnail basket-image me-2">
+                                <span><a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a></span>
+                            </td>
+                            <td>£{{ item.record.price }}</td>
+                            <td>
+                                <input type="number" name="quantity_{{ item.record_id }}" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm text-center" style="width: 70px; margin: auto;">
+                            </td>
+                            <td>£{{ item.total_price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="d-flex justify-content-end mt-3">
+                <div class="me-3">
+                    <strong>Subtotal:</strong> £{{ subtotal_cost }}<br>
+                    <strong>Delivery:</strong> £{{ delivery_cost }}<br>
+                    <strong>Grand Total:</strong> £{{ grand_total }}
+                </div>
+                <button type="submit" class="btn btn-danger">Update Basket</button>
+            </div>
+        </form>
         {% else %}
         <p class="text-white text-center">Your basket is empty at the moment. Why not <a class="text-white" aria-label="Click here to go to the latest record releases" href="{% url 'latest_releases' %}">browse our latest releases</a> and see if you can find something you like?</p>
         {% endif %}
