@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div id="view-basket" class="container text-center mt-2 mb-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="category-header text-center text-white">YOUR BASKET</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% if basket_items %}
+        {% else %}
+        <p class="text-white text-center">Your basket is empty at the moment. Why not <a class="text-white" aria-label="Click here to go to the latest record releases" href="{% url 'latest_releases' %}">browse our latest releases</a> and see if you can find something you like?</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
