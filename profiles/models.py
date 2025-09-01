@@ -2,7 +2,6 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
-from allauth.account.models import EmailAddress
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
