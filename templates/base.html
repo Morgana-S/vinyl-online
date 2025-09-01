@@ -48,7 +48,15 @@
             </div>
             <!-- Shopping Basket -->
             <div class="col-auto pr-2">
-                <a href="{% url 'view_basket' %}" aria-label="Click here to view your current shopping basket."><i class="fa-solid fa-basket-shopping fa-xl"></i></a>
+                <a href="{% url 'view_basket' %}" aria-label="Click here to view your current shopping basket." class="text-black">
+                    <div class="position-relative d-inline-block">
+                        <i class="fa-solid fa-basket-shopping fa-xl"></i>
+                        {% if basket_items %}
+                        <span id="basket-count" class="position-absolute badge rounded-pill bg-danger">{{ record_count|default:0 }}</span>
+                        <span class="visually-hidden">items in basket</span>
+                        {% endif %}
+                    </div>
+                </a>
             </div>
         </div>
         <!-- Search Bar -->
@@ -144,6 +152,17 @@
     <main class="container-fluid border-top border-bottom border-3 border-danger bg-black pt-2">
         {% block content %}
         {% endblock %}
+        <!-- Toasts -->
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="basket-toast" class="toast" role="alert" , aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-danger">
+                    <strong class="me-auto text-white" id="toast-header-text">
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body bg-dark text-white" id="basket-toast-body"></div>
+            </div>
+        </div>
     </main>
     <!-- Main Content Ends -->
     <!-- Footer Content -->
