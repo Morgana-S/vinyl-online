@@ -48,7 +48,7 @@
             </div>
             <!-- Shopping Basket -->
             <div class="col-auto pr-2">
-                <i class="fa-solid fa-basket-shopping fa-xl"></i>
+                <a href="{% url 'view_basket' %}" aria-label="Click here to view your current shopping basket."><i class="fa-solid fa-basket-shopping fa-xl"></i></a>
             </div>
         </div>
         <!-- Search Bar -->
@@ -150,7 +150,7 @@
     <footer class="container-fluid bg-light border-top border-3 border-danger text-black">
         <div class="row mt-1">
             <div class="col text-center">
-                <h3>FREE DELIVERY ON ALL ORDERS OVER £100</h3>
+                <h3>FREE DELIVERY ON ALL ORDERS OVER £{{ free_delivery_threshold }}</h3>
             </div>
         </div>
         <hr class="mx-5">
