@@ -91,7 +91,7 @@ def search_records_view(request):
     return render(request, 'records/search.html', context)
 
 
-def search_records_ajax(request):
+def search_records_async(request):
     """
     Async view for the search artists/records search bar.
     """

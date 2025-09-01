@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.index_view, name='index'),
     path('search/', views.search_records_view, name='search'),
-    path('async-search/', views.search_records_ajax, name='async_search'),
+    path('async-search/', views.search_records_async, name='async_search'),
     path(
         'record/<slug:record_slug>/',
         views.record_detail_view,
