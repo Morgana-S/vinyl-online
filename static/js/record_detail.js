@@ -3,7 +3,6 @@ $(document).ready(function () {
 	const averageRating = $('#average-user-rating').data('average-rating');
 	renderRatingStars('#average-user-rating', averageRating);
 
-
 	// Clickable Thumbnails with preview going to main image
 	$('.clickable').on('click', function () {
 		const mainImage = $('#main-image');
@@ -11,6 +10,64 @@ $(document).ready(function () {
 		var tempAlt = mainImage.attr('alt');
 		mainImage.attr('src', $(this).attr('src'));
 		mainImage.attr('alt', $(this).attr('alt'));
+	});
+
+	// Quantity Buttons
+	$('.btn-outline-danger').click(function (e) {
+		e.preventDefault();
+
+		// Find the related input
+		const $input = $(this).siblings('input.qty_input');
+		let currentVal = parseInt($input.val());
+		const min = parseInt($input.attr('min'));
+		const max = parseInt($input.attr('max'));
+
+		if ($(this).find('i').hasClass('fa-minus')) {
+			if (currentVal > min) currentVal--;
+		} else if ($(this).find('i').hasClass('fa-plus')) {
+			if (currentVal < max) currentVal++;
+		}
+
+		$input.val(currentVal);
+	});
+
+	// Async add-to-basket function
+	$(document).on('submit', '.add-to-basket-form', function (e) {
+		e.preventDefault();
+
+		const $form = $(this);
+		const recordId = $form.find('input[name="record_id"]').val();
+		const quantity = $form.find('input.qty_input').val();
+		const csrfToken = $form.find('input[name="csrfmiddlewaretoken"]').val();
+
+		$.ajax({
+			url: $form.attr('action'),
+			method: 'POST',
+			data: {
+				record_id: recordId,
+				quantity: quantity,
+				csrfmiddlewaretoken: csrfToken,
+			},
+
+			success: function (response) {
+				// Update basket count
+				$('#basket-count').text(response.basket_count);
+				// Show confirmation toast
+				$('#toast-header-text').text(response.toast_header);
+				$('#basket-toast-body').text(response.toast_message);
+				const toastEl = document.getElementById('basket-toast');
+				const toast = new bootstrap.Toast(toastEl);
+				toast.show();
+			},
+			error: function (xhr) {
+				// Show error toast
+				$('#toast-header-text').text("Error");
+				$('#basket-toast-body').text("Could not add item to basket.");
+				const toastEl = document.getElementById('basket-toast');
+				const toast = new bootstrap.Toast(toastEl);
+				toast.show();
+			},
+		});
 	});
 });
 
