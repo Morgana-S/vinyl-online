@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         {% if basket_items %}
-        <form action="" method="POST">
+        <form action="{% url 'update_basket' %}" method="POST">
             {% csrf_token %}
             <div class="table-responsive">
                 <table class="table table-bordered align-middle text-center table-dark table-striped">
@@ -42,7 +42,7 @@
                                     <a href="{% url 'remove_basket_item' item.record_id %}" class="text-danger" data-bs-toggle="tooltip" title="Remove All"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </td>
-                            <td>£{{ item.total_price }}</td>
+                            <td class="item-total">£{{ item.total_price }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -66,3 +66,7 @@
     </div>
 </div>
 {% endblock %}
+
+{% block custom-scripts %}
+<script src="{% static 'js/view_basket.js' %}"></script>
+{% endblock%}
