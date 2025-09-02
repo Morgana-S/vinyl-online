@@ -53,3 +53,6 @@ class DeliveryAddress(models.Model):
     address_line2 = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=100, blank=True)
     postcode = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.label
