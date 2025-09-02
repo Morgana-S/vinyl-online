@@ -12,7 +12,7 @@ def basket_contents(request):
     basket_items = []
     subtotal_cost = Decimal('0.00')
     record_count = 0
-    
+
     for record_id, quantity in basket.items():
         try:
             record = Record.objects.get(id=record_id)
