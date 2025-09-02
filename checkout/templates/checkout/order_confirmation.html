@@ -55,8 +55,16 @@
 
     </div>
 
-
-
+{% if from_checkout %}
+<div class="row" id="newsletter-promo">
+    <div class="col-12 mx-auto">
+        <h3 class="category-header text-white">INTERESTED IN DISCOUNTS AND CONCERT TICKETS?</h3>
+    </div>
+    <div class="col-12 mx-auto">
+        <p class="text-white"><a class="text-white" href="{% url 'newsletter' %}">Join our newsletter.</a> It's a great way to keep up to date on discounts, new releases, and take part in our concert ticket giveaways.</p>
+    </div>
+</div>
+{% endif %}
 
 
     <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
