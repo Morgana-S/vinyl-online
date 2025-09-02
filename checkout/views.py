@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.conf import settings
+from django.http import JsonResponse
 from .forms import CheckoutForm
 from .models import Order, OrderItem
 from profiles.models import DeliveryAddress
 from records.models import Record
+import stripe
+import json
+from decimal import Decimal, ROUND_HALF_UP
 # Create your views here.
 
 
@@ -12,31 +17,68 @@ def checkout_view(request):
     """
     View for checking out an order.
     """
+    stripe.api_key = settings.STRIPE_SECRET_KEY
     basket = request.session.get('basket', {})
     if not basket:
         messages.warning(request, 'Your basket is empty.')
-        return redirect('view_basket')
+        return redirect('index')
+
+    subtotal = sum(
+        get_object_or_404(Record, pk=record_id).price * quantity
+        for record_id, quantity in basket.items()
+    )
+    subtotal = Decimal(subtotal)
+
+    delivery_modifier = Decimal(str(settings.STANDARD_DELIVERY_MODIFIER))
+    delivery = Decimal('0.00') if subtotal > Decimal(
+        settings.FREE_DELIVERY_THRESHOLD) else (
+            subtotal * delivery_modifier).quantize(
+                Decimal('0.01'), rounding=ROUND_HALF_UP)
+
+    grand_total = (subtotal + delivery).quantize(
+        Decimal('0.01'), rounding=ROUND_HALF_UP)
+
+    intent_id = request.session.get('payment_intent_id')
+    intent = None
+    if intent_id:
+        try:
+            existing_intent = stripe.PaymentIntent.retrieve(intent_id)
+            if existing_intent.status in [
+                'requires_payment_method',
+                'requires_confirmation'
+            ]:
+                intent = existing_intent
+        except stripe.error.InvalidRequestError:
+            intent = None
+
+    if not intent:
+        intent = stripe.PaymentIntent.create(
+            amount=int(grand_total * 100),
+            currency='gbp',
+            metadata={
+                'basket': json.dumps(basket),
+                'user': (str(request.user.username) if
+                         request.user.is_authenticated else 'guest')
+            }
+        )
+        request.session['payment_intent_id'] = intent.id
+
+    form = CheckoutForm(user=request.user)
 
     if request.method == 'POST':
-        form = CheckoutForm(request.POST, user=request.user)
+        data = json.loads(request.body)
+        stripe_pid = data.get('stripe_pid')
+        form = CheckoutForm(data, user=request.user)
+
         if form.is_valid():
             order = form.save(commit=False)
+            order.subtotal_cost = subtotal
+            order.delivery_cost = delivery
+            order.grand_total_cost = grand_total
+            order.stripe_pid = stripe_pid
 
             if request.user.is_authenticated:
                 order.user = request.user
-                order.full_name = form.cleaned_data.get('full_name') or (
-                    request.user.profile.full_name() if hasattr(
-                        request.user, 'profile') else ''
-                )
-                order.phone_number = form.cleaned_data.get('phone_number') or (
-                    request.user.profile.contact_phone_number if hasattr(
-                        request.user, 'profile') else ''
-                )
-                order.email = form.cleaned_data.get('email') or (
-                    request.user.profile.contact_email if hasattr(
-                        request.user, 'profile') else ''
-                )
-
                 saved_address = form.cleaned_data.get('saved_address')
                 if saved_address:
                     order.address_line1 = saved_address.address_line1
@@ -50,43 +92,40 @@ def checkout_view(request):
                         'address_line2')
                     order.city = form.cleaned_data.get('city')
                     order.postcode = form.cleaned_data.get('postcode')
+            else:
+                order.address_line1 = form.cleaned_data.get(
+                    'address_line1')
+                order.address_line2 = form.cleaned_data.get('address_line2')
+                order.city = form.cleaned_data.get('city')
+                order.postcode = form.cleaned_data.get('postcode')
 
-                if (request.user.is_authenticated and
-                        form.cleaned_data.get('save_new_address')):
-                    DeliveryAddress.objects.create(
-                        user=request.user,
-                        label='New Delivery Address',
-                        address_line1=order.address_line1,
-                        address_line2=order.address_line2,
-                        city=order.city,
-                        postcode=order.postcode,
-                    )
+            order.save()
 
-        order.subtotal_cost = 0
-        order.delivery_cost = 0
-        order.grand_total_cost = 0
-        order.save()
+            for record_id, quantity in basket.items():
+                record = get_object_or_404(Record, pk=record_id)
+                OrderItem.objects.create(
+                    order=order, record=record, quantity=quantity
+                )
 
-        for record_id, quantity in basket.items():
-            record = get_object_or_404(Record, pk=record_id)
-            OrderItem.objects.create(
-                order=order,
-                record=record,
-                quantity=quantity
-            )
+            request.session['basket'] = {}
+            request.session.pop('payment_intent_id', None)
 
-        request.session['basket'] = {}
-        messages.success(request, 'Your order has been placed successfully.')
-        url = (f"{reverse(
-            'order_confirmation',
-            kwargs={'order_uuid': order.uuid})}?from_checkout=True")
-        return redirect(url)
-    else:
-        form = CheckoutForm(user=request.user)
+            return JsonResponse({
+                'success': True,
+                'order_uuid': str(order.uuid)
+            })
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
 
     context = {
-        'form': form
+        'form': form,
+        'client_secret': intent.client_secret,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'grand_total': grand_total,
+        'subtotal_cost': subtotal,
+        'delivery_cost': delivery
     }
+
     return render(request, 'checkout/checkout.html', context)
 
 
