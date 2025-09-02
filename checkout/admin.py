@@ -18,7 +18,7 @@ class OrderAdmin(SummernoteModelAdmin):
         'phone_number']
     # Leaving address fields open so delivery address can be changed
     # as part of support operations
-    readonly_fields = ('uuid', 'created_at', 'user', 'full_name',)
+    readonly_fields = ('uuid', 'created_at', 'user', 'full_name', 'stripe_pid')
     list_filter = ('status',)
     ordering = ('-created_at',)
     inlines = (OrderItemAdminInline,)
