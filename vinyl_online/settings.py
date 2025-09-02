@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import sys
 import dj_database_url
+from decimal import Decimal
 
 if os.path.isfile('env.py'):
     import env
@@ -193,6 +194,12 @@ PHONENUMBER_DB_FORMAT = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'GB'
 
 # Delivery Threshold & Delivery Percentage
-FREE_DELIVERY_THRESHOLD = 100
+FREE_DELIVERY_THRESHOLD = Decimal('100.00')
 # Set Delivery Percentage - 1.00 is 100%, 0.10 is 10%, etc.
-STANDARD_DELIVERY_MODIFIER = 0.10
+STANDARD_DELIVERY_MODIFIER = Decimal('0.10')
+
+# Stripe Payments
+# https://docs.stripe.com/
+
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
