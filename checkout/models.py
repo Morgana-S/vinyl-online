@@ -42,6 +42,7 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2)
     grand_total_cost = models.DecimalField(max_digits=6, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
+    stripe_pid = models.CharField(editable=False)
 
     def __str__(self):
         return f'{self.uuid} | Total: {self.grand_total_cost}'
@@ -92,7 +93,8 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return (
-            f'{self.record.title} x {self.quantity} - Order: {self.order.uuid}')
+            f'{self.record.title} x {self.quantity} - Order: {self.order.uuid}'
+        )
 
     def save(self, *args, **kwargs):
         self.item_total = self.record.price * self.quantity
