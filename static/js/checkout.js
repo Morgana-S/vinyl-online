@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Checkout Form Details
 	const showNewAddressBtn = document.getElementById('show-new-address-btn');
 	const newAddressFields = document.getElementById('new-address-fields');
 	const savedAddressSelect = document.getElementById('id_saved_address');
@@ -45,10 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
+// Clears the fields in the New Address section
 function clearNewAddressFields() {
-	document.getElementById('id_full_name').value = '';
-	document.getElementById('id_phone_number').value = '';
-	document.getElementById('id_email').value = '';
 	document.getElementById('id_address_line1').value = '';
 	document.getElementById('id_address_line2').value = '';
 	document.getElementById('id_city').value = '';
