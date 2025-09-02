@@ -107,6 +107,10 @@ def checkout_view(request):
                     order=order, record=record, quantity=quantity
                 )
 
+                if record.quantity is not None:
+                    record.quantity = max(record.quantity - quantity, 0)
+                    record.save()
+
             request.session['basket'] = {}
             request.session.pop('payment_intent_id', None)
 
