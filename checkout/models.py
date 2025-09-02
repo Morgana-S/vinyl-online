@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from phonenumber_field.modelfields import PhoneNumberField
 from records.models import Record
+from decimal import Decimal
 # Create your models here.
 
 
@@ -30,14 +31,17 @@ class Order(models.Model):
         max_length=25,
         choices=ORDER_STATUSES,
         default='processing')
+    full_name = models.CharField(max_length=50)
     address_line1 = models.CharField(max_length=255)
     address_line2 = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=100, blank=True)
     postcode = models.CharField(max_length=20)
     phone_number = PhoneNumberField(region=None)
+    email = models.EmailField()
     subtotal_cost = models.DecimalField(max_digits=6, decimal_places=2)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2)
     grand_total_cost = models.DecimalField(max_digits=6, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.uuid} | Total: {self.grand_total_cost}'
@@ -49,8 +53,8 @@ class Order(models.Model):
         self.subtotal_cost = self.items.aggregate(Sum('item_total'))[
             'item_total__sum'] or 0
         if self.subtotal_cost < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = (
-                self.subtotal_cost * settings.STANDARD_DELIVERY_MODIFIER)
+            self.delivery_cost = (self.subtotal_cost *
+                                  Decimal(settings.STANDARD_DELIVERY_MODIFIER))
         else:
             self.delivery_cost = 0
 
@@ -87,8 +91,9 @@ class OrderItem(models.Model):
     )
 
     def __str__(self):
-        return f'({self.record.name} x {self.quantity} - {self.item_total})'
+        return (
+            f'{self.record.title} x {self.quantity} - Order: {self.order.uuid}')
 
     def save(self, *args, **kwargs):
         self.item_total = self.record.price * self.quantity
-        super().save(*args, *kwargs)
+        super().save(*args, **kwargs)
