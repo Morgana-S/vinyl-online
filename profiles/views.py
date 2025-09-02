@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from community.models import SupportTicket
 from .models import UserProfile, DeliveryAddress
+from checkout.models import Order
 from .forms import UserProfileForm, DeliveryAddressForm
 # Create your views here.
 
@@ -21,11 +22,14 @@ def user_profile_view(request):
 
     addresses = DeliveryAddress.objects.filter(user=request.user)
     support_tickets = SupportTicket.objects.filter(user=request.user)
+    order_history = Order.objects.filter(
+        user=request.user).order_by('-created_at')
 
     context = {
         'profile': profile,
         'addresses': addresses,
-        'support_tickets': support_tickets
+        'support_tickets': support_tickets,
+        'order_history': order_history
     }
 
     return render(request, 'profiles/profile.html', context)
