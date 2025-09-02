@@ -32,6 +32,7 @@ class RecordImageAdmin(SummernoteModelAdmin):
                     'record__title',  'image_type')
     search_fields = ['record__title', 'record__artist__name']
 
+
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
     list_display = ('id', 'author',
