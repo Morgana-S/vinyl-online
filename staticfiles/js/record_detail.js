@@ -50,8 +50,14 @@ $(document).ready(function () {
 			},
 
 			success: function (response) {
-				// Update basket count
-				$('#basket-count').text(response.basket_count);
+				const $badge = $('#basket-count')
+				// Update basket count/visibility
+				$badge.text(response.basket_count);
+				if (response.basket_count > 0) {
+					$badge.show();
+				} else {
+					$badge.hide();
+				}
 				// Show confirmation toast
 				$('#toast-header-text').text(response.toast_header);
 				$('#basket-toast-body').text(response.toast_message);
