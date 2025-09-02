@@ -8,6 +8,6 @@ urlpatterns = [
          name='add_to_basket'),
     path('remove-from-basket/<int:record_id>/',
          views.remove_from_basket_view,
-         name='remove_basket_item')
-
+         name='remove_basket_item'),
+    path('update/', views.update_basket_quantity_view, name='update_basket'),
 ]
