@@ -76,6 +76,8 @@ class Record(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if self.quantity == 0:
+            self.hidden = True
         super().save(*args, **kwargs)
 
     def __str__(self):
