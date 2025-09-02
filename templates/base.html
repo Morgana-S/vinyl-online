@@ -52,10 +52,8 @@
                 <a href="{% url 'view_basket' %}" aria-label="Click here to view your current shopping basket." class="text-black">
                     <div class="position-relative d-inline-block">
                         <i class="fa-solid fa-basket-shopping fa-xl"></i>
-                        {% if basket_items %}
-                        <span id="basket-count" class="position-absolute badge rounded-pill bg-danger">{{ record_count|default:0 }}</span>
+                        <span id="basket-count" class="position-absolute badge rounded-pill bg-danger" style="{% if record_count|default:0 == 0 %}display:none;{% endif %}">{{ record_count|default:0 }}</span>
                         <span class="visually-hidden">items in basket</span>
-                        {% endif %}
                     </div>
                 </a>
             </div>
@@ -157,7 +155,7 @@
     </main>
     <!-- Main Content Ends -->
     <!-- Toasts -->
-    <div class="position-fixed bottom-0 end-0 p-3 z-1055">
+    <div class="position-fixed bottom-0 end-0 p-3">
         <div id="basket-toast" class="toast" role="alert" , aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-danger">
                 <strong class="me-auto text-white" id="toast-header-text">
