@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from records.models import Record
 from django.views.decorators.http import require_POST
@@ -13,7 +13,7 @@ def view_basket(request):
 
 
 @require_POST
-def add_to_basket_async(request):
+def add_to_basket_async_view(request):
     """
     View for adding items to the basket. Utilises AJAX for a smoother user
     experience.
@@ -48,4 +48,59 @@ def add_to_basket_async(request):
         'toast_header': toast_header,
         'toast_message': toast_message,
         'basket_count': basket_count
+    })
+
+
+def remove_from_basket_view(request, record_id):
+    """
+    View for removing items from the basket.
+    """
+    basket = request.session.get('basket', {})
+    record_id_str = str(record_id)
+    if record_id_str in basket:
+        del basket[record_id_str]
+        request.session['basket'] = basket
+        request.session.modified = True
+        basket_count = sum(basket.values())
+
+    return redirect('view_basket')
+
+
+@require_POST
+def update_basket_quantity_async_view(request):
+    record_id = request.POST.get('record_id')
+    quantity = int(request.POST.get('quantity', 1))
+    record = get_object_or_404(Record, id=record_id)
+
+    if 'basket' not in request.session:
+        request.session['basket'] = {}
+
+    basket = request.session.get('basket', {})
+
+    if quantity <= 0:
+        basket.pop(str(record_id), None)
+        toast_header = 'Removed from Basket'
+        toast_message = (f'{record.title} has been removed from your basket.')
+    else:
+        basket[str(record_id)] = min(quantity, 9)
+
+        if quantity > 9:
+            toast_header = 'Maximum Quantity Reached'
+            toast_message = ('Unable to set quantity above 9 -'
+                             'purchases capped at 9 per order.')
+        else:
+            toast_header = 'Basket Updated'
+            toast_message = (f'Updated {record.title} '
+                             f'quantity to {basket[str(record_id)]}')
+
+    request.session['basket'] = basket
+    request.session.modified = True
+
+    basket_count = sum(basket.values())
+
+    return JsonResponse({
+        'toast_header': toast_header,
+        'toast_message': toast_message,
+        'basket_count': basket_count,
+        'item_quantity': basket.get(str(record_id), 0),
     })
