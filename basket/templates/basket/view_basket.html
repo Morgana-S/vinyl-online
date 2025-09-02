@@ -23,15 +23,24 @@
                     </thead>
                     <tbody>
                         {% for item in basket_items %}
-                        <tr>
-                            <td class="d-flex align-items-center">
-                                <img src="{{ item.record.get_front_cover.image.url }}" alt="{{ item.record.title }}" class="img-thumbnail basket-image me-2">
-                                <a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a>
+                        <tr class="basket-row" data-record-id="{{ item.record.id }}">
+                            <td>
+                                <!-- Desktop  -->
+                                <div class="d-none d-md-flex align-items-center gap-2">
+                                    <img src="{{ item.record.get_front_cover.image.url }}" alt="{{ item.record.title }}" class="img basket-image d-none d-md-inline">
+                                    <a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a>
+                                </div>
+                                <!-- Mobile -->
+                                <div class="d-flex d-md-none">
+                                    <a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a>
+                                </div>
                             </td>
                             <td>£{{ item.record.price }}</td>
                             <td>
-                                <input type="number" name="quantity_{{ item.record_id }}" value="{{ item.quantity }}" min="1" max="9" class="form-control text-center">
-                                <a href="" class="text-danger" data-bs-toggle="tooltip" title="Remove All"><i class="fa-solid fa-trash"></i></a>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <input type="number" name="quantity_{{ item.record_id }}" value="{{ item.quantity }}" min="1" max="9" class="form-control text-center me-2 basket-qty">
+                                    <a href="{% url 'remove_basket_item' item.record_id %}" class="text-danger" data-bs-toggle="tooltip" title="Remove All"><i class="fa-solid fa-trash"></i></a>
+                                </div>
                             </td>
                             <td>£{{ item.total_price }}</td>
                         </tr>
@@ -39,16 +48,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-end">
-                <div class="me-3 text-white">
+            <div class="d-flex justify-content-end mb-3">
+                <div class="me-3 text-white text-end border border-danger border-2 p-2 rounded">
                     <strong>Subtotal:</strong> £{{ subtotal_cost }}<br>
                     <strong>Delivery:</strong> {% if delivery_cost == 0 %} Free! {% else %}£{{ delivery_cost }} {% endif %}<br>
                     <strong>Grand Total:</strong> £{{ grand_total }}
                 </div>
             </div>
-            <div class="d-flex flex-column flex-md-row justify-content-end">
-                <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-dark mx-0 mx-md-1"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
-                <a href="" aria-label="Click here to continue shopping." class="btn btn-danger mx-0 mx-md-1"><i class="fa-solid fa-lock"></i> Secure Checkout</a>
+            <div class="d-flex flex-column flex-md-row justify-content-end gap-2">
+                <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-dark"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
+                <a href="" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-lock"></i> Secure Checkout</a>
             </div>
         </form>
         {% else %}
