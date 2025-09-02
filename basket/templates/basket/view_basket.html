@@ -57,7 +57,7 @@
             </div>
             <div class="d-flex flex-column flex-md-row justify-content-end gap-2">
                 <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-dark"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
-                <a href="" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-lock"></i> Secure Checkout</a>
+                <a href="{% url 'checkout' %}" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-lock"></i> Secure Checkout</a>
             </div>
         </form>
         {% else %}
