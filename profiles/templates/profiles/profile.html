@@ -43,7 +43,7 @@
     </div>
     <div class="row g-3 mb-2">
         {% if addresses %}
-        <div class="col-6 mx-auto mb-2">
+        <div class="col-12 mx-auto mb-2">
             <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Delivery Address" href="{% url 'add_delivery_address' %}"><i class="fa-solid fa-plus text-white"></i></a>
         </div>
         {% for address in addresses %}
