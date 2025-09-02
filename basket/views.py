@@ -61,7 +61,7 @@ def remove_from_basket_view(request, record_id):
         del basket[record_id_str]
         request.session['basket'] = basket
         request.session.modified = True
-        basket_count = sum(basket.values())
+        basket_count = sum(basket.values())  # Updates context processor
 
     return redirect('view_basket')
 
@@ -80,13 +80,13 @@ def update_basket_quantity_view(request):
                 quantity = int(value)
             except ValueError:
                 quantity = 1
-            
+
             if quantity <= 0:
                 basket.pop(record_id, None)
             else:
                 basket[record_id] = min(quantity, 9)
-    
+
     request.session['basket'] = basket
     request.session.modified = True
-    
+
     return redirect('view_basket')
