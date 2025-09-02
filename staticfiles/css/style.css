@@ -29,7 +29,7 @@ body {
 }
 
 #search-results {
-	z-index: 2000;
+	z-index: 2000 !important;
 	top: 100%;
 }
 
@@ -138,11 +138,14 @@ footer .nav-link:hover {
 /* Shopping Basket Rules ---------------------------------------------------- */
 
 .basket-image {
-	max-width: 60px;
+	max-width: 100px;
 	max-height: auto;
 	object-fit: contain;
 }
 
+.basket-qty {
+	max-width: 70px;
+}
 /* Media Queries ------------------------------------------------------------ */
 
 @media (max-width: 1024px) {
