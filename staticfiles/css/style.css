@@ -146,6 +146,18 @@ footer .nav-link:hover {
 .basket-qty {
 	max-width: 70px;
 }
+
+/* Checkout Rules ----------------------------------------------------------- */
+
+#card-element {
+    min-height: 50px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
 /* Media Queries ------------------------------------------------------------ */
 
 @media (max-width: 1024px) {
