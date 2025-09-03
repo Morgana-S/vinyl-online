@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
 from django.conf import settings
 from django.http import JsonResponse
 from .forms import CheckoutForm
 from .models import Order, OrderItem
-from profiles.models import DeliveryAddress
 from records.models import Record
 import stripe
 import json
@@ -110,6 +111,22 @@ def checkout_view(request):
                 if record.quantity is not None:
                     record.quantity = max(record.quantity - quantity, 0)
                     record.save()
+
+            # Confirmation Email
+            subject = (
+                f'Vinyl Online - Your Order Confirmation ref. {order.uuid}')
+            html_message = render_to_string(
+                'emails/order_confirmation.html',
+                {'order': order}
+            )
+            plain_message = strip_tags(html_message)
+            send_mail(
+                subject,
+                plain_message,
+                None,
+                [order.email],
+                html_message=html_message
+            )
 
             request.session['basket'] = {}
             request.session.pop('payment_intent_id', None)
