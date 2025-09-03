@@ -5,7 +5,7 @@ from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Record, Artist, Genre, Review
-from .forms import EditRecordForm, RecordImageFormSet
+from .forms import RecordForm, RecordImageFormSet
 
 # Create your views here.
 
@@ -143,6 +143,41 @@ def record_detail_view(request, record_slug):
 
 
 @login_required
+def add_record_view(request):
+    """
+    View for adding new records. Uses the Record form to populate record
+    information and create a new record object.
+    """
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = RecordForm(request.POST)
+            formset = RecordImageFormSet(request.POST, request.FILES)
+            if form.is_valid() and formset.is_valid():
+                record = form.save(commit=False)
+                record.save()
+                formset.record = record
+                formset.save()
+                messages.success(request, 'New record has been created and '
+                                 'images attached.')
+                return redirect('index')
+
+        else:
+            form = RecordForm()
+            formset = RecordImageFormSet()
+    else:
+        messages.error(request, 'You must be a member of staff to access this '
+                       'part of the website.')
+        return redirect('index')
+
+    context = {
+        'form': form,
+        'formset': formset,
+    }
+
+    return render(request, 'records/create_record.html', context)
+
+
+@login_required
 def edit_record_view(request, record_slug):
     """
     View for editing record pages. Serves the EditRecordForm to the user
@@ -153,7 +188,7 @@ def edit_record_view(request, record_slug):
 
     if request.user.is_staff:
         if request.method == 'POST':
-            form = EditRecordForm(request.POST, instance=record)
+            form = RecordForm(request.POST, instance=record)
             formset = RecordImageFormSet(
                 request.POST, request.FILES, instance=record)
             if form.is_valid() and formset.is_valid():
@@ -163,7 +198,7 @@ def edit_record_view(request, record_slug):
                                  'Record details successfully edited.')
                 return redirect('record_detail', record_slug=record_slug)
         else:
-            form = EditRecordForm(instance=record)
+            form = RecordForm(instance=record)
             formset = RecordImageFormSet(instance=record)
     else:
         messages.error(request, 'You must be a member of staff to access this '
@@ -176,6 +211,25 @@ def edit_record_view(request, record_slug):
     }
 
     return render(request, 'records/edit_record.html', context)
+
+
+@login_required
+def delete_record_view(request, record_slug):
+    """
+    View for deleting records.
+    """
+    record = get_object_or_404(Record, slug=record_slug)
+    if request.user.is_staff:
+        if request.method == 'POST':
+            record.delete()
+            messages.success(request, 'This record has now been deleted.')
+            return redirect('index')
+        else:
+            return redirect('record_detail', record_slug=record_slug)
+    else:
+        messages.error(request, 'You must be a member of staff to delete '
+                       'records.')
+        return redirect('record_detail', record_slug=record_slug)
 
 
 def artist_detail_view(request, artist_slug):
