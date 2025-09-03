@@ -12,6 +12,8 @@ urlpatterns = [
     path('edit-record/<slug:record_slug>/',
          views.edit_record_view,
          name='edit_record'),
+    path('add-record/', views.add_record_view, name='add_record'),
+    path('delete-record/<slug:record_slug>/', views.delete_record_view, name='delete_record'),
     path('artist/<slug:artist_slug>/',
          views.artist_detail_view,
          name='artist_detail'
