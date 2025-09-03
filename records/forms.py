@@ -47,3 +47,24 @@ RecordImageFormSet = inlineformset_factory(
     extra=5,
     can_delete=True
 )
+
+
+class ArtistForm(forms.ModelForm):
+    """
+    Form for adding/editing artist
+    """
+    class Meta:
+        model = Artist
+        fields = '__all__'
+        labels = {
+            'name': 'Name*',
+            'slug': 'Slug',
+            'image': 'Artist Profile Image*',
+            'debut_year': 'Debut Year',
+            'bio': 'Short Bio',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
