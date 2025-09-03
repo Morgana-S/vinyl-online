@@ -4,9 +4,9 @@ from django_summernote.widgets import SummernoteWidget
 from .models import Record, RecordImage, Artist
 
 
-class EditRecordForm(forms.ModelForm):
+class RecordForm(forms.ModelForm):
     """
-    Form for editing record details.
+    Form for editing/adding record details.
     """
     class Meta:
         model = Record
@@ -44,6 +44,6 @@ RecordImageFormSet = inlineformset_factory(
     Record,
     RecordImage,
     fields=('image', 'image_type'),
-    extra=1,
+    extra=5,
     can_delete=True
 )
