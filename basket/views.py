@@ -7,9 +7,16 @@ from django.views.decorators.http import require_POST
 
 def view_basket(request):
     """
-    View for viewing the total items in the shopping basket.
+    View for viewing the total items in the shopping basket. Uses global
+    contexts to render the majority of the view, except the suggested
+    records.
     """
-    return render(request, 'basket/view_basket.html')
+    suggested_records = Record.objects.order_by('?')[:5]
+
+    context = {
+        'suggested_records': suggested_records
+    }
+    return render(request, 'basket/view_basket.html', context)
 
 
 @require_POST
