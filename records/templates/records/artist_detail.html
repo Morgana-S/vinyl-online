@@ -9,8 +9,8 @@
     {% if user.is_authenticated and user.is_staff %}
     <!-- Artist Management -->
     <div class="row justify-content-center mb-2">
-        <div class="col-auto"><button type="button" class="btn bg-warning text-black rounded">Edit Artist Details</button></div>
-        <div class="col-auto"><button type="button" class="btn bg-danger text-white rounded">Delete Artist</button></div>
+        <div class="col-auto"><a href="{% url 'edit_artist' artist.slug %}" data-bs-toggle="tooltip" title="Edit Artist" class="btn bg-warning text-black rounded"><i class="fa-solid fa-pencil"></i></a></div>
+        <div class="col-auto"><button type="button" id="delete-button" data-url="{% url 'delete_artist' artist.slug %}" data-bs-toggle="tooltip" title="Delete Artist" class="btn bg-danger text-white rounded"><i class="fa-solid fa-trash"></i></button></div>
     </div>
     {% endif %}
     <!-- Artist Image -->
@@ -50,15 +50,29 @@
         </div>
         {% endfor %}
     </div>
-    <!-- Review Pagination Controls -->
-    <div id="pagination-records" class="text-center text-white mt-4 mb-4">
-        {% if record_results.has_previous %}
-        <a href="?page={{ record_results.previous_page_number }}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold">⟪</a>
-        {% endif%}
-        <span>{{ record_results.number }} of {{ record_results.paginator.num_pages }}</span>
-        {% if record_results.has_next %}
-        <a href="?page={{ record_results.next_page_number }}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
-        {% endif %}
+</div>
+<!-- Delete Artist Modal -->
+<div class="modal fade" id="deleteArtistModal" tabindex="-1" aria-labelledby="deleteArtistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteArtistModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this artist?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteArtistForm" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
+{% block custom-scripts %}
+<script src="{% static 'js/artist_detail.js' %}"></script>
 {% endblock %}

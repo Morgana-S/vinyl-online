@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="create-record" class="container text-center mt-2 mb-5">
+<div id="create-artist" class="container text-center mt-2 mb-5">
     <div class="row">
-        <h1 class="text-white category-header">CREATE RECORD</h1>
+        <h1 class="text-white category-header">CREATE ARTIST</h1>
         <p class="text-white small">All fields with an asterisk next to the label are required.</p>
     </div>
     <div class="row">
@@ -22,13 +22,7 @@
                     {% endfor %}
                 </div>
                 {% endfor %}
-                {{ formset.management_form }}
-                {% for subform in formset %}
-                <div class="image-form">
-                    {{ subform.as_p }}
-                </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-danger">Create Record</button>
+                <button type="submit" class="btn btn-danger">Create Artist</button>
             </form>
         </div>
     </div>
