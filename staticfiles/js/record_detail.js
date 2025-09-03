@@ -50,7 +50,7 @@ $(document).ready(function () {
 			},
 
 			success: function (response) {
-				const $badge = $('#basket-count')
+				const $badge = $('#basket-count');
 				// Update basket count/visibility
 				$badge.text(response.basket_count);
 				if (response.basket_count > 0) {
@@ -67,14 +67,16 @@ $(document).ready(function () {
 			},
 			error: function (xhr) {
 				// Show error toast
-				$('#toast-header-text').text("Error");
-				$('#basket-toast-body').text("Could not add item to basket.");
+				$('#toast-header-text').text('Error');
+				$('#basket-toast-body').text('Could not add item to basket.');
 				const toastEl = document.getElementById('basket-toast');
 				const toast = new bootstrap.Toast(toastEl);
 				toast.show();
 			},
 		});
 	});
+
+	deleteRecordButtonInit();
 });
 
 // Converts user ratings to stars
@@ -93,4 +95,19 @@ function renderRatingStars(container, rating) {
 	}
 
 	$(container).html(starsHtml);
+}
+
+// Initialize the delete button for the record
+function deleteRecordButtonInit() {
+	const deleteButton = document.getElementById('delete-button');
+	const deleteModal = new bootstrap.Modal(
+		document.getElementById('deleteRecordModal')
+	);
+	const deleteForm = document.getElementById('deleteRecordForm');
+
+	deleteButton.addEventListener('click', function () {
+		const actionUrl = deleteButton.dataset.url;
+		deleteForm.setAttribute('action', actionUrl);
+		deleteModal.show();
+	});
 }
