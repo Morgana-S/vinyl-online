@@ -5,7 +5,7 @@ from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Record, Artist, Genre, Review
-from .forms import RecordForm, RecordImageFormSet
+from .forms import RecordForm, RecordImageFormSet, ArtistForm
 
 # Create your views here.
 
@@ -250,6 +250,82 @@ def artist_detail_view(request, artist_slug):
     }
 
     return render(request, 'records/artist_detail.html', context)
+
+
+@login_required
+def add_artist_view(request):
+    """
+    View for adding new artists. Uses the Artist form to populate artist
+    information and create a new artist object.
+    """
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = ArtistForm(request.POST, request.FILES)
+            if form.is_valid():
+                artist = form.save()
+                artist.save()
+                messages.success(request, 'New artist has successfully been '
+                                 'created.')
+                return redirect('index')
+        else:
+            form = ArtistForm()
+    else:
+        messages.error(request, 'You must be a member of staff to access this '
+                       'part of the website.')
+        return redirect('index')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'records/create_artist.html', context)
+
+
+@login_required
+def edit_artist_view(request, artist_slug):
+    """
+    View for editing artists. Uses the same form as the add_artist view.
+    """
+    artist = get_object_or_404(Artist, slug=artist_slug)
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = ArtistForm(request.POST, request.FILES, instance=artist)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Artist details have been '
+                                 'successfully edited.')
+                return redirect('artist_detail', artist_slug=artist_slug)
+        else:
+            form = ArtistForm(instance=artist)
+    else:
+        messages.error(request, 'You must be a member of staff to access this '
+                       'part of the site.')
+        return redirect('index')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'records/edit_artist.html', context)
+
+
+@login_required
+def delete_artist_view(request, artist_slug):
+    """
+    View for deleting artists.
+    """
+    artist = get_object_or_404(Artist, slug=artist_slug)
+    if request.user.is_staff:
+        if request.method == 'POST':
+            artist.delete()
+            messages.success(request, 'Artist has now been deleted.')
+            return redirect('index')
+        else:
+            return redirect('artist_detail', artist_slug=artist_slug)
+    else:
+        messages.error(request, 'You must be a member of staff to access this '
+                       'part of the site.')
+        return redirect('index')
 
 
 def browse_by_genre_view(request, genre_name):
