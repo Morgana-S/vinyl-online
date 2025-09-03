@@ -62,6 +62,29 @@
         </form>
         {% else %}
         <p class="text-white text-center">Your basket is empty at the moment. Why not <a class="text-white" aria-label="Click here to go to the latest record releases" href="{% url 'latest_releases' %}">browse our latest releases</a> and see if you can find something you like?</p>
+        <!-- Suggested -->
+        <div id="suggested" class="mt-4">
+            <div class="row">
+                <h1 class="text-white text-center category-header mb-2">SUGGESTED RECORDS</h1>
+            </div>
+            <div class="row text-center text-white">
+                {% for record in suggested_records %}
+                <div class="col">
+                    <a href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+                        <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+                    </a>
+                    <p><strong>{{ record.title }}</strong></p>
+                    <p>{{ record.artist.name }}</p>
+                    <p>£{{ record.price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <a href="{% url 'all_records' %}" aria-label="Click here to view all records" class="view-all-link text-white fs-3">VIEW ALL RECORDS</a>
+                </div>
+            </div>
+        </div>
         {% endif %}
     </div>
 </div>
