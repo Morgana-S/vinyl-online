@@ -18,7 +18,7 @@
         </div>
         <!-- Record Descriptions -->
         <div class="col-xs-12 col-md-6 ml-0 text-white">
-            <h1 class="category-header">{{ record.title }} {% if request.user.is_staff %} <a href="{% url 'edit_record' record.slug %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Record Information"><i class="fa-solid fa-pencil"></i></a> {% endif %}</h1>
+            <h1 class="category-header">{{ record.title }} {% if request.user.is_staff %} <a href="{% url 'edit_record' record.slug %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Record Information" aria-label="Click here to edit this record's information."><i class="fa-solid fa-pencil"></i></a> <button type="button" id="delete-button" data-bs-toggle="tooltip" title="Delete Record" data-url="{% url 'delete_record' record.slug %}" class="btn btn-danger" aria-label="Click here to delete this record."><i class="fa-solid fa-trash"></i></button>{% endif %}</h1>
             <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}" data-bs-toggle="tooltip" title="View Artist Page" class="btn btn-danger"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
             <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
             <p>{% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
@@ -94,8 +94,27 @@
         {% endif %}
     </div>
 </div>
-
-
+<!-- Delete Record Modal -->
+<div class="modal fade" id="deleteRecordModal" tabindex="-1" aria-labelledby="deleteRecordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteRecordModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this record?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteRecordForm" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block custom-scripts %}
 <script src="{% static 'js/record_detail.js' %}"></script>
