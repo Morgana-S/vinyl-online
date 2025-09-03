@@ -11,7 +11,6 @@ function deleteAddressButtonInit() {
 
 	deleteButtons.forEach((btn) => {
 		btn.addEventListener('click', function () {
-            console.log('clicked delete')
 			const actionUrl = btn.dataset.url;
 			deleteForm.setAttribute('action', actionUrl);
 			deleteModal.show();
