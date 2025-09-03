@@ -1,0 +1,49 @@
+<p>Hello from Vinyl Online!</p>
+<p>Thank you for your order! Please see below details of your order.</p>
+
+<p>Order Reference: {{ order.uuid }}</p>
+<p>Status: {{ order.status }}</p>
+<hr>
+<h2>Contact Details</h2>
+<p>Name: {{ order.full_name }}</p>
+<p>Phone Number: {{ order.phone_number }}</p>
+<p>Contact Email: {{ order.email }}</p>
+<hr>
+<h2>Delivery Address Details</h2>
+<p>{{ order.address_line1 }}</p>
+{% if order.address_line2 %}
+<p>{{ order.address_line2}}</p>
+{% endif %}
+{% if order.city %}
+<p>{{ order.city }}</p>
+{% endif %}
+<p>{{ order.postcode }}</p>
+<hr>
+<h2>Order Items</h2>
+<table style="width:100%; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 8px;">Item</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Quantity</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in order.items.all %}
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ item.record.title }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">{{ item.quantity }}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">£{{ item.item_total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<hr>
+<p><strong>Subtotal:</strong> £{{ order.subtotal_cost|floatformat:2 }}</p>
+<p><strong>Delivery:</strong> £{{ order.delivery_cost|floatformat:2 }}</p>
+<p><strong>Total:</strong> £{{ order.grand_total_cost|floatformat:2 }}</p>
+
+<p>You can also view this order confirmation online <a href="{% url 'order_confirmation' order.uuid %}">here.</a></p>
+
+<p>We hope you enjoy your records!</p>
+<p>Vinyl Online Team</p>
