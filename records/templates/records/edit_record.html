@@ -1,15 +1,14 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}
 
 {% block content %}
 <div id="create-profile" class="container text-center mt-2 mb-5">
     <div class="row">
-        <h1 class="text-white category-header">EDIT DELIVERY ADDRESS</h1>
+        <h1 class="text-white category-header">EDIT RECORD DETAILS</h1>
         <p class="text-white small">All fields with an asterisk next to the label are required.</p>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
-            <form method="POST" class="text-white">
+            <form method="POST" class="text-white" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
                 <div class="mb-3">
