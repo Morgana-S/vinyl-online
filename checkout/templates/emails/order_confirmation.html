@@ -1,8 +1,5 @@
 <p>Hello from Vinyl Online!</p>
 <p>Thank you for your order! Please see below details of your order.</p>
-
-<p>Order Reference: {{ order.uuid }}</p>
-<p>Status: {{ order.status }}</p>
 <hr>
 <h2>Contact Details</h2>
 <p>Name: {{ order.full_name }}</p>
@@ -20,6 +17,8 @@
 <p>{{ order.postcode }}</p>
 <hr>
 <h2>Order Items</h2>
+<p>Order Reference: {{ order.uuid }}</p>
+<p>Status: {{ order.status }}</p>
 <table style="width:100%; border-collapse: collapse;">
     <thead>
         <tr>
@@ -43,7 +42,7 @@
 <p><strong>Delivery:</strong> £{{ order.delivery_cost|floatformat:2 }}</p>
 <p><strong>Total:</strong> £{{ order.grand_total_cost|floatformat:2 }}</p>
 
-<p>You can also view this order confirmation online <a href="{% url 'order_confirmation' order.uuid %}">here.</a></p>
+<p>You can also view this order confirmation online <a href="{{ confirmation_url }}">here.</a></p>
 
 <p>We hope you enjoy your records!</p>
 <p>Vinyl Online Team</p>
