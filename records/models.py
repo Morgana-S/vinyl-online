@@ -12,7 +12,11 @@ from colorfield.fields import ColorField
 class Artist(models.Model):
     name = models.CharField(
         max_length=100, validators=[MinLengthValidator(1)], unique=True)
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    slug = models.SlugField(max_length=100,
+                            unique=True,
+                            blank=True,
+                            help_text='This will be created automatically if '
+                            'left blank.')
     image = CloudinaryField(
         'image', default='default-artist_fw2mea')
     debut_year = models.PositiveIntegerField(null=True, blank=True)
