@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
@@ -113,11 +114,15 @@ def checkout_view(request):
                     record.save()
 
             # Confirmation Email
+            confirmation_url = request.build_absolute_uri(reverse(
+                'order_confirmation', kwargs={'order_uuid': order.uuid}
+            ))
             subject = (
-                f'Vinyl Online - Your Order Confirmation ref. {order.uuid}')
+                f'Vinyl Online - Your Order Confirmation Ref: {order.uuid}')
             html_message = render_to_string(
                 'emails/order_confirmation.html',
-                {'order': order}
+                {'order': order,
+                 'confirmation_url': confirmation_url}
             )
             plain_message = strip_tags(html_message)
             send_mail(
