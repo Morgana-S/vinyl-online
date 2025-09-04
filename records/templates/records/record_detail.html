@@ -45,7 +45,10 @@
 <div id="record-reviews" class="container mt-4 mb-5">
     <!-- Average User Rating -->
     <div class="row">
-        <h3 class="category-header text-white text-center">REVIEWS - {{ reviews|length }}</h3>
+        <h3 class="category-header text-white text-center">REVIEWS</h3>
+        {% if is_reviewable and not has_reviewed %}
+        <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
+        {% endif %}
         {% if reviews %}
         <div class="text-center">
             <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
@@ -73,7 +76,7 @@
                     {% endif %}
                 </div>
                 <div class="card-footer">
-                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }}</small>
+                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
                 </div>
             </div>
             {% endif %}
@@ -107,6 +110,27 @@
             </div>
             <div class="modal-footer">
                 <form id="deleteRecordForm" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Review Modal -->
+<div class="modal fade" id="deleteReviewModal" tabindex="-1" aria-labelledby="deleteReviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteReviewModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this Review?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteReviewForm" method="POST">
                     {% csrf_token %}
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
