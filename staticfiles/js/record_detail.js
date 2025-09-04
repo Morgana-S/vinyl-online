@@ -77,6 +77,7 @@ $(document).ready(function () {
 	});
 
 	deleteRecordButtonInit();
+	deleteReviewButtonInit();
 });
 
 // Converts user ratings to stars
@@ -109,5 +110,20 @@ function deleteRecordButtonInit() {
 		const actionUrl = deleteButton.dataset.url;
 		deleteForm.setAttribute('action', actionUrl);
 		deleteModal.show();
+	});
+}
+
+// Initialize the delete button for the review
+function deleteReviewButtonInit() {
+	const deleteReviewButton = document.getElementById('delete-review-button');
+	const deleteReviewModal = new bootstrap.Modal(
+		document.getElementById('deleteReviewModal')
+	);
+	const deleteReviewForm = document.getElementById('deleteReviewForm');
+
+	deleteReviewButton.addEventListener('click', function () {
+		const deleteReviewUrl = deleteReviewButton.dataset.url;
+		deleteReviewForm.setAttribute('action', deleteReviewUrl);
+		deleteReviewModal.show();
 	});
 }
