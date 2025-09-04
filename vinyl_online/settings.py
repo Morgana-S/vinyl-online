@@ -39,6 +39,7 @@ else:
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'localhost',
     'vinyl-online-d54f03c987e4.herokuapp.com'
 ]
 
@@ -203,3 +204,4 @@ STANDARD_DELIVERY_MODIFIER = Decimal('0.10')
 
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')
