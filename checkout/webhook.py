@@ -19,7 +19,6 @@ def stripe_webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
-        print('Stripe signature header:', sig_header)
     except ValueError:
         # Invalid Payload
         return HttpResponse(status=400)
