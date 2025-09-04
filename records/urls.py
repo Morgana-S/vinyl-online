@@ -34,4 +34,5 @@ urlpatterns = [
          views.latest_releases_view,
          name='latest_releases'
          ),
+     path('analytics/', views.analytics_page_view, name='analytics')
 ]
