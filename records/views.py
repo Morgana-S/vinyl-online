@@ -5,6 +5,7 @@ from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Record, Artist, Genre, Review
+from checkout.models import Order
 from .forms import RecordForm, RecordImageFormSet, ArtistForm
 
 # Create your views here.
@@ -127,7 +128,15 @@ def record_detail_view(request, record_slug):
     """
     queryset = Record.objects.all()
     record = get_object_or_404(queryset, slug=record_slug)
-    reviews = Review.objects.all().filter(record=record)
+    reviews = Review.objects.all().filter(record=record, is_approved=True)
+    is_reviewable = Order.objects.filter(
+        user=request.user, items__record=record).exists()
+    has_reviewed = Review.objects.filter(
+        author=request.user, record=record).exists()
+
+    for review in reviews:
+        review.is_deletable = (request.user.is_authenticated
+                               and review.author == request.user)
 
     paginator = Paginator(reviews, 3)
     page_number = request.GET.get('page')
@@ -136,7 +145,9 @@ def record_detail_view(request, record_slug):
     context = {
         'record': record,
         'reviews': reviews,
-        'reviews_page': page_obj
+        'reviews_page': page_obj,
+        'is_reviewable': is_reviewable,
+        'has_reviewed': has_reviewed
     }
 
     return render(request, 'records/record_detail.html', context)
