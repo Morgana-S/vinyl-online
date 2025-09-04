@@ -1,12 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.contrib import messages
-from django.db.models import Q, Avg
+from django.db.models import Q, Avg, Sum, F
+from django.db.models.functions import TruncWeek
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.timezone import now, timedelta
 from .models import Record, Artist, Genre, Review
-from checkout.models import Order
+from checkout.models import Order, OrderItem
 from .forms import RecordForm, RecordImageFormSet, ArtistForm
+import json
 
 # Create your views here.
 
@@ -412,3 +416,36 @@ def latest_releases_view(request):
     }
 
     return render(request, 'records/latest_records.html', context)
+
+
+@staff_member_required
+def analytics_page_view(request):
+    """
+    View for viewing site analytics such as record purchases, sales, and low
+    stock.
+    """
+    popular_records = (OrderItem.objects.values(
+        'record__slug', 'record__title').annotate(
+            total_sold=Sum('quantity')).order_by('-total_sold'))[:10]
+
+    weekly_sales = (
+        OrderItem.objects.annotate(week=TruncWeek('order__created_at')).values(
+            'week'
+        ).annotate(total_sales=Sum(F('quantity') * F('record__price')))
+        .order_by('week')
+    )
+
+    weekly_sales_data = {
+        'labels': [sale['week'].strftime('%Y-%m-%d') for sale in weekly_sales],
+        'totals': [float(sale['total_sales']) for sale in weekly_sales]
+    }
+
+    low_stock_records = Record.objects.all().order_by('quantity')[:10]
+
+    context = {
+        'popular_records': popular_records,
+        'weekly_sales_data': json.dumps(weekly_sales_data),
+        'low_stock_records': low_stock_records
+    }
+
+    return render(request, 'records/analytics.html', context)
