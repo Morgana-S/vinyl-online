@@ -1,0 +1,101 @@
+{% extends "base.html"%}
+{% load static %}
+{% block content %}
+<!-- Record Analytics -->
+<div id="record-analytics" class="container text-center">
+    <div class="row">
+        <h1 class="text-white category-header mt-4">RECORD ANALYTICS</h1>
+        <div class="col-12 col-lg-6 mx-auto">
+            <h2 class="category-header text-white">MOST POPULAR RECORDS</h2>
+            <table class="table table-dark table-striped table-hover text-white">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Record Title</th>
+                        <th scope="col">Total Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in popular_records %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a class="text-white" aria-label="{{ record.record__title }}" href="{% url 'record_detail' record.record__slug %}">{{ record.record__title }}</a></td>
+                        <td>{{ record.total_sold }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center">No sales yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-lg-6 mx-auto">
+            <h2 class="category-header text-white">LOW STOCK</h2>
+                        <table class="table table-dark table-striped table-hover text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Record Title</th>
+                                    <th scope="col">Remaining Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for record in low_stock_records %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td><a class="text-white" aria-label="{{ record.title }}" href="{% url 'record_detail' record.slug %}">{{ record.title }}</a></td>
+                                    <td>{{ record.quantity }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+        </div>
+        <div class="col-12 col-lg-4 mx-auto">
+            <h2 class="category-header text-white">WEEKLY SALES</h2>
+            <canvas id="weeklySalesChart"></canvas>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block custom-scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const salesData = JSON.parse('{{ weekly_sales_data|safe }}');
+
+    const ctx = document.getElementById('weeklySalesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: salesData.labels,
+            datasets: [{
+                label: 'Total Sales (£)',
+                data: salesData.totals,
+                backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Sales by Week'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Sales (£)' }
+                },
+                x: {
+                    title: { display: true, text: 'Week Starting' }
+                }
+            }
+        }
+    });
+</script>
+{% endblock%}
