@@ -1,6 +1,7 @@
 from django import forms
 from .models import SupportTicket, NewsletterSubscriber
 from profiles.models import UserProfile
+from records.models import Review
 
 
 class SupportTicketForm(forms.ModelForm):
@@ -74,3 +75,24 @@ class NewsletterSubscriptionForm(forms.ModelForm):
                 "This email address is already subscribed to the newsletter."
             )
         return email
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = [
+            'delivery_rating', 'quality_rating', 'record_rating',
+            'store_feedback', 'review_text'
+        ]
+        labels = {
+            'delivery_rating': 'Delivery Speed Rating*',
+            'quality_rating': 'Record Condition Rating*',
+            'record_rating': 'Record Enjoyment Rating*',
+            'store_feedback': 'Feedback for Vinyl Online',
+            'review_text': 'Record Review Information'
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
