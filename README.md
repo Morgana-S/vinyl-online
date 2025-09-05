@@ -131,6 +131,10 @@ Users can browse individual record detail pages, which contains images for the r
 ## Adding Records
 
 ## Django Custom Commands for Adding Records using the Discogs API
+![Fetch Artist Images](/documentation/images/feature-images/fetch-artists.gif)
+![Fetch Album](/documentation/images/feature-images/fetch-album.gif)
+
+As part of the lengthy process of populating the records, I made use of the Discogs API to populate artist photos and record inforamtion. While this isn't accessible on the front-end side of things, back-end administrators will likely find this useful.
 
 ## Form Verification
 
@@ -160,16 +164,40 @@ Users are able to register accounts on the website using django all-auth. Users 
 Django Allauth's default templates have been replaced with custom ones that match the site's design.
 
 ## Account Profile
+![Profile](/documentation/images/feature-images/profile.gif)
+
+Accounts have a profile page, which contains information about the user's information, delivery addresses, order history and support tickets. Users can also change their password on the profile, allowing it to act as a hub for account details.
 
 ## Editing Profile Details
+![Editing Profile](/documentation/images/feature-images/editing-profile.gif)
+
+Profile information can be edited easily from the profile page.
 
 ## Adding Delivery Addresses
+![Adding New Delivery Addresses](/documentation/images/feature-images/adding-delivery-addresses.gif)
+
+Adding new delivery addresses is simple, and these addresses will then show up in the checkout part of the site.
+
+## Removing Delivery Addresses
+![Removing Delivery Addresses](/documentation/images/feature-images/removing-delivery-addresses.gif)
+
+When a user no longer needs their delivery address, deleting it is simple, and confirmation is acquired to ensure that the user wants to delete.
 
 ## Viewing Order History
+![Order History](/documentation/images/feature-images/order-history.gif)
+
+Authenticated users can see their previous orders in the profile section, allowing them to easily keep track of what's happening with their order.
 
 ## Contacting Support
+![Contacting Support](/documentation/images/feature-images/contact-support.gif)
+
+Support tickets can be created for a variety of issues, and the user will receive an email to their email address confirming the support ticket has been created.
+
 
 ## Viewing Support Tickets
+![Viewing Support Tickets](/documentation/images/feature-images/viewing-support-tickets.gif)
+
+All users can access their support ticket via the link in the email they receive, but authenticated users can also access their support tickets via the profile page when logged in.
 
 ## Account Logout
 ![Account Logout](/documentation/images/feature-images/logout.gif)
@@ -177,12 +205,25 @@ Django Allauth's default templates have been replaced with custom ones that matc
 Users can also sign out of their account at any time, allowing for them to navigate the site using public devices.
 
 ## Privacy Policy
+![Privacy Policy](/documentation/images/feature-images/privacy-policy.gif)
+
+The website features a privacy policy generated with a Privacy Policy generator. This allows users to understand how collected data is used and is vital from a regulatory perspective.
 
 ## Newsletter Signup
+![Newsletter Subscription](/documentation/images/feature-images/newsletter.gif)
+
+Both authenticated and anonymous users are able to subscribe to the newsletter, and will receive an email confirming they have been signed up.
 
 ## Robots.txt
+![Robots.txt](/documentation/images/feature-images/robots.txt.png)
+
+The site features a Robots.txt file, which defines how crawlers are used to access parts of the site.
 
 ## Sitemap.xml
+
+![Sitemap.xml](/documentation/images/feature-images/sitemap.xml.png)
+
+The site also has a Sitemap, which provides information about the pages and layout of the site, making them more accessible to search engine crawlers.
 
 # Models
 
@@ -321,6 +362,8 @@ including discovery based on user tastes, past orders, etc.
 ## Content
 
 - [Discogs](https://www.discogs.com/) - without Discogs and their [API](https://www.discogs.com/developers), obtaining the sheer amount of information about vinyl records present on this site would have been a much more arduous task. I have used Discogs API to simulate "warehouse stock" databases in this case; pulling from information from their API to simulate the inventory an e-commerce site would have.
+
+- [Termsfeed Privacy Policy Generator](https://www.termsfeed.com/privacy-policy-generator/) - Privacy Policy generation.
 
 ## Special Thanks
 - Thanks to [Code Institute](https://codeinstitute.net/) for tutorials and guidance in the development of this project.
