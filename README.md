@@ -139,6 +139,9 @@ The reviews are aggregated and count towards the records average rating based on
 Reviews can also be deleted by the user, if they wish to write a different review. Reviews are not currently editable, as I do not foresee a user's review needing to change after being posted.
 
 ## Adding Records
+![Adding Records](/documentation/images/feature-images/adding-records.gif)
+
+Staff can add records via the record management section. Filling out a form and adding images is possible - records are initially hidden from sale by default, but this can be disabled if the staff is happy with the record details.
 
 ## Django Custom Commands for Adding Records using the Discogs API
 ![Fetch Artist Images](/documentation/images/feature-images/fetch-artists.gif)
@@ -157,6 +160,9 @@ All forms that the user is exposed to are validated to ensure that any necessary
 Records can be edited by staff users from the record detail page, allowing for changes to be immediately seen by editors and users.
 
 ## Deleting Records
+![Deleting Records](/documentation/images/feature-images/deleting-records.gif)
+
+Staff users can also delete records from the record detail page.
 
 ## Artist Details
 ![Artist Details](/documentation/images/feature-images/artist-details.gif)
@@ -438,6 +444,7 @@ The project can also be deployed locally. To do so, please follow these instruct
 
 ## Tools
 
+
 ## Frameworks
 
 - [Django](https://www.djangoproject.com/) - Python-based web framework that allows fast deployment of web applications.
@@ -462,6 +469,7 @@ The project can also be deployed locally. To do so, please follow these instruct
 
 - [SVG Repo](https://www.svgrepo.com/) - Record image used in website logo
 - [Unsplash](https://unsplash.com/) - Stock photos used to illustrate personas in wireframes
+- [FontAwesome](https://fontawesome.com/) - Icons for buttons
 - [Discogs](https://www.discogs.com/) - Album and Vinyl art
 
 ## Content
