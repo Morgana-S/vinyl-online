@@ -50,6 +50,13 @@ body {
 	max-height: 35px;
 }
 
+/* 404.html Rules ----------------------------------------------------------- */
+
+#error-image {
+	max-width: 300px !important;
+	height: auto !important;
+}
+
 /* Navigation Bar Rules ----------------------------------------------------- */
 
 header .nav-link {

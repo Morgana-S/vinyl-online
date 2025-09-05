@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div id="404" class="container text-center mt-2 mb-5">
+    <div class="row">
+        <img id='error-image' class="img mx-auto mb-5 mt-3" src="https://res.cloudinary.com/dum08a287/image/upload/v1757067846/404_koxand.png" alt="404">
+        <h1 class="text-white category-header">ERROR 404: PAGE NOT FOUND</h1>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12 col-md-6 text-white mx-auto mb-5 pb-5">
+            <p class="mb-0">It looks like the page you navigated to doesn't exist. Please <a class="text-white" href="{% url 'index' %}">click here</a> to return to the homepage.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
