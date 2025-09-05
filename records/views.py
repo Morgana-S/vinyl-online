@@ -134,7 +134,7 @@ def record_detail_view(request, record_slug):
     instance in the database and populates it.
     """
     record = get_object_or_404(Record, slug=record_slug)
-    reviews = Review.objects.all().filter(record=record, is_approved=True)
+    reviews = Review.objects.all().filter(record=record)
 
     if request.user.is_authenticated:
         is_reviewable = Order.objects.filter(
