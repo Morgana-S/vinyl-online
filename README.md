@@ -202,11 +202,69 @@ Fields include id, name, slug, image, debut_year, and bio.
 
 The artist model acts as the foundation of the records app - the records are linked to their artist by foreign key. 
 
+The model contains custom save function infrastructure which allows for slugs to be automatically generated, and users can also see which genres the musician makes, which are served from the collection of the artists records.
+
+### Genre Model
+
+The Genre model acts as a secondary category for records to be found by - this allows users to browse records by genre. Consisting of some
+basic fields, such as name, slug, color and description, color is mostly used to populate the "genre badges" that feature on the record detail pages. 
+Description is a part of the model which isn't presently being used, but the existence of the field allows for further expansion of genre related search later on.
+
+As with the artist model, slugs are automatically generated.
+
+### Record Model
+
+The record model is the real backbone and purpose of the site - this contains information about the records, such as the title, slug, artist and genres, release year, size, rpm,
+a description of the record, when the record was added to the site, price, quantity and whether the record is viewable by the public. It contains foreignkeys that correlate to the artist and genre models.
+
+Slug generation is also automatic, and to simplify images for album covers, there's a function to get the front cover from the RecordImage model. A function also exists to call the average rating from the records reviews, if the record has any.
+
+### RecordImage Model
+
+As a supplementary to the Record Model, to allow for records to have multiple images, a RecordImage model was implemented. Each instance contains a record foreignkey, image url from cloudinary, as well as the image type - robust image type formatting was initially planned, but due to the tedium of obtaining record images and ordering them, most images are now categorised as 'Front Cover' or 'Other'.
+
+### Review Model
+
+The review model is the core of user interactivity with the records that they purchase. Containing information on the author, record, ratings for various aspects of the services offered by the site, store feedback, and review text, it acts as a hub model for users giving feedback on both the records and the service they've received from the site.
+
+Record ratings are rendered into FontAwesome star icons to allow for reviews on the record page to have a pleasing visual style.
+
+### UserProfile Model
+
+Allowing users to add their personal information to their profile makes for a smoother checkout process. Containing information that relates to the user model, the user's name, contact phone number, and contact email, this also allows the user to specify a different email or phone number on an order than the email address that's related to their account.
+
+If the user's account email is the only email on the account, it is the one used when the profile is created. The UserProfile and DeliveryAddress models have a close relationship with the Order model, and are often used to pre-populate fields in the checkout process for authenticated users.
+
+### DeliveryAddress Model
+
+Seperating delivery addresses out from the User Profile allows the user to have multiple delivery addresses. Containing a label for easy identification, as well as the standard expected delivery fields, these delivery addresses are selectable in the checkout process by authenticated users.
+
+### SupportTicket Model
+
+This is the primary model for creating support tickets. I decided to use a UUID identifier to obscurify support tickets - this allows for anonymous users to access their support tickets if they decide to not log in while also making sure random people can't access them directly (as opposed to having support tickets with a url of support/ticket/1, support/ticket/2, etc.). Support tickets have an associated user, which also allows for authenticated users to see their support tickets on their profile page.
+
+### NewsletterSubscriber Model
+
+Users are also able to subscribe to the newsletter with a limited subscriber model, which can take an existing user, a name, and an email. This model is very rudimentary, but can be expanded upon to include user preferences for contact. I've touched on newsletter implementation in the future improvements section below.
+
+### Order Model
+
+Orders are the backbone of the e-commerce aspect of the site, and contain information relating to the user's contact details, delivery address, order costs, and order contents via the OrderItem Model below. There is a custom update_total method as part of the order which automatically updates when a line item is added.
+
+### OrderItem Model
+
+This model is a supplementary model to the Order model; it keeps track of the record being purchased, the quantity of records, and how much the total cost is. This allows for a permanent record of the pricing of a purchase, which is important when record prices can change.
+
 # Testing, Bugs & Code Validation
 
 For details of automated and manual tests, bugs, and code validation, please see the [TESTING.MD](/TESTING.md) document.
 
 # Changes, and Considerations whilst the project was underway
+
+Limitations arose out of the sourcing of the record information; while Discogs API was useful in obtaining vast quantities of record information which would have taken a considerable amount of time to collect manually, this also meant that the related models were limited to information that related to Discogs formatting of that information; for example, while there is options to change RPM and Size in a lot of models, most records on Discogs do not list this information in a readily available format. As a result, most records collected via the Discogs API have the same RPM. 
+
+Pricing and Size also faced a similar conundrum; in future implemetations of the project, I would recommend developing an understanding of the database inventory system that is beign used to populate the records before developing models.
+
 
 # Potential Future Improvements
 
@@ -217,6 +275,11 @@ At present, the site is very UK-Centric; it only takes UK phone numbers and only
 ## Newsletter Implementation
 
 As of writing, there is a way to subscribe to the newsletter via the site, but no actual implementation of a newsletter. Further implementation could involve actually sending out monthly newsletters with discount codes, concert ticket giveaways, etc.
+
+## Record Discovery
+
+At the moment record discovery is very rudimentary, due to the limited number of records on the site. With the addition of more records, it would also be possible to add better record discovery,
+including discovery based on user tastes, past orders, etc.
 
 
 # Deployment
