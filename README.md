@@ -368,6 +368,72 @@ including discovery based on user tastes, past orders, etc.
 
 # Deployment
 
+## Deployment to Heroku
+
+The project was deployed to Heroku soon after being started. The steps to deploy are as follows:
+
+1. For or clone this repository directly on GitHub, or using your IDE terminal with the following code:
+    - `git clone https://github.com/Morgana-S/vinyl-online.git`
+2. Create a new application on Heroku:
+    - This requires singing up for a Heroku account, which you can do [here.](https://signup.heroku.com/login)
+    - Once your account has been created, and you are on the user dashboard, you will need to create a new app and give it a name.
+    - In the settings tab, ensure the correct config vars are in place. In this project, you will need to define to following vars:
+        - `SECRET_KEY` - This will be your secret key for Django.
+        - `DATABASE_URL` - The url for your database. This project uses a remote postgresql database.
+        - `CLOUDINARY_URL` - The url for your cloudinary account.
+        - `DISCOGS_USER_TOKEN` - The user token for your discogs account. This is needed to access the commands in the records app.
+        - `DEFAULT_ARTIST_IMAGE` - Sets the default image used in your cloudinary account for new artists.
+        - `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` - The email host for the project to send emails.
+        - `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` - Your API keys and webhook endpoint secret for Stripe.
+    - In the Deploy Tab, ensure the Heroku Application is linked to your cloned version of this GitHub repo.
+    - Ensure that your Procfile contains only the following code:
+        - `web: gunicorn vinyl_online.wsgi:application`
+        - The Procfile has been included with this project, but please ensure that Heroku recognizes this Procfile if your version of the project fails to deploy.
+    - Ensure that the `requirements.txt` file is included also, to ensure the deployment pulls all required libraries.
+    - Click Deploy Branch, or Enable Automatic Deployment.
+
+## Local Deployment
+
+The project can also be deployed locally. To do so, please follow these instructions:
+
+1. For or clone this repository directly on GitHub, or using your IDE terminal with the following code:
+    - `git clone https://github.com/Morgana-S/vinyl-online.git`
+
+2. Create a virtual environment (optional, but recommended):
+    - On Windows, the command for this is `python -m venv .venv`
+    - On Linux/macOS, (assuming you have Python 3 and Pip installed via package manager) - `python3 -m venv .venv`
+
+3. Activate the virtual environment:
+    - On Windows: `.venv\scripts\activate`
+    - On Linux/macOS: `source .venv/bin/activate`
+
+4. Install Dependencies - Navigate to the project directory and install dependencies found in `requirements.txt`
+    - Navigating out of the venv folder: `cd ..`
+    - Navigation from your root directory: `cd <insert filepath here>/vinyl-online`
+    - Installing dependencies: `pip install -r requirements.txt`
+
+5. Creating your env.py file:
+    - Create a file named env.py in your root directory for the project.
+    - Add this to your .gitignore file to ensure your variables are kept secret.
+    - Ensure the file imports the os library using the `import os`line at the top, and define variables for your:
+        - `SECRET_KEY` - This will be your secret key for Django.
+        - `DATABASE_URL` - The url for your database. This project uses a remote postgresql database.
+        - `CLOUDINARY_URL` - The url for your cloudinary account.
+        - `DISCOGS_USER_TOKEN` - The user token for your discogs account. This is needed to access the commands in the records app.
+        - `DEFAULT_ARTIST_IMAGE` - Sets the default image used in your cloudinary account for new artists.
+        - `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` - The email host for the project to send emails.
+        - `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` - Your API keys and webhook endpoint secret for Stripe.
+    - Each of the above variables can be defined by using the `os.environ.setdefault()`method. For example:
+        - `os.environ.setdefault('DATABASE_URL', '<insert database url here>')`
+        - If you are using Google Mail as your email host provider, you will need to sign in to your account with an app password. Information on how to do this can be found [here.](https://support.google.com/accounts/answer/185833?hl=en)
+
+6. Run the Application:
+    - To run the project with your machine as a host, you can then type the following into your terminal:
+        - Windows: `python manage.py runserver`
+        - Linux/macOS: `python3 manage.py runserver`
+    - You will then be able to view the website by clicking the link to the address in the terminal or typing the following into your browser's URL address bar:
+        - `http://127.0.0.1:8000`
+
 # Credits & Technology
 
 ## Tools
