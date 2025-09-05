@@ -79,6 +79,29 @@
                     <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
                 </div>
             </div>
+            {% elif not review.is_approved and review.author == request.user %}
+            <div class="card text-center col-md-4 border-danger border-2">
+                <div class="card-body">
+                    <p>
+                        <strong>Record Rating: {{ review.record_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
+                    </p>
+                    {% if review.review_text %}
+                    <p>
+                        {{ review.review_text|safe }}
+                    </p>
+                    <p class="small text-muted">This review is currently awaiting approval and is only visible to you.</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
+                </div>
+            </div>
             {% endif %}
             {% endfor %}
         </div>
