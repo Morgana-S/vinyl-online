@@ -47,7 +47,7 @@ def create_edit_profile_view(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your personal information has now'
+            messages.success(request, 'Your personal information has now '
                              'been updated.')
             return redirect('profile')
     else:
