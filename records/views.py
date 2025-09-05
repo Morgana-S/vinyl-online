@@ -24,10 +24,11 @@ def index_view(request):
     TODO: Add community ratings to records so that the ratings can be sorted
     and a featured genre section added according to popularity.
     """
-    latest_releases = Record.objects.order_by('-created_at')[:5]
+    latest_releases = Record.objects.filter(
+        hidden=False).order_by('-created_at')[:5]
     featured_genre = 'Pop'
     featured_genre_records = Record.objects.filter(
-        genre__name=featured_genre).annotate(
+        genre__name=featured_genre, hidden=False).annotate(
             avg_rating=Avg('record_reviews__record_rating')).order_by(
                 'avg_rating')[:5]
 
@@ -73,7 +74,8 @@ def search_records_view(request):
     artists = Artist.objects.filter(Q(name__icontains=query)).order_by(
         order_field_artists
     )
-    records = Record.objects.filter(Q(title__icontains=query)).order_by(
+    records = Record.objects.filter(Q(
+        title__icontains=query, hidden=False)).order_by(
         order_field_records
     )
 
@@ -104,7 +106,8 @@ def search_records_async(request):
     results = []
 
     if query:
-        records = Record.objects.filter(title__icontains=query)[:5]
+        records = Record.objects.filter(
+            title__icontains=query, hidden=False)[:5]
         artists = Artist.objects.filter(name__icontains=query)[:2]
 
         for result in records:
@@ -258,7 +261,7 @@ def artist_detail_view(request, artist_slug):
     """
     queryset = Artist.objects.all()
     artist = get_object_or_404(queryset, slug=artist_slug)
-    records = Record.objects.all().filter(artist=artist)
+    records = Record.objects.all().filter(artist=artist, hidden=False)
     paginator = Paginator(records, 6)
     page_number = request.GET.get('page')
     record_results = paginator.get_page(page_number)
@@ -364,7 +367,7 @@ def browse_by_genre_view(request, genre_name):
     sort_by_records = request.GET.get('sort_record', 'title')
     order_field_records = SORT_OPTIONS.get(sort_by_records, 'title')
     genre = get_object_or_404(Genre, slug=genre_name)
-    records = Record.objects.filter(genre=genre).order_by(
+    records = Record.objects.filter(genre=genre, hidden=False).order_by(
         order_field_records
     )
     paginator = Paginator(records, 16)
@@ -396,7 +399,8 @@ def all_records_view(request):
     sort_by_records = request.GET.get('sort_record', 'title')
     order_field_records = SORT_OPTIONS_RECORDS.get(sort_by_records, 'title')
 
-    records = Record.objects.all().order_by(order_field_records)
+    records = Record.objects.all().filter(
+        hidden=False).order_by(order_field_records)
     paginator = Paginator(records, 16)
     page_number = request.GET.get('page')
     records_results = paginator.get_page(page_number)
@@ -413,7 +417,8 @@ def latest_releases_view(request):
     """
     View for browsing the 16 latest releases.
     """
-    records = Record.objects.all().order_by('-created_at')[:16]
+    records = Record.objects.all().filter(
+        hidden=False).order_by('-created_at')[:16]
 
     context = {
         'records': records,
