@@ -115,6 +115,9 @@ class RecordImage(models.Model):
     image_type = models.CharField(
         max_length=50, choices=IMAGE_TYPES, default='Front Cover')
 
+    def __str__(self):
+        return f'{self.image_type} image for {self.record}'
+
 
 class Review(models.Model):
     RATING_CHOICES = [
