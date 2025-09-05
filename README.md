@@ -127,6 +127,16 @@ Users are able to search for records or artists using the search bar at the top 
 Users can browse individual record detail pages, which contains images for the record, allows them to add records to the basket, and shows reviews for the record if they exist. The user receives a toast if they add the record to their cart, and their cart in the top right of the site updates with the current item count. Users can also click the eye icon next to the artist name to view the artist page, and the genre badges to browse by that genre.
 
 ## Reviewing Records
+![Reviewing Records](/documentation/images/feature-images/reviewing-records.gif)
+
+Users who have purchased records - and those records have been delivered - can leave reviews for the records and service they've received. These reviews need to be approved by an administrator before being visible to the public.
+
+The reviews are aggregated and count towards the records average rating based on the review ratings on each review.
+
+## Deleting Reviews
+![Deleting Reviews](/documentation/images/feature-images/deleting-reviews.gif)
+
+Reviews can also be deleted by the user, if they wish to write a different review. Reviews are not currently editable, as I do not foresee a user's review needing to change after being posted.
 
 ## Adding Records
 
@@ -137,26 +147,55 @@ Users can browse individual record detail pages, which contains images for the r
 As part of the lengthy process of populating the records, I made use of the Discogs API to populate artist photos and record inforamtion. While this isn't accessible on the front-end side of things, back-end administrators will likely find this useful.
 
 ## Form Verification
+![Form Validation](/documentation/images/feature-images/form-validation.gif)
+
+All forms that the user is exposed to are validated to ensure that any necessary information is provided.
 
 ## Editing Records
+![Editing Records](/documentation/images/feature-images/editing-records.gif)
+
+Records can be edited by staff users from the record detail page, allowing for changes to be immediately seen by editors and users.
 
 ## Deleting Records
 
 ## Artist Details
+![Artist Details](/documentation/images/feature-images/artist-details.gif)
+
+Each artist also has a debut page with a short bio, as well as the genres their music covers and their available records.
 
 ## Adding Artists
 
 ## Editing Artists
+![Editing Artists](/documentation/images/feature-images/editing-artists.gif)
+
+Artist information and profile photos can be changed by staff to reflect any changes in details.
 
 ## Deleting Artists
 
 ## Shopping Basket
+![Shopping Basket](/documentation/images/feature-images/shopping-basket.gif)
+
+The user has access to a shopping basket when adding records, which shows the records in the basket, costs, features automatically updating pricing based on quantities, and also shows users suggestions on records if their basket is empty.
 
 ## Checkout
+![Checkout Process](/documentation/images/feature-images/checkout.gif)
+
+The checkout process includes payment processed by Stripe, and provides the user with an order confirmation as well as an email copy of their order.
+
+## Selecting Addresses for Authenticated Users
+![Selecting Addresses](/documentation/images/feature-images/selecting-addresses.gif)
+
+Authenticated users can select from their delivery addresses, but they can also add a new address and then save this to their preferred addresses for an expediated checkout process.
 
 ## Record Analytics
+![Record Analytics](/documentation/images/feature-images/record-analytics.gif)
+
+Staff have access to the record analytics page for the site, whcih contains information about the most popular sales, low stock of records, and a graph of weekly sales.
 
 ## Order Confirmation
+![Order Confirmation](/documentation/images/feature-images/order-confirmation.gif)
+
+As well as receiving an email confirmation, authenticated users can view their order history on their profile.
 
 ## Account Registration and Login
 ![Account Registration](/documentation/images/feature-images/account-registration.gif)
