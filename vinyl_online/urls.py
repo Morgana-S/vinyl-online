@@ -28,6 +28,10 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('basket/', include('basket.urls')),
     path('sitemap.xml',
-         RedirectView.as_view(url='/static/sitemap/sitemap.xml'),
-         name='sitemap')
+         RedirectView.as_view(url='/static/sitemap.xml'),
+         name='sitemap'),
+    path('robots.txt',
+         RedirectView.as_view(url='/static/robots.txt'),
+         name='robots')
+
 ]
