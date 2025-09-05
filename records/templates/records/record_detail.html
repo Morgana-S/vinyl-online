@@ -94,9 +94,6 @@
         </div>
         {% else %}
         <p class="text-white text-center">Nobody has left a review for this record yet.</p>
-        {% if is_reviewable and not has_reviewed %}
-        <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
-        {% endif %}
         {% endif %}
     </div>
 </div>
