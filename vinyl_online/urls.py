@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('', include('records.urls'), name='records-urls'),
@@ -26,4 +27,7 @@ urlpatterns = [
     path('community/', include('community.urls')),
     path('checkout/', include('checkout.urls')),
     path('basket/', include('basket.urls')),
+    path('sitemap.xml',
+         RedirectView.as_view(url='/static/sitemap/sitemap.xml'),
+         name='sitemap')
 ]
