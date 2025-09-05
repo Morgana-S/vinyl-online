@@ -229,6 +229,8 @@ The review model is the core of user interactivity with the records that they pu
 
 Record ratings are rendered into FontAwesome star icons to allow for reviews on the record page to have a pleasing visual style.
 
+## Community App
+
 ### UserProfile Model
 
 Allowing users to add their personal information to their profile makes for a smoother checkout process. Containing information that relates to the user model, the user's name, contact phone number, and contact email, this also allows the user to specify a different email or phone number on an order than the email address that's related to their account.
@@ -246,6 +248,8 @@ This is the primary model for creating support tickets. I decided to use a UUID 
 ### NewsletterSubscriber Model
 
 Users are also able to subscribe to the newsletter with a limited subscriber model, which can take an existing user, a name, and an email. This model is very rudimentary, but can be expanded upon to include user preferences for contact. I've touched on newsletter implementation in the future improvements section below.
+
+## Checkout App
 
 ### Order Model
 
