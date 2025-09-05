@@ -11,7 +11,8 @@ urlpatterns = [
     path('add-review/<slug:record_slug>/',
          views.add_review_view,
          name='add_review'),
-     path('delete-review/<int:review_id>/',
-          views.delete_review_view, 
-          name='delete_review')
+    path('delete-review/<int:review_id>/',
+         views.delete_review_view,
+         name='delete_review'),
+    path('privacy-policy/', views.privacy_policy_view, name='privacy_policy')
 ]

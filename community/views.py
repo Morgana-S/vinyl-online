@@ -255,3 +255,10 @@ def delete_review_view(request, review_id):
             messages.error(request, 'You can not delete this review as you '
                            'are not the author.')
             return redirect('record_detail', record_slug=record.slug)
+
+
+def privacy_policy_view(request):
+    """
+    View for the privacy policy page.
+    """
+    return render(request, 'community/privacy_policy.html')
