@@ -133,8 +133,7 @@ def record_detail_view(request, record_slug):
     View for individual record pages. Obtains information from the record
     instance in the database and populates it.
     """
-    queryset = Record.objects.all()
-    record = get_object_or_404(queryset, slug=record_slug)
+    record = get_object_or_404(Record, slug=record_slug)
     reviews = Review.objects.all().filter(record=record, is_approved=True)
 
     if request.user.is_authenticated:
