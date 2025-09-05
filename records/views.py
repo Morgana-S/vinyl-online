@@ -178,7 +178,7 @@ def add_record_view(request):
             if form.is_valid() and formset.is_valid():
                 record = form.save(commit=False)
                 record.save()
-                formset.record = record
+                formset.instance = record
                 formset.save()
                 messages.success(request, 'New record has been created and '
                                  'images attached.')
