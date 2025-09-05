@@ -136,9 +136,11 @@ def record_detail_view(request, record_slug):
     queryset = Record.objects.all()
     record = get_object_or_404(queryset, slug=record_slug)
     reviews = Review.objects.all().filter(record=record, is_approved=True)
+
     if request.user.is_authenticated:
         is_reviewable = Order.objects.filter(
-            user=request.user, items__record=record).exists()
+            user=request.user, items__record=record,
+            status='delivered').exists()
         has_reviewed = Review.objects.filter(
             author=request.user, record=record).exists()
     else:
