@@ -210,6 +210,15 @@ For details of automated and manual tests, bugs, and code validation, please see
 
 # Potential Future Improvements
 
+## Internationalization
+
+At present, the site is very UK-Centric; it only takes UK phone numbers and only provides prices in GBP. A future improvement would be to expand on the delivery address system to allow for countries that are not the UK, pricing that is internationalized, etc.
+
+## Newsletter Implementation
+
+As of writing, there is a way to subscribe to the newsletter via the site, but no actual implementation of a newsletter. Further implementation could involve actually sending out monthly newsletters with discount codes, concert ticket giveaways, etc.
+
+
 # Deployment
 
 # Credits & Technology
