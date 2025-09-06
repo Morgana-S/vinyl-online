@@ -108,11 +108,11 @@
         <!-- Review Pagination Controls -->
         <div id="pagination-reviews" class="text-center text-white mt-4">
             {% if reviews_page.has_previous %}
-            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Previous Reviews Page" class="text-decoration-none text-white fw-bold">⟪</a>
+            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Previous Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
             {% endif%}
             <span>{{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}</span>
             {% if reviews_page.has_next %}
-            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Next Reviews Page" class="text-decoration-none text-white fw-bold">⟫</a>
+            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Next Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
             {% endif %}
         </div>
         {% else %}

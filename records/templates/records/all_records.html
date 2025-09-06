@@ -33,11 +33,11 @@
 <!-- Records Pagination -->
 <div id="pagination-records" class="text-center text-white mb-4">
     {% if records_results.has_previous %}
-    <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold">⟪</a>
+    <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
     {% endif%}
     <span>{{ records_results.number }} of {{ records_results.paginator.num_pages }}</span>
     {% if records_results.has_next %}
-    <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold">⟫</a>
+    <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
     {% endif %}
 </div>
 {% else %}
