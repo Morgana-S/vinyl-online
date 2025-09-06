@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.contrib import messages
-from django.core.mail import send_mail
-from django.utils.html import strip_tags
-from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.urls import reverse
+from checkout.models import Order
 from .forms import SupportTicketForm, NewsletterSubscriptionForm, ReviewForm
 from .models import SupportTicket
 from records.models import Record, Review
-from checkout.models import Order, OrderItem
 # Create your views here.
 
 
