@@ -119,6 +119,10 @@ footer .nav-link:hover {
 
 /* Record Detail Page Rules ------------------------------------------------- */
 
+#record-thumbnails {
+	flex-wrap: wrap;
+}
+
 #record-description p,
 #record-description li,
 #record-description ol,
@@ -132,6 +136,7 @@ footer .nav-link:hover {
 
 .clickable {
 	max-width: 80px;
+	flex-shrink: 1;
 }
 
 .clickable:hover {
