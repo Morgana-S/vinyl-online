@@ -1,6 +1,6 @@
-from .models import Order
-from profiles.models import DeliveryAddress
 from django import forms
+from profiles.models import DeliveryAddress
+from .models import Order
 
 
 class CheckoutForm(forms.ModelForm):

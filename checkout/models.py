@@ -1,12 +1,12 @@
-import uuid
-from django.db.models import Sum
+from decimal import Decimal
 from django.conf import settings
-from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+from django.db.models import Sum
 from phonenumber_field.modelfields import PhoneNumberField
 from records.models import Record
-from decimal import Decimal
+import uuid
 # Create your models here.
 
 
