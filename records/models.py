@@ -1,11 +1,13 @@
-from django.contrib.auth.models import User
-from django.db import models
-from django.core.validators import (MinLengthValidator,
-                                    MinValueValidator, MaxValueValidator)
-from django.utils.safestring import mark_safe
-from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 from colorfield.fields import ColorField
+from django.contrib.auth.models import User
+from django.core.validators import (MinLengthValidator,
+                                    MinValueValidator, MaxValueValidator)
+from django.db import models
+from django.utils.safestring import mark_safe
+from django.utils.text import slugify
+
+
 # Create your models here.
 
 
