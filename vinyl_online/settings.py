@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from decimal import Decimal
 from pathlib import Path
 import os
 import sys
 import dj_database_url
-from decimal import Decimal
+
 
 if os.path.isfile('env.py'):
     import env

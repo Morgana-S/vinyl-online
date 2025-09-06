@@ -20,18 +20,17 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('', include('records.urls'), name='records-urls'),
-    path('profile/', include('profiles.urls'), name='profiles-urls'),
-    path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
-    path('community/', include('community.urls')),
-    path('checkout/', include('checkout.urls')),
+    path('admin/', admin.site.urls),
     path('basket/', include('basket.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('community/', include('community.urls')),
+    path('profile/', include('profiles.urls'), name='profiles-urls'),
     path('sitemap.xml',
          RedirectView.as_view(url='/static/sitemap.xml'),
          name='sitemap'),
+    path('summernote/', include('django_summernote.urls')),
     path('robots.txt',
          RedirectView.as_view(url='/static/robots.txt'),
          name='robots')
-
 ]
