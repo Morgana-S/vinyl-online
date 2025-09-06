@@ -79,6 +79,8 @@ Each of these themes was then broken down into one or more Epics - these Epics w
 
 #### User Stories
 
+--- 
+
 As a **site user**, I can **search for records using a variety of terms** so I can **find the exact record I'm looking for**.
 
 **Acceptance Criteria**
