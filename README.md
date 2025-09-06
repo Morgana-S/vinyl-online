@@ -64,7 +64,7 @@ This diagram helped me with mapping out the website into **Themes, Epics, and Us
 
 ## Themes
 
-Themes within the pathway are expressed as general categories for what exactly the user is doing - Navigaton, Authentication, Engagement and Checkout.
+Themes within the pathway are expressed as general categories for what exactly the user is doing - Navigation, Authentication, Engagement and Checkout.
 
 ## Epics
 
