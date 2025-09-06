@@ -450,6 +450,29 @@ The project can also be deployed locally. To do so, please follow these instruct
 
 ## Tools
 
+- [RealFaviconGenerator](https://realfavicongenerator.net/) - Resizing images for use in the site favicon.
+
+- [Cloudinary](https://cloudinary.com/) - Cloud based asset hosting for record/artist images.
+
+- [VS Code](https://code.visualstudio.com/) - My IDE for the project.
+
+- [Python](https://www.python.org/) - Main language utilised in application settings and backend development.
+
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5) - Basic HTML page structure, enhanced with Django Template Language
+
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Custom page styling, when required outside of the classes provided by Bootstrap
+
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Interactive functionality for pages, when required outside of the classes provided by Bootstrap
+
+- [Heroku](https://www.heroku.com/) - Project deployment and site hosting
+
+- [Git](https://git-scm.com/) - Version control system
+
+- [GitHub](https://github.com/) - Project Repo hosting
+
+- [Stripe](https://stripe.com/gb) - Payment processing
+
+- [Licecap](https://www.cockos.com/licecap/) - Screen recording software for GIFs for feature images.
 
 ## Frameworks
 
@@ -461,15 +484,78 @@ The project can also be deployed locally. To do so, please follow these instruct
 
 ### Third Party
 
+- [django-allauth](https://docs.allauth.org/en/latest/) - Integrated authentication applications that assist with registration and management of user accounts.
+
+- [dj-database-url](https://pypi.org/project/dj-database-url/) - Django utility for interfacing with databases.
+
+- [cloudinary](https://pypi.org/project/cloudinary/) - Python/Cloudinary integration
+
+- [django-colorfield](https://pypi.org/project/django-colorfield/) - Color field for models in django projects
+
+- [django-summernote](https://pypi.org/project/django-summernote/) - Django-integrated text editor for django text fields
+
+- [whitenoise](https://whitenoise.readthedocs.io/en/stable/django.html) - Allows deployment of static files to django projects when hosted on heroku via WSGI.
+
+- [gunicorn](https://gunicorn.org/) - Python WSGI HTTP server for hosting on Heroku.
+
+- [psycopg2](https://pypi.org/project/psycopg2/) - PostgreSQL adapter for use with Python
+
+- [coverage.py](https://coverage.readthedocs.io/en/7.10.6/) - Test Execution Report Provider
+
+- [django-phonenumber-field](https://django-phonenumber-field.readthedocs.io/en/latest/) - Library that interfaces with python-phonenumbers to validate and convert phone numbers.
+
+- [stripe](https://pypi.org/project/stripe/) - Python library for Stripe's API
+
 ### Python
+
+- [Decimal](https://docs.python.org/3/library/decimal.html) - Decimal module to fix floating point errors with floats
+
+- [Pathlib](https://docs.python.org/3/library/pathlib.html) - Object-oriented filesystem paths
+
+- [os](https://docs.python.org/3/library/os.html#module-os) - Misc Operating System interfaces
+
+- [sys](https://docs.python.org/3/library/sys.html#module-sys) - System specific parameters and functions
+
+- [unittest](https://docs.python.org/3/library/unittest.html) Library for performing unit testing.
+
+- [json](https://docs.python.org/3/library/json.html) - JSON encoding and decoding
 
 ### Django
 
-### Summernote
+- [Django.contrib.admin](https://docs.djangoproject.com/en/5.2/ref/contrib/admin/) - Django Admin Site
 
-### Cloudinary
+- [Django.urls path, include](https://docs.djangoproject.com/en/5.2/ref/urls/) - Django url functions for url routing
 
-### DjangoPhoneNumber
+- [Django.views.generic RedirectView](https://docs.djangoproject.com/en/5.2/ref/class-based-views/base/#redirectview) - View for redirecting links to sitemap and robots.txt
+
+- [Django.contrib.auth](https://docs.djangoproject.com/en/5.2/ref/contrib/auth/) - Base user model for authentication
+
+- [Django.core.validators](https://docs.djangoproject.com/en/5.2/ref/validators/) Min/Max length validators, value validators
+
+- [Django.db](https://docs.djangoproject.com/en/5.2/ref/databases/) - Models for db, views
+
+- [Django.utils.safestring](https://docs.djangoproject.com/en/5.2/howto/custom-template-tags/#filters-and-auto-escaping) - String escapement
+
+- [Django.utils.text slugify](https://docs.djangoproject.com/en/5.2/ref/utils/#django.utils.text.slugify) - Automatic slug generation for models
+
+- [Django forms](https://docs.djangoproject.com/en/5.2/topics/forms/) - Form functionality for django projects
+
+- [Django.contrib.auth.decorators](https://docs.djangoproject.com/en/4.2/_modules/django/contrib/auth/decorators/) - Decorations for @login_required
+
+- [Django Messages](https://docs.djangoproject.com/en/5.2/ref/contrib/messages/) - Notification messages when an action has been completed e.g logout or login
+
+- [Django shortcuts](https://docs.djangoproject.com/en/5.2/topics/http/shortcuts/) - Shortcuts for rendering templates, redirects, get_object_or_404s, etc.
+
+- [Django Mail](https://docs.djangoproject.com/en/5.2/topics/email/) - Functionality for sending emails.
+
+- [Django.urls reverse](https://docs.djangoproject.com/en/5.2/ref/urlresolvers/#reverse) - Creates absolute paths for a given view.
+
+- [Django.template.loader render_to_string](https://docs.djangoproject.com/fr/4.2/topics/templates/#django.template.loader.render_to_string) - Renders a template to a string allowing generation of html content.
+
+- [Django.utils.html strip_tags](https://docs.djangoproject.com/en/5.2/ref/utils/) - Strips tags from templates for plaintext emails
+
+- [Django JSONResponse](https://docs.djangoproject.com/en/5.2/ref/request-response/#jsonresponse-objects) - Returns a response object as JSON, used for async views
+
 
 ## Visual Assets
 
@@ -483,6 +569,8 @@ The project can also be deployed locally. To do so, please follow these instruct
 - [Discogs](https://www.discogs.com/) - without Discogs and their [API](https://www.discogs.com/developers), obtaining the sheer amount of information about vinyl records present on this site would have been a much more arduous task. I have used Discogs API to simulate "warehouse stock" databases in this case; pulling from information from their API to simulate the inventory an e-commerce site would have.
 
 - [Termsfeed Privacy Policy Generator](https://www.termsfeed.com/privacy-policy-generator/) - Privacy Policy generation.
+
+- [xml-sitemaps.com](https://www.xml-sitemaps.com/) - Sitemap.xml generation.
 
 ## Special Thanks
 - Thanks to [Code Institute](https://codeinstitute.net/) for tutorials and guidance in the development of this project.
