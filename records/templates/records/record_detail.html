@@ -9,7 +9,7 @@
             <!-- Thumbnail Gallery -->
             <div id="record-thumbnails" class="d-flex flex-row flex-md-column gap-2 mt-2 mb-2 mt-md-0 justify-content-between justify-content-md-start">
                 {% for image in record.images.all %}
-                <img src="{{ image.image.url }}" alt="{{ record.title }} - {{image.image_type}} Image" class="record-thumbnail rounded clickable">
+                <img src="{{ image.image.url }}" alt="{{ record.title }} - {{image.image_type}} Image" class="rounded clickable">
                 {% endfor %}
             </div>
             <div class="flex-grow-1">
