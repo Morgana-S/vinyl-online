@@ -9,148 +9,718 @@
 
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/basket/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/accounts/signup/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/accounts/login/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/latest-releases/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/rock/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/pop/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/hip-hop/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/jazz/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/blues/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/folk-world-country/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/electronic/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/reggae/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/classical/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/funk-soul/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/metal/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/punk/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/rb/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/frank-sinatra/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/man-alive/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/concerto-no-1-in-e-minor-op-11/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/chant-down-babylon/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/remixed/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/bob-marley/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/chances-are/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/my-love-is-your-love/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/chromatica/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/get-to-heaven/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/thriller/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/like-a-virgin/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/community/support/contact/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/community/privacy-policy/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/community/who-we-are/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/community/newsletter/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/accounts/password/reset/</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/mountainhead/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/starboy/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-wild-the-innocent-the-e-street-shuffle/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/re-animator/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/madonna/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/1989/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/a-day-at-the-races/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/a-fever-dream/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/a-hard-days-night/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/a-night-at-the-opera/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/achtung-baby/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/after-hours/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/another-side-of-bob-dylan/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/arc/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/around-and-around/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/artpop/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/bad/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/bob-dylan/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/born-in-the-usa/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/born-to-run/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=2&amp;sort_record=</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/even-in-arcadia/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/take-me-back-to-eden/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/this-place-will-become-your-tomb/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-beatles-story/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/please-please-me/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/with-the-beatles/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/off-the-wall/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/forever-michael/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/boy/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/bringing-it-all-back-home/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/david-bowie/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/diamond-dogs/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/elton-john/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/elvis/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/rock/?records_page=2&amp;sort_record=</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/christmas-songs-by-sinatra/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/dawn-fm/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/dedicated-to-you/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/fearless-platinum-edition/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/frankly-sentimental/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/joanne/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/pop/?records_page=2&amp;sort_record=</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/songs-for-young-lovers/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-jazz-soul-of-little-stevie/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-rolling-stones/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-times-they-are-a-changin/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/red/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/speak-now/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-freewheelin-bob-dylan/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-tortured-poets-department/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/im-your-baby-tonight/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/like-a-prayer/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/raw-data-feel/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/genre/electronic/?records_page=2&amp;sort_record=</loc>
-  <lastmod>2025-09-05T10:10:57+00:00</lastmod>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/for-once-in-my-life/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/innervisions/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/where-im-coming-from/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/everything-everything/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/frederic-chopin/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/bob-marley/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/whitney-houston/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/lady-gaga/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/michael-jackson/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/madonna/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/the-weeknd/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/bruce-springsteen/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/taylor-swift/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/queen/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/the-beatles/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/u2/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/bob-dylan/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/the-rolling-stones/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/empty-sky/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=1&amp;sort_record=</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=3&amp;sort_record=</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/sleep-token/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/david-bowie/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/elton-john/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/elvis-presley/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/stevie-wonder/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/whitney-houston/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/whitney/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-fame-monster/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-fame/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/you-can-dance/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/greetings-from-asbury-park-nj/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/queen-ii/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/queen/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/sheer-heart-attack/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-unforgettable-fire/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-joshua-tree/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/zooropa/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/no-2/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/out-of-our-heads/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/hunky-dory/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/jailhouse-rock/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/led-zeppelin/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/led-zeppelin-ii/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/led-zeppelin-iii/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/loving-you/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=4&amp;sort_record=</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/the-man-who-sold-the-world/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/tumbleweed-connection/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/madman-across-the-water/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/rock-n-roll/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/artist/led-zeppelin/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/record/presence/</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=5&amp;sort_record=</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://vinyl-online-d54f03c987e4.herokuapp.com/all-records/?records_page=6&amp;sort_record=</loc>
+  <lastmod>2025-09-06T11:27:57+00:00</lastmod>
+  <priority>0.26</priority>
 </url>
 
 
