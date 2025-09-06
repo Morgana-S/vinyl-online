@@ -6,6 +6,7 @@ from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from .forms import CheckoutForm
 from .models import Order, OrderItem
 from records.models import Record
@@ -169,3 +170,17 @@ def order_confirmation_view(request, order_uuid):
     }
 
     return render(request, 'checkout/order_confirmation.html', context)
+
+
+@login_required
+def full_order_history_view(request):
+    """
+    View for rendering all user orders.
+    """
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+
+    context = {
+        'orders': orders
+    }
+
+    return render(request, 'checkout/order_history.html', context)
