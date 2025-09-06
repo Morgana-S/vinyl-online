@@ -144,7 +144,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <p><a class="text-white" href="#">View All Support Tickets</a></p>
+            <p><a class="text-white" href="{% url 'support_ticket_history' %}">View All Support Tickets</a></p>
             {% else %}
             <p class="text-white">You do not currently have any support tickets.</p>
             {% endif %}
