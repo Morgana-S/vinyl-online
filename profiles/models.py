@@ -1,9 +1,8 @@
-import uuid
-from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
+from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+import uuid
 # Create your models here.
 
 

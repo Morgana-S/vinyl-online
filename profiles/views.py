@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from community.models import SupportTicket
-from .models import UserProfile, DeliveryAddress
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from checkout.models import Order
+from community.models import SupportTicket
 from .forms import UserProfileForm, DeliveryAddressForm
+from .models import UserProfile, DeliveryAddress
+
 # Create your views here.
 
 

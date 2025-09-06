@@ -1,6 +1,5 @@
 from django import forms
 from .models import UserProfile, DeliveryAddress
-from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import RegionalPhoneNumberWidget
 
 
@@ -27,7 +26,8 @@ class UserProfileForm(forms.ModelForm):
         self.fields['contact_phone_number'].required = True
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-        self.fields['contact_phone_number'].widget = RegionalPhoneNumberWidget()
+        self.fields['contact_phone_number'].widget = (
+            RegionalPhoneNumberWidget())
 
 
 class DeliveryAddressForm(forms.ModelForm):
