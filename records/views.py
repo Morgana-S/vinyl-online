@@ -18,9 +18,6 @@ def index_view(request):
     View for the index page. Obtains information about the latest releases and
     a specific category of music (currently Pop) and returns the top 5 rated
     albums.
-
-    TODO: Add community ratings to records so that the ratings can be sorted
-    and a featured genre section added according to popularity.
     """
     latest_releases = Record.objects.filter(
         hidden=False).order_by('-created_at')[:5]
