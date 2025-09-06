@@ -21,9 +21,10 @@ def user_profile_view(request):
         profile = None
 
     addresses = DeliveryAddress.objects.filter(user=request.user)
-    support_tickets = SupportTicket.objects.filter(user=request.user)
+    support_tickets = SupportTicket.objects.filter(
+        user=request.user).order_by('-created_at')[:10]
     order_history = Order.objects.filter(
-        user=request.user).order_by('-created_at')
+        user=request.user).order_by('-created_at')[:10]
 
     context = {
         'profile': profile,
