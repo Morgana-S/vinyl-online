@@ -33,6 +33,7 @@ class SupportTicket(models.Model):
         help_text='Please let us know how we can help you.')
     status = models.CharField(
         max_length=10, choices=STATUS_CATEGORIES, default='open')
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class NewsletterSubscriber(models.Model):
