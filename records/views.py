@@ -6,13 +6,10 @@ from django.db.models import Q, Avg, Sum, F
 from django.db.models.functions import TruncWeek
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils.timezone import now, timedelta
 from checkout.models import Order, OrderItem
 from .forms import RecordForm, RecordImageFormSet, ArtistForm
 from .models import Record, Artist, Genre, Review
 import json
-
-
 # Create your views here.
 
 
