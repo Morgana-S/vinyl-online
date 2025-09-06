@@ -377,6 +377,10 @@ As of writing, there is a way to subscribe to the newsletter via the site, but n
 At the moment record discovery is very rudimentary, due to the limited number of records on the site. With the addition of more records, it would also be possible to add better record discovery,
 including discovery based on user tastes, past orders, etc.
 
+## Genre Ordering and Content Limitations
+
+Due to heavy use of the Discogs API for content, a lot of the genres and record characteristics need to be in-line with how Discogs describes records and genres. This has led to some somewhat puzzling choices in my personal opinion, such as the grouping of Country, World and Folk music together - 3 genres that have distinctly seperate sounds. A content database which does not necessarily conform to these limitations would give the users a better experience when navigating the site.
+
 
 # Deployment
 
