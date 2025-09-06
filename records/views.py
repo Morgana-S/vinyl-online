@@ -403,7 +403,7 @@ def all_records_view(request):
     records = Record.objects.all().filter(
         hidden=False).order_by(order_field_records)
     paginator = Paginator(records, 16)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get('records_page')
     records_results = paginator.get_page(page_number)
 
     context = {
