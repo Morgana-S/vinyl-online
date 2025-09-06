@@ -116,6 +116,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <p><a class="text-white" href="{% url 'order_history' %}">View Full Order History</a></p>
+            {% else %}
+            <p class="text-white">You do not currently have any orders.</p>
             {% endif %}
         </div>
         <div class="col-12 col-md-6">
@@ -141,6 +144,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <p><a class="text-white" href="#">View All Support Tickets</a></p>
+            {% else %}
+            <p class="text-white">You do not currently have any support tickets.</p>
             {% endif %}
             <a class="btn btn-success mb-2" data-bs-toggle="tooltip" title="Create New Support Ticket" href="{% url 'create_support_ticket' %}"><i class="fa-solid fa-plus text-white"></i></a>
         </div>
