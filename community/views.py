@@ -108,6 +108,20 @@ def ticket_detail_view(request, pk):
     return render(request, 'community/ticket_detail.html', context)
 
 
+def support_ticket_history_view(request):
+    """
+    View for seeing all support tickets created by the user.
+    """
+    support_tickets = SupportTicket.objects.filter(
+        user=request.user).order_by('-created_at')
+
+    context = {
+        'support_tickets': support_tickets
+    }
+
+    return render(request, 'community/support_ticket_history.html', context)
+
+
 def about_page_view(request):
     """
     View for the 'Who we are' page.
