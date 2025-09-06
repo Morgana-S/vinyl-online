@@ -170,6 +170,9 @@ Staff users can also delete records from the record detail page.
 Each artist also has a debut page with a short bio, as well as the genres their music covers and their available records.
 
 ## Adding Artists
+![Adding Artists](/documentation/images/feature-images/adding-artists.gif)
+
+Artists can be added to the site on the front end with a simple form.
 
 ## Editing Artists
 ![Editing Artists](/documentation/images/feature-images/editing-artists.gif)
@@ -177,6 +180,9 @@ Each artist also has a debut page with a short bio, as well as the genres their 
 Artist information and profile photos can be changed by staff to reflect any changes in details.
 
 ## Deleting Artists
+![Deleting Artists](/documentation/images/feature-images/deleting-artists.gif)
+
+Artists can also be deleted from their Artist Detail page.
 
 ## Shopping Basket
 ![Shopping Basket](/documentation/images/feature-images/shopping-basket.gif)
