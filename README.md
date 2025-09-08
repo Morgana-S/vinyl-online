@@ -391,6 +391,10 @@ including discovery based on user tastes, past orders, etc.
 
 Due to heavy use of the Discogs API for content, a lot of the genres and record characteristics need to be in-line with how Discogs describes records and genres. This has led to some somewhat puzzling choices in my personal opinion, such as the grouping of Country, World and Folk music together - 3 genres that have distinctly seperate sounds. A content database which does not necessarily conform to these limitations would give the users a better experience when navigating the site.
 
+## Address Storage and scalability
+
+While it is technically possible for authenticated users to store as many addresses as they want, past 4 or so stored addresses, the profile page starts to look unwieldy. It may be worth implementing a mass address storage system for when users store 5 or more addresses, such as using a table; as most consumers will likely not store more than 2 or 3, this can be overlooked for now.
+
 
 # Deployment
 
