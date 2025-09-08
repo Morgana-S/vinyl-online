@@ -15,6 +15,22 @@ def user_profile_view(request):
     View for viewing user profiles. Contains information on the user's
     contact info, order history, and provides a dashboard to contact support
     or access various features useful to the user.
+
+    **Context**
+    ``profile``
+        The user's UserProfile object.
+
+    ``addresses``
+        All DeliveryAddress instances relating to the user.
+
+    ``support_tickets``
+        Latest 10 SupportTicket instances relating to the user.
+
+    ``order_history``
+        Latest 10 orders relating to the user.
+
+    **Template**
+    :template:`profiles/profile.html`
     """
     try:
         profile = UserProfile.objects.get(user=request.user)
@@ -42,6 +58,16 @@ def create_edit_profile_view(request):
     """
     View for creating or editing a user profile's personal info.
     Contains a form that the user fills with relevant personal information.
+
+    **Context**
+    ``profile``
+        The User's UserProfile instance.
+
+    ``form``
+        The form used to add/edit user profile details.
+
+    **Template**
+    :template:`profiles/create_edit_profile.html`
     """
     profile, created = UserProfile.objects.get_or_create(user=request.user)
 
@@ -68,6 +94,13 @@ def create_delivery_address_view(request):
     """
     View for creating a delivery address. Contains a form that the user
     fills with relevant address information.
+
+    **Context**
+    ``form``
+        The form used to add delivery addresses.
+
+    **Template**
+    :template:`profiles/create_delivery_address.html`
     """
     if request.method == 'POST':
         form = DeliveryAddressForm(request.POST)
@@ -92,6 +125,13 @@ def edit_delivery_address_view(request, pk):
     """
     View for editing existing delivery addresses. Uses the same form
     as the create_delivery_address view above.
+
+    **Context**
+    ``form``
+        The form used to edit delivery addresses.
+
+    **Template**
+    :template:`profiles/edit_delivery_address.html`
     """
     address = get_object_or_404(DeliveryAddress, pk=pk, user=request.user)
     if request.method == 'POST':
@@ -113,7 +153,8 @@ def edit_delivery_address_view(request, pk):
 @login_required
 def delete_delivery_address_view(request, pk):
     """
-    View for deleting delivery addresses.
+    View for deleting delivery addresses. Listens for a POST request from
+    the user and subsequently deletes the address.
     """
     address = get_object_or_404(DeliveryAddress, pk=pk, user=request.user)
 
