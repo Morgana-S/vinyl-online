@@ -10,6 +10,14 @@ def view_basket(request):
     View for viewing the total items in the shopping basket. Uses global
     contexts to render the majority of the view, except the suggested
     records.
+
+    **Context**
+    ``suggested_records``
+        A random assortment of five records. Later implementation could
+        use past user purchases to populate this.
+
+    **Template**
+    :template:`basket/view_basket.html`
     """
     suggested_records = Record.objects.order_by('?')[:5]
 
@@ -24,6 +32,17 @@ def add_to_basket_async_view(request):
     """
     View for adding items to the basket. Utilises AJAX for a smoother user
     experience.
+
+    **Context**
+    ``toast_header``
+        The header for the toast notification.
+
+    ``toast_message``
+        The toast message informing the user the item has been added to the
+        basket.
+
+    ``basket_count``
+        The current number of items in the basket.
     """
     record_id = request.POST.get('record_id')
     quantity = int(request.POST.get('quantity', 1))
@@ -60,7 +79,8 @@ def add_to_basket_async_view(request):
 
 def remove_from_basket_view(request, record_id):
     """
-    View for removing items from the basket.
+    View for removing items from the basket. Takes the requested
+    record id and removes all instances of it from the session basket.
     """
     basket = request.session.get('basket', {})
     record_id_str = str(record_id)
