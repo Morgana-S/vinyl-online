@@ -6,6 +6,14 @@ Vinyl Online is an e-commerce site with a focus on selling vinyl records. Vinyl 
 
 **The deployed version of the site can be accessed [here.](https://vinyl-online-d54f03c987e4.herokuapp.com/)**
 
+# Business Concept
+
+Vinyl Online is a business-to-consumer application that sells physical products; as such, a lot of the commercial processes within the website are centered around the available stock of the records. One of the prominent features of the index page is the indication that Vinyl Online is only available to UK customers; checkout details, such as phone number format, are designed to take UK phone numbers and the prices are currently only displayed in GBP. Internationalization and a wider target audience is something that has been suggested for the future improvements section below.
+
+Another decision I decided to take was to limit purchases of the same record to a maximum of 9 per order - this is to simultaneously prevent customers accidentally ordering an inordinate amount of records, but also to prevent inventory shock; as physical products are the core of the business model, having one person - accidentally or intentionally - order, say, 250 of the same record would be disruptive to business to say the least. I've also limited the maximum value of all purchases to £9,999.99 - again, this is a combination of my assessment of what purchases seem feasible or realistic. Vinyl Online is a small business at present and therefore does not have the capacity to provide services to anyone outside of a consumer environment - purchases of £10,000.00 or more, especially for records, would likely be considered an enterprise purchase and would require additional levels of support that the business is not currently willing to offer. As Vinyl Online's model is about customer and artist-centric business, this would also go against the principles of the company. Money is of course the main goal -- but not while jeopardizing the ability to provide quality service.
+
+Quality service and points of contact are another key factor of the business - there are multiple ways to contact the business, such as via telephone, email, or by creating a support ticket. The about page also goes into detail about how important it is to be able to talk to a human about the order, and highlights the business's call center.
+
 # UI/UX Design
 Following on from my work with [Ourglass](https://github.com/Morgana-S/ourglass), I made this project as user-centric as possible also. The wireframes for this project can be found [here](/documentation/wireframes/vinyl-online-wireframes.pdf), but a brief writeup of my considerations will be provided below.
 
@@ -149,7 +157,7 @@ Staff can add records via the record management section. Filling out a form and 
 ![Fetch Artist Images](/documentation/images/feature-images/fetch-artists.gif)
 ![Fetch Album](/documentation/images/feature-images/fetch-album.gif)
 
-As part of the lengthy process of populating the records, I made use of the Discogs API to populate artist photos and record inforamtion. While this isn't accessible on the front-end side of things, back-end administrators will likely find this useful.
+As part of the lengthy process of populating the records, I made use of the Discogs API to populate artist photos and record information. While this isn't accessible on the front-end side of things, back-end administrators will likely find this useful.
 
 ## Form Verification
 ![Form Validation](/documentation/images/feature-images/form-validation.gif)
