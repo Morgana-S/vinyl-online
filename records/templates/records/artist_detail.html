@@ -36,7 +36,7 @@
             </h3>
             <p>
                 {% for genre in artist.genres %}
-                <a href="{% url 'browse_by_genre' genre.slug %}" class="btn text-black border-0 rounded-pill" style="background-color: {{ genre.color }}"> {{ genre.name }}</a>
+                <a href="{% url 'browse_by_genre' genre.slug %}" class="btn text-black border-0 rounded-pill btn-opacity-hover" style="background-color: {{ genre.color }}"> {{ genre.name }}</a>
                 {% endfor %}
             </p>
         </div>

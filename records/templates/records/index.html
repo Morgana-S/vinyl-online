@@ -45,12 +45,13 @@
     <div class="row text-center text-white">
         {% for record in latest_releases %}
         <div class="col">
-            <a href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
                 <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            </a>
+            
             <p><strong>{{ record.title }}</strong></p>
             <p>{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
+            </a>
         </div>
         {% endfor %}
     </div>
@@ -68,12 +69,13 @@
     <div class="row text-center text-white">
         {% for record in featured_genre_records %}
         <div class="col">
-            <a href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+            <a class="text-decoration-none text-white" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
                 <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            </a>
+            
             <p><strong>{{ record.title }}</strong></p>
             <p>{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
+            </a>
         </div>
         {% endfor %}
     </div>

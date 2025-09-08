@@ -26,10 +26,11 @@
     <div class="row justify-content-center mx-auto">
         {% for artist in artists_results %}
         <div class="col-6 col-md-3 text-center text-white">
-            <a href="{% url 'artist_detail' artist.slug %}">
+            <a class="text-white text-decoration-none link-danger" href="{% url 'artist_detail' artist.slug %}">
                 <img src="{{ artist.image }}" alt="{{ artist.name }}" class="artist-thumbnail">
-            </a>
+            
             <p><strong>{{ artist.name }}</strong></p>
+            </a>
         </div>
         {% endfor %}
     </div>
@@ -66,12 +67,13 @@
     <div class="row justify-content-center mx-auto">
         {% for record in records_results %}
         <div class="col-6 col-md-3 text-center text-white">
-            <a href="{% url 'record_detail' record.slug %}">
+            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
                 <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            </a>
+            
             <p class="mb-0"><strong>{{ record.title }}</strong></p>
             <p class="mb-0">{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
+            </a>
         </div>
         {% endfor %}
     </div>

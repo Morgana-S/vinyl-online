@@ -48,6 +48,10 @@ main {
 	transform: translate(-50%, 50%);
 }
 
+.btn-opacity-hover:hover {
+	opacity: 0.6;
+}
+
 /* base.html Header Rules --------------------------------------------------- */
 
 #brand-logo {
