@@ -395,6 +395,10 @@ Due to heavy use of the Discogs API for content, a lot of the genres and record 
 
 While it is technically possible for authenticated users to store as many addresses as they want, past 4 or so stored addresses, the profile page starts to look unwieldy. It may be worth implementing a mass address storage system for when users store 5 or more addresses, such as using a table; as most consumers will likely not store more than 2 or 3, this can be overlooked for now.
 
+## Poor Standards of Practice when it comes to JavaScript/jQuery use
+
+This project was my first proper foray into jQuery use; as such, some scripts are written using standard JavaScript and some are written using jQuery. Mixing the two is considered bad practice and a future improvement would be to unify all scripts into one or the other, likely jQuery due to its advanced utility.
+
 
 # Deployment
 
@@ -523,6 +527,8 @@ The project can also be deployed locally. To do so, please follow these instruct
 - [django-phonenumber-field](https://django-phonenumber-field.readthedocs.io/en/latest/) - Library that interfaces with python-phonenumbers to validate and convert phone numbers.
 
 - [stripe](https://pypi.org/project/stripe/) - Python library for Stripe's API
+
+- [jQuery](https://jquery.com/) - Library for javascript to assist with DOM traversal and ajax handling
 
 ### Python
 
