@@ -130,6 +130,8 @@ def record_detail_view(request, record_slug):
     """
     record = get_object_or_404(Record, slug=record_slug)
     reviews = Review.objects.all().filter(record=record)
+    approved_reviews = Review.objects.filter(
+        record=record, is_approved=True).exists()
 
     if request.user.is_authenticated:
         is_reviewable = Order.objects.filter(
@@ -151,6 +153,7 @@ def record_detail_view(request, record_slug):
 
     context = {
         'record': record,
+        'approved_reviews': approved_reviews,
         'reviews': reviews,
         'reviews_page': page_obj,
         'is_reviewable': is_reviewable,
