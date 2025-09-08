@@ -10,6 +10,7 @@ from django.urls import reverse
 from decimal import Decimal, ROUND_HALF_UP
 from .forms import CheckoutForm
 from .models import Order, OrderItem
+from profiles.models import DeliveryAddress
 from records.models import Record
 import json
 import stripe
@@ -83,6 +84,7 @@ def checkout_view(request):
             if request.user.is_authenticated:
                 order.user = request.user
                 saved_address = form.cleaned_data.get('saved_address')
+                save_new = form.cleaned_data.get('save_new_address')
                 if saved_address:
                     order.address_line1 = saved_address.address_line1
                     order.address_line2 = saved_address.address_line2
@@ -95,6 +97,15 @@ def checkout_view(request):
                         'address_line2')
                     order.city = form.cleaned_data.get('city')
                     order.postcode = form.cleaned_data.get('postcode')
+                    if save_new:
+                        DeliveryAddress.objects.create(
+                            user=request.user,
+                            label='New Address',
+                            address_line1=order.address_line1,
+                            address_line2=order.address_line2,
+                            city=order.city,
+                            postcode=order.postcode
+                        )
             else:
                 order.address_line1 = form.cleaned_data.get(
                     'address_line1')
