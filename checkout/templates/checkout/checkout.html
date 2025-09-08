@@ -4,7 +4,8 @@
 <div id="checkout" class="container text-center mt-2 mb-5">
     <div class="row">
         <h1 class="text-white category-header">CHECKOUT</h1>
-        <p class="text-white small">All fields with an asterisk next to the label are required.</p>
+        <p class="text-white small mb-0">All fields with an asterisk next to the label are required.</p>
+        <p class="text-white small mt-0"><a class="text-danger" href="{% url 'terms_of_service' %}" aria-label="Click here to view our terms of service" target="_blank">Terms of Service</a> | <a class="text-danger" href="{% url 'return_policy' %}" aria-label="Click here to view our returns policy" target="_blank">Returns Policy</a></p>
     </div>
     <!-- Order Details -->
     <div class="row">
@@ -104,7 +105,7 @@
                     {% else %}
                     <!-- Call to sign up -->
                     <div class="d-flex justify-content-center mb-3">
-                        <p class="small text-white">Tired of filling out your address and contact info? <a class="text-white" href="{% url 'account_signup' %}" aria-label="Click here to sign up for an account.">Sign up here</a>, or <a class="text-white" href="{% url 'account_login' %}" aria-label="Click here to log in to your account.">log in.</a></p>
+                        <p class="small text-white">Tired of filling out your address and contact info? <a class="text-danger" href="{% url 'account_signup' %}" aria-label="Click here to sign up for an account.">Sign up here</a>, or <a class="text-danger" href="{% url 'account_login' %}" aria-label="Click here to log in to your account.">log in.</a></p>
                     </div>
                     {% endif%}
                 </div>
