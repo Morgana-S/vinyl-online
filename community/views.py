@@ -284,6 +284,7 @@ def return_policy_view(request):
     """
     return render(request, 'community/return_policy.html')
 
+
 def terms_of_service_view(request):
     """
     View for the terms of service.
