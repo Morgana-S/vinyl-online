@@ -12,6 +12,17 @@ from django.utils.text import slugify
 
 
 class Artist(models.Model):
+    """
+    Represents an Artist in the store.
+
+    Each artist has a name, slug, image, debut year (optional), and short bio.
+    The slug can be created automatically by leaving blank when creating 
+    a new instance.
+
+    Functions:
+    genres - dynamic property that obtains all of the unique genre objects
+    from the artists records.
+    """
     name = models.CharField(
         max_length=100, validators=[MinLengthValidator(1)], unique=True)
     slug = models.SlugField(max_length=100,
@@ -42,6 +53,12 @@ class Artist(models.Model):
 
 
 class Genre(models.Model):
+    """
+    Represents a genre in the store.
+
+    Each genre has a name, slug, color, and description.
+    Slug will be automatically generated if left blank.
+    """
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(blank=True, unique=True)
     color = ColorField(format='hex')
@@ -57,6 +74,21 @@ class Genre(models.Model):
 
 
 class Record(models.Model):
+    """
+    Represents a Record in the store.
+
+    Each record has a title, slug, artist, release year, genre(s),
+    size, rpm, description, created at date, price, quantity and
+    hidden value.
+    Slugs are created automatically if left blank.
+
+    Functions:
+    get_front_cover - automatically gets the designated front cover image
+    from the RecordImage models associated with this record.
+
+    get_average_rating - Gets the average rating from the review_ratings
+    in this Record's associated reviews.
+    """
     RECORD_SIZES = [('7"', '7 Inch'), ('10"', '10 Inch'), ('12"', '12 Inch')]
     RECORD_RPM = [('33', '33RPM'), ('45', '45RPM'), ('78', '78RPM')]
     title = models.CharField(
@@ -103,6 +135,11 @@ class Record(models.Model):
 
 
 class RecordImage(models.Model):
+    """
+    Represents an instance of an image for a Record in the store.
+
+    Each RecordImage has a record, image, and image_type associated with it.
+    """
     IMAGE_TYPES = [
         ('Front Cover', 'Front Cover'),
         ('Back Cover', 'Back Cover'),
@@ -122,6 +159,18 @@ class RecordImage(models.Model):
 
 
 class Review(models.Model):
+    """
+    Represents a Review for a record.
+
+    Each Review has an author, record, delivery_rating, quality_rating,
+    record_rating, store_feedback, and review_text. Store feedback is private
+    and for store use only, whereas review_text relates to the actual record
+    itself.
+
+    Functions:
+    record/delivery/quality_rating_stars - Converts the numerical record rating
+    to font awesome stars that are rendered visually.
+    """
     RATING_CHOICES = [
         (1, '1 Star'),
         (2, '2 Stars'),

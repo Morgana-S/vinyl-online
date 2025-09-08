@@ -11,6 +11,23 @@ import uuid
 
 
 class Order(models.Model):
+    """
+    Represents an Order in the store.
+
+    Each Order has a unique id PK (for obscurification but also to allow
+    anonymous users to view their order confirmation on the site), optional
+    user, status, full_name, address_line1, address_line2, city, postcode,
+    phone_number, email, subtotal_cost, delivery_cost, grand_total_cost,
+    created_at, and stripe_pid.
+
+    Delivery and contact info is populated from the user's UserProfile and
+    selected DeliveryAddress, if logged in.
+
+    Functions:
+    update_total - Updates the totals each time a line item is added or
+    changed. Uses the signals.py file to recognize when this happens
+    in the user's basket.
+    """
     ORDER_STATUSES = [
         ('processing', 'Processing'),
         ('out for delivery', 'Out for Delivery'),
@@ -64,6 +81,11 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """
+    Represents a line item in the user's order.
+
+    Each OrderItem has an order, record, quantity, and item_total.
+    """
     order = models.ForeignKey(
         Order,
         null=False,

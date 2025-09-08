@@ -5,6 +5,16 @@ import uuid
 
 
 class SupportTicket(models.Model):
+    """
+    Represents a Support Ticket.
+
+    Each Support Ticket has a user (optional), name, email, category,
+    description, status, and created_at.
+
+    Support tickets mostly exist as database objects to be accessed in the
+    admin panel; the admin panel provides good functionality for site admins
+    to address user problems.
+    """
     SUPPORT_CATEGORIES = [
         ('payment', 'Payment Issue'),
         ('delivery', 'Delivery Issue'),
@@ -37,6 +47,13 @@ class SupportTicket(models.Model):
 
 
 class NewsletterSubscriber(models.Model):
+    """
+    Represents a Newsletter Subscriber.
+
+    Each NewsletterSubscriber can have an optional user, name, and email.
+    These can then be called when sending out newsletters if a full
+    newsletter is implemented.
+    """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='newsletter',
         blank=True, null=True

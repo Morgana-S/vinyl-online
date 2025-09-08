@@ -7,6 +7,17 @@ import uuid
 
 
 class UserProfile(models.Model):
+    """
+    Represents a user's personal information in their profile.
+
+    Each UserProfile has a user, first_name, last_nmae, contact_phone_number,
+    and contact_email. Checkout forms will automatically prepopulate with this
+    information if it exists.
+
+    Functions:
+    full_name - converts first + last names to a full_name for use in the
+    checkout form.
+    """
     UUID = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user = models.OneToOneField(
@@ -35,6 +46,12 @@ class UserProfile(models.Model):
 
 
 class DeliveryAddress(models.Model):
+    """
+    Represents an instance of a user's delivery address.
+
+    Each DeliveryAddress has a user, label, address_line1, address_line2,
+    city, and postcode. address_line2 and city are optional.
+    """
     UUID = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
