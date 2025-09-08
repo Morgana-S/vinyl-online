@@ -18,6 +18,21 @@ def index_view(request):
     View for the index page. Obtains information about the latest releases and
     a specific category of music (currently Pop) and returns the top 5 rated
     albums.
+
+    **Context**
+    ``latest_releases``
+        The 5 most recently added records to the site.
+
+    ``featured_genre``
+        String representing the currently featured genre.
+
+    ``featured_genre_records``
+        Record objects, filtered by the featured_genre string in their genre
+        category. These records then have their review rating annotated
+        so they can then be sorted by this.
+
+    **Template**
+    :template:`records/index.html`
     """
     latest_releases = Record.objects.filter(
         hidden=False).order_by('-created_at')[:5]
@@ -41,6 +56,25 @@ def search_records_view(request):
     View for searching for records. Obtains the query information from the
     input on the search bar. Then displays both artists and records that match
     the search terms.
+
+    **Context**
+    ``query``
+        The user's search query.
+
+    ``artists``
+        Artist objects with a name that contains the user's search query.
+
+    ``records``
+        Record objects with a name that contains the user's search query.
+
+    ``artist_results``
+        Paginated list of results for the artists.
+
+    ``records_results``
+        Paginated list of results for the records.
+
+    **Template**
+    :template:`records/search.html`
     """
 
     SORT_OPTIONS_ARTISTS = {
@@ -96,6 +130,8 @@ def search_records_view(request):
 def search_records_async(request):
     """
     Async view for the search artists/records search bar.
+    Returns a JSON response of results that match the user's typed query,
+    and appends it to the search results div.
     """
     query = request.GET.get('q', '')
     results = []
@@ -127,6 +163,28 @@ def record_detail_view(request, record_slug):
     """
     View for individual record pages. Obtains information from the record
     instance in the database and populates it.
+
+    **Context**
+    ``record``
+        The record the view pertains to.
+
+    ``approved_reviews``
+        Reviews that have been approved for this record.
+
+    ``reviews``
+        All reviews that exist for this record, approved or not.
+
+    ``reviews_page``
+        Paginated list of reviews.
+
+    ``is_reviewable``
+        Confirms whether the user is eligible to leave a review.
+
+    ``has_reviewed``
+        Confirms whether the user has left a review for this record.
+
+    **Template**
+    :template:`records/record_detail.html`
     """
     record = get_object_or_404(Record, slug=record_slug)
     reviews = Review.objects.all().filter(record=record)
@@ -168,6 +226,16 @@ def add_record_view(request):
     """
     View for adding new records. Uses the Record form to populate record
     information and create a new record object.
+
+    **Context**
+    ``form``
+        The form used to add record details.
+
+    ``formset``
+        Formset used for RecordImages.
+
+    **Template**
+    :template:`records/create_record.html`
     """
     if request.user.is_staff:
         if request.method == 'POST':
@@ -203,6 +271,16 @@ def edit_record_view(request, record_slug):
     """
     View for editing record pages. Serves the EditRecordForm to the user
     and enables them to change record details.
+
+    **Context**
+    ``form``
+        The form used to add record details.
+
+    ``formset``
+        Formset used for RecordImages.
+
+    **Template**
+    :template:`records/edit_record.html`
     """
     queryset = Record.objects.all()
     record = get_object_or_404(queryset, slug=record_slug)
@@ -237,7 +315,9 @@ def edit_record_view(request, record_slug):
 @login_required
 def delete_record_view(request, record_slug):
     """
-    View for deleting records.
+    View for deleting records. Listens for a POST request under specific
+    conditions (permissions are determined by whether the user is staff)
+    and deletes the record if correct.
     """
     record = get_object_or_404(Record, slug=record_slug)
     if request.user.is_staff:
@@ -278,6 +358,13 @@ def add_artist_view(request):
     """
     View for adding new artists. Uses the Artist form to populate artist
     information and create a new artist object.
+
+    **Context**
+    ``form``
+        The form used to add artist details.
+
+    **Template**
+    :template:`records/create_artist.html`
     """
     if request.user.is_staff:
         if request.method == 'POST':
@@ -306,6 +393,13 @@ def add_artist_view(request):
 def edit_artist_view(request, artist_slug):
     """
     View for editing artists. Uses the same form as the add_artist view.
+
+    **Context**
+    ``form``
+        The form used to edit artist details.
+
+    **Template**
+    :template:`records/edit_artist.html`
     """
     artist = get_object_or_404(Artist, slug=artist_slug)
     if request.user.is_staff:
@@ -333,7 +427,9 @@ def edit_artist_view(request, artist_slug):
 @login_required
 def delete_artist_view(request, artist_slug):
     """
-    View for deleting artists.
+    View for deleting artists. Listens for a POST request from a staff
+    user who submits the form for deleting the artist and then subsequently
+    deletes that artist.
     """
     artist = get_object_or_404(Artist, slug=artist_slug)
     if request.user.is_staff:
@@ -353,6 +449,19 @@ def browse_by_genre_view(request, genre_name):
     """
     View for browsing records by genre. Gets the genre name and obtains
     paginated results for all records with that genre.
+
+    **Context**
+    ``genre``
+        The genre that user wishes to browse, from the Genre Model.
+
+    ``records``
+        Record objects that belong to the chosen genre.
+    
+    ``record_results``
+        Paginated list of record object results.
+
+    **Template**
+    :template:`records/browse_by_genre.html`
     """
     SORT_OPTIONS = {
         'title_asc': 'title',
@@ -385,6 +494,16 @@ def browse_by_genre_view(request, genre_name):
 def all_records_view(request):
     """
     View for browsing all records, with sorting.
+    
+    **Context**
+    ``records``
+        Record objects that are available for view.
+
+    ``record_results``
+        Paginated record objects.
+
+    **Template**
+    :template:`records/all_records.html`
     """
     SORT_OPTIONS_RECORDS = {
         'title_asc': 'title',
@@ -415,6 +534,13 @@ def all_records_view(request):
 def latest_releases_view(request):
     """
     View for browsing the 16 latest releases.
+
+    **Context**
+    ``records``
+        The last 16 record objects that were added to the site.
+
+    **Template**
+    :template:`records/latest_records.html`
     """
     records = Record.objects.all().filter(
         hidden=False).order_by('-created_at')[:16]
@@ -431,6 +557,20 @@ def analytics_page_view(request):
     """
     View for viewing site analytics such as record purchases, sales, and low
     stock.
+
+    **Context**
+    ``popular_records``
+        The top 10 most sold record objects.
+
+    ``weekly_sales_data``
+        Data formatted for the graph canvas which is obtained from
+        weekly_sales, which are the amount of records sold each week.
+
+    ``low_stock_records``
+        The 10 records which have the lowest quantity of stock available.
+
+    **Template**
+    :template:`records/analytics.html`
     """
     popular_records = (OrderItem.objects.values(
         'record__slug', 'record__title').annotate(
