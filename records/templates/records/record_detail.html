@@ -133,18 +133,18 @@
     </div>
 </div>
 <!-- Delete Record Modal -->
-<div class="modal fade" id="deleteRecordModal" tabindex="-1" aria-labelledby="deleteRecordModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-record-modal" tabindex="-1" aria-labelledby="delete-record-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteRecordModalLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="delete-record-modal-label">Confirm Deletion</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you wish to delete this record?
             </div>
             <div class="modal-footer">
-                <form id="deleteRecordForm" method="POST">
+                <form id="delete-record-form" method="POST">
                     {% csrf_token %}
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -154,18 +154,18 @@
     </div>
 </div>
 <!-- Delete Review Modal -->
-<div class="modal fade" id="deleteReviewModal" tabindex="-1" aria-labelledby="deleteReviewModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-review-modal" tabindex="-1" aria-labelledby="delete-review-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteReviewModalLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="delete-review-modal-label">Confirm Deletion</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you wish to delete this Review?
             </div>
             <div class="modal-footer">
-                <form id="deleteReviewForm" method="POST">
+                <form id="delete-review-form" method="POST">
                     {% csrf_token %}
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -58,18 +58,18 @@
     </div>
 </div>
 <!-- Delete Artist Modal -->
-<div class="modal fade" id="deleteArtistModal" tabindex="-1" aria-labelledby="deleteArtistModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-artist-modal" tabindex="-1" aria-labelledby="delete-artist-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteArtistModalLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="delete-artist-modal-label">Confirm Deletion</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you wish to delete this artist?
             </div>
             <div class="modal-footer">
-                <form id="deleteArtistForm" method="POST">
+                <form id="delete-artist-form" method="POST">
                     {% csrf_token %}
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
