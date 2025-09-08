@@ -24,6 +24,9 @@
     - Cause: Booleans were not being set for anonymous users.
     - Fix: Set is_reviewable and has_reviewed to false for anonymous users.
 
+- Async Search: Singular instance of partial search results not showing in the results bar.
+    - Cause: Unknown; unable to replicate. May have possibly been network issues on user side.
+    - Fix: None for now.
 
 
 ## Code Validation
