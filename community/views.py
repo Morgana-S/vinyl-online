@@ -276,3 +276,16 @@ def privacy_policy_view(request):
     View for the privacy policy page.
     """
     return render(request, 'community/privacy_policy.html')
+
+
+def return_policy_view(request):
+    """
+    View for the return policy page.
+    """
+    return render(request, 'community/return_policy.html')
+
+def terms_of_service_view(request):
+    """
+    View for the terms of service.
+    """
+    return render(request, 'community/terms_of_service.html')
