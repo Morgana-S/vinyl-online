@@ -14,7 +14,16 @@ from records.models import Record, Review
 
 def create_support_ticket_view(request):
     """
-    View for creating a support ticket. If the user
+    View for creating a support ticket. If the user is signed in, contact
+    info will be populated from their personal profile. An email is also
+    sent to the user on support ticket creation.
+
+    **Context**
+    ``form``
+        The form used to create a support ticket.
+
+    **Template**
+    :template:`community/create_support_ticket.html`
     """
 
     if request.user.is_authenticated:
@@ -98,6 +107,13 @@ def create_support_ticket_view(request):
 def ticket_detail_view(request, pk):
     """
     View for seeing support ticket details.
+
+    **Context**
+    ``ticket``
+        The SupportTicket instance.
+
+    **Template**
+    :template:`community/ticket_detail.html`
     """
     ticket = get_object_or_404(SupportTicket, pk=pk)
 
@@ -111,6 +127,13 @@ def ticket_detail_view(request, pk):
 def support_ticket_history_view(request):
     """
     View for seeing all support tickets created by the user.
+
+    **Context**
+    ``support_tickets``
+        All SupportTicket instances associated with the user.
+
+    **Template**
+    :template:`community/support_ticket_history.html`
     """
     support_tickets = SupportTicket.objects.filter(
         user=request.user).order_by('-created_at')
@@ -125,6 +148,9 @@ def support_ticket_history_view(request):
 def about_page_view(request):
     """
     View for the 'Who we are' page.
+
+    **Template**
+    :template:`community/about_us.html`
     """
     return render(request, 'community/about_us.html')
 
@@ -132,6 +158,13 @@ def about_page_view(request):
 def newsletter_subscribe_view(request):
     """
     View for serving the form for users to subscribe to the newsletter.
+
+    **Context**
+    ``form``
+        The form used to subscribe to the newsletter.
+
+    **Template**
+    :template:`community/newsletter_subscribe.html`
     """
 
     if request.user.is_authenticated:
@@ -212,6 +245,20 @@ def add_review_view(request, record_slug):
     """
     View for creating record reviews. Takes information about the request
     user's order history to check eligibility for writing a review.
+
+    **Context**
+    ``form``
+        The form for writing a review.
+    
+    ``is_reviewable``
+        Checks whether the user meets eligibility criteria to review the
+        record.
+
+    ``has_reviewed``
+        Checks if the user has already reviewed the record.
+
+    **Template**
+    :template:`community/add_review.html`
     """
     record = get_object_or_404(Record, slug=record_slug)
     is_reviewable = Order.objects.filter(
@@ -256,7 +303,8 @@ def add_review_view(request, record_slug):
 @login_required
 def delete_review_view(request, review_id):
     """
-    View for deleting reviews. Only allows the review author to delete it.
+    View for deleting reviews. Listens for a POST request from the review
+    author and deletes the review.
     """
     review = get_object_or_404(Review, pk=review_id)
     record = review.record
@@ -274,6 +322,9 @@ def delete_review_view(request, review_id):
 def privacy_policy_view(request):
     """
     View for the privacy policy page.
+
+    **Template**
+    :template:`community/privacy_policy.html`
     """
     return render(request, 'community/privacy_policy.html')
 
@@ -281,6 +332,9 @@ def privacy_policy_view(request):
 def return_policy_view(request):
     """
     View for the return policy page.
+
+    **Template**
+    :template:`community/return_policy.html`
     """
     return render(request, 'community/return_policy.html')
 
@@ -288,5 +342,8 @@ def return_policy_view(request):
 def terms_of_service_view(request):
     """
     View for the terms of service.
+
+    **Template**
+    :template:`community/terms_of_service.html`
     """
     return render(request, 'community/terms_of_service.html')
