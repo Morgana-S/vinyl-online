@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+<title>Vinyl Online - {{ record.title }}</title>
+{% endblock %}
+
 {% block content %}
 <!-- Record Information -->
 <div id="record-information" class="container mt-4 d-flex flex-column flex-md-row">

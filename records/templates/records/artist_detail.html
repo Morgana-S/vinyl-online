@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+<title>Vinyl Online - {{ artist.name }}</title>
+{% endblock %}
+
 {% block content %}
 <!-- Artist Information -->
 <div id="artist-information" class="container text-center">
