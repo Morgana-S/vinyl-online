@@ -46,12 +46,13 @@
         <h3 class="category-header text-white">Records</h3>
         {% for record in record_results %}
         <div class="col-6 col-md-3 text-center text-white">
-            <a href="{% url 'record_detail' record.slug %}">
+            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
                 <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            </a>
+            
             <p class="mb-0"><strong>{{ record.title }}</strong></p>
             <p class="mb-0">{{ record.artist.name }}</p>
             <p>£{{ record.price }}</p>
+            </a>
         </div>
         {% endfor %}
     </div>
