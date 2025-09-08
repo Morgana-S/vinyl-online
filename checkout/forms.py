@@ -8,13 +8,15 @@ class CheckoutForm(forms.ModelForm):
         queryset=DeliveryAddress.objects.none(),
         required=False,
         empty_label='--- Select a saved address ---',
-        widget=forms.Select(attrs={'class': 'form-select mb-3'})
+        widget=forms.Select(attrs={
+            'class': 'form-select mb-3', 'id': 'saved-address-select'})
     )
     save_new_address = forms.BooleanField(
         required=False,
         initial=False,
         label='Save this address for future use',
-        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+        widget=forms.CheckboxInput(attrs={
+            'class': 'form-check-input', 'id': 'save-address'})
     )
 
     class Meta:
@@ -39,16 +41,19 @@ class CheckoutForm(forms.ModelForm):
         }
         widgets = {
             "full_name": forms.TextInput(
-                attrs={"class": "form-control mb-1"}),
+                attrs={"class": "form-control mb-1", 'id': 'full-name'}),
             "address_line1": forms.TextInput(
-                attrs={"class": "form-control mb-1"}),
+                attrs={"class": "form-control mb-1", 'id': 'address-line-1'}),
             "address_line2": forms.TextInput(
-                attrs={"class": "form-control mb-1"}),
-            "city": forms.TextInput(attrs={"class": "form-control mb-1"}),
-            "postcode": forms.TextInput(attrs={"class": "form-control mb-1"}),
+                attrs={"class": "form-control mb-1", 'id': 'address-line-2'}),
+            "city": forms.TextInput(attrs={
+                "class": "form-control mb-1", 'id': 'city'}),
+            "postcode": forms.TextInput(attrs={
+                "class": "form-control mb-1", 'id': 'postcode'}),
             "phone_number": forms.TextInput(
-                attrs={"class": "form-control mb-1"}),
-            "email": forms.EmailInput(attrs={"class": "form-control mb-1"}),
+                attrs={"class": "form-control mb-1", 'id': 'phone-number'}),
+            "email": forms.EmailInput(attrs={
+                "class": "form-control mb-1", 'id': 'email'}),
         }
 
     def __init__(self, *args, **kwargs):
