@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Checkout Form Details
 	const showNewAddressBtn = document.getElementById('show-new-address-btn');
 	const newAddressFields = document.getElementById('new-address-fields');
-	const savedAddressSelect = document.getElementById('id_saved_address');
+	const savedAddressSelect = document.getElementById('saved-address-select');
 	const saveAddressCheck = document.getElementById('save-address');
 
 	if (showNewAddressBtn && newAddressFields) {
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
 				if (saveAddressCheck) {
 					saveAddressCheck.style.display = 'none';
 				}
-				document.getElementById('id_address_line1').value =
+				document.getElementById('address-line1').value =
 					selectedOption.dataset.line1 || '';
-				document.getElementById('id_address_line2').value =
+				document.getElementById('address-line2').value =
 					selectedOption.dataset.line2 || '';
-				document.getElementById('id_city').value =
+				document.getElementById('icity').value =
 					selectedOption.dataset.city || '';
-				document.getElementById('id_postcode').value =
+				document.getElementById('ipostcode').value =
 					selectedOption.dataset.postcode || '';
 			} else {
 				newAddressFields.style.display = 'none';
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Clears the fields in the New Address section
 function clearNewAddressFields() {
-	document.getElementById('id_address_line1').value = '';
-	document.getElementById('id_address_line2').value = '';
-	document.getElementById('id_city').value = '';
-	document.getElementById('id_postcode').value = '';
+	document.getElementById('address-line1').value = '';
+	document.getElementById('address-line2').value = '';
+	document.getElementById('city').value = '';
+	document.getElementById('postcode').value = '';
 }
