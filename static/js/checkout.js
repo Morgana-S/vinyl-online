@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
 				if (saveAddressCheck) {
 					saveAddressCheck.style.display = 'none';
 				}
-				document.getElementById('address-line1').value =
+				document.getElementById('address-line-1').value =
 					selectedOption.dataset.line1 || '';
-				document.getElementById('address-line2').value =
+				document.getElementById('address-line-2').value =
 					selectedOption.dataset.line2 || '';
-				document.getElementById('icity').value =
+				document.getElementById('city').value =
 					selectedOption.dataset.city || '';
-				document.getElementById('ipostcode').value =
+				document.getElementById('postcode').value =
 					selectedOption.dataset.postcode || '';
 			} else {
 				newAddressFields.style.display = 'none';
