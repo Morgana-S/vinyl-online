@@ -19,7 +19,40 @@ import stripe
 
 def checkout_view(request):
     """
-    View for checking out an order.
+    View for checking out an order. Obtains the basket information from
+    the session, calculates subtotal, delivery, and grand total, creates a
+    payment intent for stripe, then awaits an AJAX call to confirm payment
+    intent succeeded from the template. If the payment intent succeeds,
+    the form is submitted and an Order instance is created with information
+    from the form populating it. OrderItems are created from the basket info.
+
+    If the user checks to save their address, a new DeliveryAddress instance
+    is also created, populated with information from the checkout form.
+
+    After processing, an email is sent to the user with their email in the
+    checkout form.
+
+    **Context**
+    ``form``
+        The checkout form.
+
+    ``client_secret``
+        The client secret for the stripe payment intent.
+
+    ``stripe_public_key``
+        The public key for the stripe account.
+    
+    ``grand_total``
+        The total cost including subtotals and delivery of the order.
+    
+    ``subtotal_cost``
+        The total cost before delivery is included.
+    
+    ``delivery_cost``
+        The cost of delivery for the order.
+
+    **Template**
+    :template:`checkout/checkout.html`
     """
     stripe.api_key = settings.STRIPE_SECRET_KEY
     basket = request.session.get('basket', {})
@@ -171,6 +204,17 @@ def order_confirmation_view(request, order_uuid):
     """
     View for the order confirmation page, as well as for seeing confirmation
     for past orders.
+
+    **Context**
+    ``order``
+        The Order instance.
+
+    ``from_checkout``
+        A check to see if the user has reached the view from checkout, to
+        display checkout-relevant info.
+
+    **Template**
+    :template:`checkout/order_confirmation.html`
     """
     order = get_object_or_404(Order, uuid=order_uuid)
     from_checkout = request.GET.get('from_checkout') == 'True'
@@ -187,6 +231,13 @@ def order_confirmation_view(request, order_uuid):
 def full_order_history_view(request):
     """
     View for rendering all user orders.
+
+    **Context**
+    ``orders``
+        All Order instances relating to the user.
+
+    **Template**
+    :template:`checkout/order_history.html`
     """
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
 
