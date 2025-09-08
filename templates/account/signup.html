@@ -35,13 +35,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="id_password" class="form-label text-white">Password</label>
-                        <ul class="list-unstyled small text-center">
-                            <li class="text-white">Your password can't be too similar to your other personal information.</li>
-                            <li class="text-white">Your password must contain at least 8 characters.</li>
-                            <li class="text-white">Your password can't be a commonly used password.</li>
-                            <li class="text-white">Your password can't be entirely numeric.</li>
-                        </ul>
                     {{ form.password1|add_class:"form-control" }}
+                                            <ul class="list-unstyled small text-center">
+                                                <li class="text-white">Your password can't be too similar to your other personal information.</li>
+                                                <li class="text-white">Your password must contain at least 8 characters.</li>
+                                                <li class="text-white">Your password can't be a commonly used password.</li>
+                                                <li class="text-white">Your password can't be entirely numeric.</li>
+                                            </ul>
+                </div>
+                <div class="mb-3">
+                    <label for="id_password2" class="form-label text-white">Password (again)</label>
+                    {{ form.password2|add_class:'form-control'}}
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-danger">Sign Up</button>
