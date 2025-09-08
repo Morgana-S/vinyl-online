@@ -28,7 +28,7 @@
                                 <!-- Desktop  -->
                                 <div class="d-none d-md-flex align-items-center gap-2">
                                     <img src="{{ item.record.get_front_cover.image.url }}" alt="{{ item.record.title }}" class="img basket-image d-none d-md-inline">
-                                    <a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a>
+                                    <a href="{% url 'record_detail' item.record.slug %}" target="_blank" class="text-white">{{ item.record.title }}</a>
                                 </div>
                                 <!-- Mobile -->
                                 <div class="d-flex d-md-none">
