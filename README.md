@@ -586,5 +586,9 @@ The project can also be deployed locally. To do so, please follow these instruct
 
 - [xml-sitemaps.com](https://www.xml-sitemaps.com/) - Sitemap.xml generation.
 
+- [Iubenda.com](https://www.iubenda.com/en/help/53008-terms-and-conditions-template) - Terms and Conditions Template
+
+- [Termly](https://termly.io/) - Refund Policy Template
+
 ## Special Thanks
 - Thanks to [Code Institute](https://codeinstitute.net/) for tutorials and guidance in the development of this project.
