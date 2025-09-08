@@ -34,7 +34,7 @@
                     <tbody>
                         {% for item in order.items.all %}
                         <tr>
-                            <td>{{ item.record.title }}</td>
+                            <td><a class="text-white" aria-label="Click here to go to the record detail page for {{ item.record.title }}" target="_blank" href="{% url 'record_detail' item.record.slug %}">{{ item.record.title }}</a></td>
                             <td>£{{ item.record.price }}</td>
                             <td>{{ item.quantity }}</td>
                             <td>£{{ item.item_total }}</td>

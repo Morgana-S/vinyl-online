@@ -133,7 +133,7 @@
                         {% for item in basket_items %}
                         <tr class="basket-row" data-record-id="{{ item.record.id }}">
                             <td>
-                                <a href="{% url 'record_detail' item.record.slug %}" class="text-white">{{ item.record.title }}</a>
+                                <a href="{% url 'record_detail' item.record.slug %}" target="_blank" class="text-white">{{ item.record.title }}</a>
                             </td>
                             <td>£{{ item.record.price }}</td>
                             <td>
