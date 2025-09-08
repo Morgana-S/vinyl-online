@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function deleteArtistButtonInit() {
 	const deleteButton = document.getElementById('delete-button');
 	const deleteModal = new bootstrap.Modal(
-		document.getElementById('deleteArtistModal')
+		document.getElementById('delete-artist-modal')
 	);
-	const deleteForm = document.getElementById('deleteArtistForm');
+	const deleteForm = document.getElementById('delete-artist-form');
 
 	deleteButton.addEventListener('click', function () {
 		const actionUrl = deleteButton.dataset.url;

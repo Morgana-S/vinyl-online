@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function deleteAddressButtonInit() {
 	const deleteButtons = document.querySelectorAll('.delete-button');
 	const deleteModal = new bootstrap.Modal(
-		document.getElementById('deleteAddressModal')
+		document.getElementById('delete-address-modal')
 	);
-	const deleteForm = document.getElementById('deleteAddressForm');
+	const deleteForm = document.getElementById('delete-address-form');
 
 	deleteButtons.forEach((btn) => {
 		btn.addEventListener('click', function () {

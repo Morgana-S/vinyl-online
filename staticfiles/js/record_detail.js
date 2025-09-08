@@ -102,9 +102,9 @@ function renderRatingStars(container, rating) {
 function deleteRecordButtonInit() {
 	const deleteButton = document.getElementById('delete-button');
 	const deleteModal = new bootstrap.Modal(
-		document.getElementById('deleteRecordModal')
+		document.getElementById('delete-record-modal')
 	);
-	const deleteForm = document.getElementById('deleteRecordForm');
+	const deleteForm = document.getElementById('delete-record-form');
 
 	deleteButton.addEventListener('click', function () {
 		const actionUrl = deleteButton.dataset.url;
@@ -117,9 +117,9 @@ function deleteRecordButtonInit() {
 function deleteReviewButtonInit() {
 	const deleteReviewButton = document.getElementById('delete-review-button');
 	const deleteReviewModal = new bootstrap.Modal(
-		document.getElementById('deleteReviewModal')
+		document.getElementById('delete-review-modal')
 	);
-	const deleteReviewForm = document.getElementById('deleteReviewForm');
+	const deleteReviewForm = document.getElementById('delete-review-form');
 
 	deleteReviewButton.addEventListener('click', function () {
 		const deleteReviewUrl = deleteReviewButton.dataset.url;
