@@ -20,8 +20,8 @@ beforeEach(() => {
       </select>
       <div id="saved-addresses" style="display:block"></div>
       <div id="save-address" style="display:none"></div>
-      <input id="address-line1" value="">
-      <input id="address-line2" value="">
+      <input id="address-line-1" value="">
+      <input id="address-line-2" value="">
       <input id="city" value="">
       <input id="postcode" value="">
     `;
@@ -32,8 +32,8 @@ beforeEach(() => {
 	saveCheck = document.getElementById('save-address');
 	savedAddresses = document.getElementById('saved-addresses');
 
-	line1 = document.getElementById('address-line1');
-	line2 = document.getElementById('address-line2');
+	line1 = document.getElementById('address-line-1');
+	line2 = document.getElementById('address-line-2');
 	city = document.getElementById('city');
 	postcode = document.getElementById('postcode');
 
@@ -49,3 +49,48 @@ test('Clicking "show new address" button reveals new fields', () => {
 	expect(showNewBtn.style.display).toBe('none');
 	expect(saveCheck.style.display).toBe('flex');
 });
+
+ test('Selecting a saved address populates fields and hides new fields', () => {
+		savedSelect.value = '1';
+		savedSelect.dispatchEvent(new Event('change'));
+
+		expect(newFields.style.display).toBe('none');
+		expect(saveCheck.style.display).toBe('none');
+
+		expect(line1.value).toBe('123 Main');
+		expect(line2.value).toBe('Apt 4');
+		expect(city.value).toBe('London');
+		expect(postcode.value).toBe('E1 6AN');
+ });
+
+  test('Selecting blank option clears fields and shows save address checkbox', () => {
+		savedSelect.value = '';
+		line1.value = 'should clear';
+		line2.value = 'should clear';
+		city.value = 'should clear';
+		postcode.value = 'should clear';
+
+		savedSelect.dispatchEvent(new Event('change'));
+
+		expect(newFields.style.display).toBe('none');
+		expect(saveCheck.style.display).toBe('flex');
+
+		expect(line1.value).toBe('');
+		expect(line2.value).toBe('');
+		expect(city.value).toBe('');
+		expect(postcode.value).toBe('');
+	});
+
+  test('clearNewAddressFields clears all input fields', () => {
+		line1.value = '123';
+		line2.value = '456';
+		city.value = 'City';
+		postcode.value = 'Zip';
+
+		clearNewAddressFields();
+
+		expect(line1.value).toBe('');
+		expect(line2.value).toBe('');
+		expect(city.value).toBe('');
+		expect(postcode.value).toBe('');
+	});
