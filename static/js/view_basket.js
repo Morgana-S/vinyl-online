@@ -23,3 +23,5 @@ function removeModalInit() {
 			})
 		})
 }
+
+module.exports = { removeModalInit }
