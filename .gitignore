@@ -7,3 +7,5 @@ documentation/diagram-files/vinyl-online-user-pathway.png
 __pycache__/
 .coverage
 node_modules/
+htmlcov
+.coveragerc
