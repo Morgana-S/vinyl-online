@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { deleteArtistButtonInit } = require('./artist_detail.js');
+const { deleteArtistButtonInit } = require('../../static/js/artist_detail.js');
 
 // Mock Bootstrap Modal
 global.bootstrap = {
@@ -37,5 +37,5 @@ test('Clicking delete button sets form action and shows modal', () => {
 });
 
 test('bootstrap.Modal is instantiated with the modal element', () => {
-    expect(bootstrap.Modal).toHaveBeenCalledWith(deleteModalElement);
-})
+	expect(bootstrap.Modal).toHaveBeenCalledWith(deleteModalElement);
+});

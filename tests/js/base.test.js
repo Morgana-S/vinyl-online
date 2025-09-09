@@ -14,7 +14,7 @@ global.bootstrap = {
 $.ajax = jest.fn();
 
 // Import after defining mocks
-const { toolTipInit, asyncSearch } = require('./base.js');
+const { toolTipInit, asyncSearch } = require('../../static/js/base.js');
 
 beforeEach(() => {
 	document.body.innerHTML = `
@@ -33,7 +33,7 @@ test('toolTipInit initializes Bootstrap tooltips', () => {
 });
 
 test('asyncSearch clears results if query < 2 chars', () => {
-    jest.useFakeTimers();
+	jest.useFakeTimers();
 	$('#search-input').val('a').trigger('input');
 
 	jest.advanceTimersByTime(200);
@@ -66,15 +66,15 @@ test('aSyncSearch renders results on success', () => {
 		success([{ type: 'record', slug: 'slug1', name: 'test record' }])
 	);
 
-    $('#search-input').val('abc').trigger('input');
-    jest.advanceTimersByTime(200);
+	$('#search-input').val('abc').trigger('input');
+	jest.advanceTimersByTime(200);
 
-    expect($('#search-results').html()).toContain('test record')
+	expect($('#search-results').html()).toContain('test record');
 });
 
 test('Click outside search clears results', () => {
-    $('#search-results').html('<div>Result</div>');
-    $(document).trigger($.Event('click', { target: document.body }));
+	$('#search-results').html('<div>Result</div>');
+	$(document).trigger($.Event('click', { target: document.body }));
 
-    expect($('#search-results').html()).toBe('');
-})
+	expect($('#search-results').html()).toBe('');
+});
