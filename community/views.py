@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -60,6 +61,8 @@ def create_support_ticket_view(request):
                                  ' You will receive an email with your ticket'
                                  ' details.')
                 return redirect('profile')
+            else:
+                return JsonResponse({'errors': form.errors}, status=400)
         else:
             form = SupportTicketForm(user=request.user)
     else:
@@ -94,6 +97,8 @@ def create_support_ticket_view(request):
                                  ' You will receive an email with your ticket'
                                  ' details.')
                 return redirect('index')
+            else:
+                return JsonResponse({'errors': form.errors}, status=400)
         else:
             form = SupportTicketForm()
 
@@ -249,7 +254,7 @@ def add_review_view(request, record_slug):
     **Context**
     ``form``
         The form for writing a review.
-    
+
     ``is_reviewable``
         Checks whether the user meets eligibility criteria to review the
         record.
