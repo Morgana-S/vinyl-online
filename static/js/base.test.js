@@ -33,6 +33,7 @@ test('toolTipInit initializes Bootstrap tooltips', () => {
 });
 
 test('asyncSearch clears results if query < 2 chars', () => {
+    jest.useFakeTimers();
 	$('#search-input').val('a').trigger('input');
 
 	jest.advanceTimersByTime(200);
