@@ -441,10 +441,10 @@ The project can also be deployed locally. To do so, please follow these instruct
     - On Windows: `.venv\scripts\activate`
     - On Linux/macOS: `source .venv/bin/activate`
 
-4. Install Dependencies - Navigate to the project directory and install dependencies found in `requirements.txt`
+4. Install Dependencies - Navigate to the project directory and install dependencies found in `requirements.txt` and `package.json`.
     - Navigating out of the venv folder: `cd ..`
     - Navigation from your root directory: `cd <insert filepath here>/vinyl-online`
-    - Installing dependencies: `pip install -r requirements.txt`
+    - Installing dependencies: `pip install -r requirements.txt` and `npm install`.
 
 5. Creating your env.py file:
     - Create a file named env.py in your root directory for the project.
