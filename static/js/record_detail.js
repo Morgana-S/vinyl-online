@@ -127,3 +127,9 @@ function deleteReviewButtonInit() {
 		deleteReviewModal.show();
 	});
 }
+
+module.exports = {
+	renderRatingStars,
+	deleteRecordButtonInit,
+	deleteReviewButtonInit,
+}

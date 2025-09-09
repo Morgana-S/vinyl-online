@@ -17,3 +17,5 @@ function deleteAddressButtonInit() {
 		});
 	});
 }
+
+module.exports = { deleteAddressButtonInit }
