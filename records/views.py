@@ -456,7 +456,7 @@ def browse_by_genre_view(request, genre_name):
 
     ``records``
         Record objects that belong to the chosen genre.
-    
+
     ``record_results``
         Paginated list of record object results.
 
@@ -494,7 +494,7 @@ def browse_by_genre_view(request, genre_name):
 def all_records_view(request):
     """
     View for browsing all records, with sorting.
-    
+
     **Context**
     ``records``
         Record objects that are available for view.
