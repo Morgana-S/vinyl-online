@@ -1,6 +1,15 @@
 # Testing and Code Validation
 
+## General Approach
+
+During the writing of functions and models, a red-green-refactor approach was taken to ensure that functions and models were suitable for use. After the website was made feature-complete for now, automated testing began of both JavaScript files and Django Views, Models, and Forms. Below I have documented my approach to each test.
+
 ## Automated Testing
+
+### Jest and JavaScript/jQuery Testing
+
+Jest was used to test each JavaScript and jQuery function utilised throughout the site. These tests remain in the source code for greater detail, but the results of each page can be found here.
+![base.js Testing](/documentation/images/automated-testing/base-js-testing.png)
 
 ## Manual Testing
 
