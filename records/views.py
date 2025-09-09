@@ -156,7 +156,7 @@ def search_records_async(request):
                 'name': result.name,
             })
 
-        return JsonResponse(results, safe=False)
+    return JsonResponse(results, safe=False)
 
 
 def record_detail_view(request, record_slug):
