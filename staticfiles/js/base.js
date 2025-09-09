@@ -60,3 +60,5 @@ $(document).on('click', function (e) {
 		$('#search-results').empty();
 	}
 });
+
+module.exports = { toolTipInit, asyncSearch }

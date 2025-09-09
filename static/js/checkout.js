@@ -1,5 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Checkout Form Details
+document.addEventListener('DOMContentLoaded', initCheckoutForm)
+
+// Clears the fields in the New Address section
+function clearNewAddressFields() {
+	document.getElementById('address-line1').value = '';
+	document.getElementById('address-line2').value = '';
+	document.getElementById('city').value = '';
+	document.getElementById('postcode').value = '';
+}
+
+function initCheckoutForm() {
 	const showNewAddressBtn = document.getElementById('show-new-address-btn');
 	const newAddressFields = document.getElementById('new-address-fields');
 	const savedAddressSelect = document.getElementById('saved-address-select');
@@ -44,12 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	}
-});
-
-// Clears the fields in the New Address section
-function clearNewAddressFields() {
-	document.getElementById('address-line1').value = '';
-	document.getElementById('address-line2').value = '';
-	document.getElementById('city').value = '';
-	document.getElementById('postcode').value = '';
 }
+
+module.exports = { clearNewAddressFields, initCheckoutForm };

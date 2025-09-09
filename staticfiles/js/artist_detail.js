@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
-    deleteArtistButtonInit();
-})
+document.addEventListener('DOMContentLoaded', function () {
+	deleteArtistButtonInit();
+});
 
 // Initialize the delete button for the artist
 function deleteArtistButtonInit() {
@@ -16,3 +16,5 @@ function deleteArtistButtonInit() {
 		deleteModal.show();
 	});
 }
+
+module.exports = { deleteArtistButtonInit };
