@@ -11,6 +11,7 @@ During the writing of functions and models, a red-green-refactor approach was ta
 Jest was used to test each JavaScript and jQuery function utilised throughout the site. These tests remain in the source code for greater detail, but the results of each page can be found here.
 ![base.js Testing](/documentation/images/automated-testing/base-js-testing.png)
 ![artist_detail.js Testing](/documentation/images/automated-testing/artist-detail-js-testing.png)
+![checkout.js Testing](/documentation/images/automated-testing/checkout-js-testing.png)
 
 ## Manual Testing
 
@@ -37,6 +38,10 @@ Jest was used to test each JavaScript and jQuery function utilised throughout th
 - Async Search: Singular instance of partial search results not showing in the results bar.
     - Cause: Unknown; unable to replicate. May have possibly been network issues on user side.
     - Fix: None for now.
+
+- Clear Address Fields: During automated testing, the clear address fields function failed to run.
+    - Cause: Renaming the ids for the fields were not updated in the function.
+    - Fix: Fields updated in function.
 
 
 ## Code Validation
