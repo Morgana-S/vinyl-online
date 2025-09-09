@@ -138,7 +138,9 @@ def search_records_async(request):
 
     if query:
         records = Record.objects.filter(
-            title__icontains=query, hidden=False)[:5]
+            Q(title__icontains=query) | Q(artist__name__icontains=query),
+            hidden=False
+            )[:5]
         artists = Artist.objects.filter(name__icontains=query)[:2]
 
         for result in records:
