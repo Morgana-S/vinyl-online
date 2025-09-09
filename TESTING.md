@@ -14,6 +14,7 @@ Jest was used to test each JavaScript and jQuery function utilised throughout th
 ![checkout.js Testing](/documentation/images/automated-testing/checkout-js-testing.png)
 ![record_detail.js Testing](/documentation/images/automated-testing/record-detail-js-testing.png)
 ![user_profile.js Testing](/documentation/images/automated-testing/user-profile-js-testing.png)
+![view_basket.js Testing](/documentation/images/automated-testing/view-basket-js-testing.png)
 
 ## Manual Testing
 
