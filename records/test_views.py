@@ -1,15 +1,13 @@
 from decimal import Decimal
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import TestCase, RequestFactory, Client
+from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
 from unittest.mock import patch
 import json
 from checkout.models import Order, OrderItem
-from .forms import RecordForm, RecordImageFormSet
-from .models import Artist, Record, Genre, RecordImage, Review
-from .views import index_view
+from .models import Artist, Record, Genre, Review
 
 
 class IndexViewTest(TestCase):

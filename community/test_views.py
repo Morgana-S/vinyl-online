@@ -6,7 +6,7 @@ from unittest.mock import patch
 from checkout.models import Order, OrderItem
 from .models import SupportTicket
 from records.models import Review, Artist, Record, Genre
-from .forms import SupportTicketForm, NewsletterSubscriptionForm, ReviewForm
+from .forms import SupportTicketForm, NewsletterSubscriptionForm,
 
 
 class CreateSupportTicketViewTest(TestCase):
