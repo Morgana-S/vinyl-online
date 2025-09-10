@@ -129,6 +129,7 @@ def ticket_detail_view(request, pk):
     return render(request, 'community/ticket_detail.html', context)
 
 
+@login_required
 def support_ticket_history_view(request):
     """
     View for seeing all support tickets created by the user.
