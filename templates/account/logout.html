@@ -14,10 +14,10 @@
             <p class="text-white">Are you sure you want to log out of your account?</p>
             <form method="POST" action="{% url 'account_logout' %}" class="mb-5 pb-5">
                 {% csrf_token %}
-                    <button type="submit" class="btn btn-danger mb-5">Log Out</button>
-                </div>
+                <button type="submit" class="btn btn-danger mb-5">Log Out</button>
             </form>
         </div>
     </div>
+</div>
 </div>
 {% endblock content %}
