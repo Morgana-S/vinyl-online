@@ -10,15 +10,52 @@ During the writing of functions and models, a red-green-refactor approach was ta
 
 Jest was used to test each JavaScript and jQuery function utilised throughout the site. These tests remain in the source code for greater detail, but the results of each page can be found here.
 ![base.js Testing](/documentation/images/automated-testing/base-js-testing.png)
+
 ![artist_detail.js Testing](/documentation/images/automated-testing/artist-detail-js-testing.png)
+
 ![checkout.js Testing](/documentation/images/automated-testing/checkout-js-testing.png)
+
 ![record_detail.js Testing](/documentation/images/automated-testing/record-detail-js-testing.png)
+
 ![user_profile.js Testing](/documentation/images/automated-testing/user-profile-js-testing.png)
+
 ![view_basket.js Testing](/documentation/images/automated-testing/view-basket-js-testing.png)
+
+### Django Testing
+
+Automated testing of Django components was done using the in-built django testing library,
+unittest. While testing, an sqlite test database was created and used to create mock data for tests. This allowed me to focus on the behaviour of the tested components without worrying about creating or destroying data in my production database.
+
+I used the coverage.py library to provide a detailed coverage report for each app, a summary of which can be seen below.
+
+![coverage.py Report](/documentation/images/automated-testing/coverage-report.png)
 
 ## Manual Testing
 
+All testing was carried out on the latest deployed version of the project on Heroku. The following tests were carried out:
+
+### Browser Compatability
+
+| Test | Method | Desired Results | Actual Results |
+| --- | --- | --- | --- |
+| Browser - Basic Functionality | Website was opened with Microsoft Edge, Google Chrome, and Mozilla Firefox. Website functionality was tested with the tests below. | Website loads correctly on all browsers. | |
+| Device - Basic Functionality | Website was opened using a desktop PC, Google Pixel 7 Mobile device, iPhone, and iPad. Website functionality was tested with the tests below. | Website loads correctly on all devices. | |
+
+### Responsiveness Testing Images
+
+### Navigation
+
+### User Authentication and Authorisation
+
+### CRUD Functionality, Forms and Input
+
+### JavaScript Functionality
+
+### Admin Functionality
+
 ## Peer Reviewed Testing
+
+## Feedback
 
 ## Bugs
 
@@ -46,5 +83,11 @@ Jest was used to test each JavaScript and jQuery function utilised throughout th
     - Cause: Renaming the ids for the fields were not updated in the function.
     - Fix: Fields updated in function.
 
+- Async Search: No response returned if a query isn't provided.
+    - Cause: return JsonResponse was in query block.
+    - Fix: Move JsonResponse out of query block so it always returns something.
+
 
 ## Code Validation
+
+## Lighthouse Reports
