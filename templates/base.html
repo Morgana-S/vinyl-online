@@ -87,7 +87,7 @@
                         <li class="nav-item"><a class="nav-link text-black" href="{% url 'all_records' %}" aria-label="Click here to browse all Records">ALL RECORDS</a></li>
                         <li class="nav-item"><a class="nav-link text-black" href="{% url 'latest_releases' %}" aria-label="Click here to browse the latest releases">LATEST RELEASES</a></li>
                         <li class="nav-item dropdown">
-                            <button class="nav-link text-black dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">BROWSE BY GENRE</button>
+                            <button class="nav-link text-black dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">BROWSE BY GENRE</button>
                             <ul class="dropdown-menu dropdown-genre dropdown-menu-center p-3">
                                 <div class="row d-flex flex-column flex-lg-row align-items-center align-items-lg-stretch justify-content-lg-center">
                                     <!-- Column 1 -->
@@ -117,7 +117,7 @@
                         </li>
                         {% if user.is_authenticated and user.is_staff %}
                         <li class="nav-item dropdown">
-                            <button class="nav-link text-black dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">RECORD MANAGEMENT</button>
+                            <button class="nav-link text-black dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">RECORD MANAGEMENT</button>
                             <ul class="dropdown-menu">
                                 <div class="row d-flex flex-lg-row align-items-center align-items-lg-stretch justify-content-center">
                                     <!-- Add Functions -->
@@ -174,7 +174,7 @@
     <!-- Main Content Ends -->
     <!-- Toasts -->
     <div class="position-fixed bottom-0 end-0 p-3">
-        <div id="basket-toast" class="toast" role="alert" , aria-live="assertive" aria-atomic="true">
+        <div id="basket-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-danger">
                 <strong class="me-auto text-white" id="toast-header-text">
                 </strong>
