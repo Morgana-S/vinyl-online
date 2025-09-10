@@ -407,6 +407,10 @@ In both this and the Ourglass project, W3C validation has faced issues due to th
 
 A lot of the forms on the site have labels that are pointing to non-existent elements due to the custom labelling of forms. An assessment and reevaluation of most forms on the site is necessary to better comply with ARIA standards.
 
+## Thorough analysis of lighthouse reports, especially relating to performance and best practices.
+
+The lighthouse reports for the site are conspicuously low scoring in some aspects; for example, a lot of images are not served by cloudinary with HTTPS. Action should be taken to address the issues in lighthouse reports on the site pages.
+
 # Deployment
 
 ## Deployment to Heroku
