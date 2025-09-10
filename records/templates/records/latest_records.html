@@ -12,7 +12,7 @@
     <h2 class="text-white text-center category-header mb-4">LATEST RELEASES</h2>
     <div class="row justify-content-center mx-auto">
         {% for record in records %}
-        <div class="col-6 col-md-3 text-center text-white">
+        <div class="col-6 col-lg-3 text-center text-white">
             <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
                 <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
             
