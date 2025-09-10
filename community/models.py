@@ -45,6 +45,9 @@ class SupportTicket(models.Model):
         max_length=10, choices=STATUS_CATEGORIES, default='open')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.uuid} - {self.status}'
+
 
 class NewsletterSubscriber(models.Model):
     """
