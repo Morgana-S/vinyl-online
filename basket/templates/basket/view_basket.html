@@ -43,7 +43,7 @@
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <input type="number" name="quantity_{{ item.record_id }}" value="{{ item.quantity }}" min="1" max="9" class="form-control text-center me-2 basket-qty">
-                                    <button type="button" data-url="{% url 'remove_basket_item' item.record_id %}" class="btn btn-small text-danger remove-button" data-bs-toggle="tooltip" title="Remove All"><i class="fa-solid fa-trash"></i></>
+                                    <a type="button" data-url="{% url 'remove_basket_item' item.record_id %}" class="btn btn-small text-danger remove-button" data-bs-toggle="tooltip" title="Remove All"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </td>
                             <td class="item-total">£{{ item.total_price }}</td>
