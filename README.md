@@ -399,6 +399,13 @@ While it is technically possible for authenticated users to store as many addres
 
 This project was my first proper foray into jQuery use; as such, some scripts are written using standard JavaScript and some are written using jQuery. Mixing the two is considered bad practice and a future improvement would be to unify all scripts into one or the other, likely jQuery due to its advanced utility.
 
+## Further consideration of use of Summernote when adding rich text editing to projects.
+
+In both this and the Ourglass project, W3C validation has faced issues due to the summernote text editor. While this presents little issue in site usage on desktop, the summernote div is somewhat ugly on smaller devices and a better text editor should probably be considered for future projects.
+
+## Form revamp to better add accessibility for ARIA labelling.
+
+A lot of the forms on the site have labels that are pointing to non-existent elements due to the custom labelling of forms. An assessment and reevaluation of most forms on the site is necessary to better comply with ARIA standards.
 
 # Deployment
 
