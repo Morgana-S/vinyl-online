@@ -61,4 +61,4 @@ $(document).on('click', function (e) {
 	}
 });
 
-module.exports = { toolTipInit, asyncSearch }
+module.exports = { toolTipInit, asyncSearch };

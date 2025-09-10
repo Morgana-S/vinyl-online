@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', initCheckoutForm)
+document.addEventListener('DOMContentLoaded', initCheckoutForm);
 
 // Clears the fields in the New Address section
 function clearNewAddressFields() {

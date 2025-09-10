@@ -173,7 +173,6 @@ footer .nav-link:hover {
 
 .basket-image {
 	max-width: 100px;
-	max-height: auto;
 	object-fit: contain;
 }
 

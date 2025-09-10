@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', initCheckoutForm)
+document.addEventListener('DOMContentLoaded', initCheckoutForm);
 
 // Clears the fields in the New Address section
 function clearNewAddressFields() {
-	document.getElementById('address-line1').value = '';
-	document.getElementById('address-line2').value = '';
+	document.getElementById('address-line-1').value = '';
+	document.getElementById('address-line-2').value = '';
 	document.getElementById('city').value = '';
 	document.getElementById('postcode').value = '';
 }

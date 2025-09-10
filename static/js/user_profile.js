@@ -18,4 +18,4 @@ function deleteAddressButtonInit() {
 	});
 }
 
-module.exports = { deleteAddressButtonInit }
+module.exports = { deleteAddressButtonInit };
