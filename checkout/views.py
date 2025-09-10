@@ -41,13 +41,13 @@ def checkout_view(request):
 
     ``stripe_public_key``
         The public key for the stripe account.
-    
+
     ``grand_total``
         The total cost including subtotals and delivery of the order.
-    
+
     ``subtotal_cost``
         The total cost before delivery is included.
-    
+
     ``delivery_cost``
         The cost of delivery for the order.
 

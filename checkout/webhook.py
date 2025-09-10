@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 import stripe
@@ -31,10 +31,6 @@ def stripe_webhook(request):
         handle_successful_payment(payment_intent)
 
     return HttpResponse(status=200)
-
-
-def handle_checkout_session(session):
-    print('Checkout Completed:', session.get('id'))
 
 
 def handle_successful_payment(payment_intent):
