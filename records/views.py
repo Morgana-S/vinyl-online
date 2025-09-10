@@ -103,8 +103,9 @@ def search_records_view(request):
     artists = Artist.objects.filter(Q(name__icontains=query)).order_by(
         order_field_artists
     )
-    records = Record.objects.filter(Q(
-        title__icontains=query, hidden=False)).order_by(
+    records = Record.objects.filter(
+        Q(title__icontains=query) | Q(artist__name__icontains=query),
+        hidden=False,).order_by(
         order_field_records
     )
 
