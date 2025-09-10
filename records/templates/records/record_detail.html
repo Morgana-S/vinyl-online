@@ -51,6 +51,9 @@
     <!-- Average User Rating -->
     <div class="row">
         <h3 class="category-header text-white text-center">REVIEWS</h3>
+        {% if user.is_anonymous %}
+        <p class="text-white text-center">Only <a class="text-danger" href="{% url 'account_login' %}" aria-label="Click here to sign in">signed in</a> users can leave reviews. If you don't have an account, <a class="text-danger" href="{% url 'account_signup' %}" aria-label="Click here to sign up">sign up here.</a></p>
+        {% endif %}
         {% if is_reviewable and not has_reviewed %}
         <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
         {% endif %}
