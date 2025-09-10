@@ -43,6 +43,8 @@ All testing was carried out on the latest deployed version of the project on Her
 
 ### Responsiveness Testing Images
 
+For responsive image testing, please see the [RESPONSIVENESS.md](/RESPONSIVENESS.md) file.
+
 ### Navigation
 
 ### User Authentication and Authorisation
