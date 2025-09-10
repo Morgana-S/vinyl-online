@@ -158,7 +158,7 @@ def delete_delivery_address_view(request, pk):
     """
     address = get_object_or_404(DeliveryAddress, pk=pk, user=request.user)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and address.user == request.user:
         address.delete()
         messages.success(request, 'Address has now been deleted.')
         return redirect('profile')
