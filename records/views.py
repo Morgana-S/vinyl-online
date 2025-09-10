@@ -140,7 +140,7 @@ def search_records_async(request):
         records = Record.objects.filter(
             Q(title__icontains=query) | Q(artist__name__icontains=query),
             hidden=False
-            )[:5]
+        )[:5]
         artists = Artist.objects.filter(name__icontains=query)[:2]
 
         for result in records:
@@ -243,15 +243,15 @@ def add_record_view(request):
         if request.method == 'POST':
             form = RecordForm(request.POST)
             formset = RecordImageFormSet(request.POST, request.FILES)
-            if form.is_valid() and formset.is_valid():
+            if form.is_valid():
                 record = form.save(commit=False)
                 record.save()
-                formset.instance = record
-                formset.save()
+                if formset.is_valid():
+                    formset.instance = record
+                    formset.save()
                 messages.success(request, 'New record has been created and '
                                  'images attached.')
                 return redirect('index')
-
         else:
             form = RecordForm()
             formset = RecordImageFormSet()
@@ -292,9 +292,10 @@ def edit_record_view(request, record_slug):
             form = RecordForm(request.POST, instance=record)
             formset = RecordImageFormSet(
                 request.POST, request.FILES, instance=record)
-            if form.is_valid() and formset.is_valid():
+            if form.is_valid():
                 form.save()
-                formset.save()
+                if formset.is_valid():
+                    formset.save()
                 messages.success(request,
                                  'Record details successfully edited.')
                 return redirect('record_detail', record_slug=record_slug)
