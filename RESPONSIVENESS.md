@@ -156,6 +156,12 @@ Please see below for images which confirm responsiveness on all pages. Please no
 ![Support Tickets - iPad](/documentation/images/manual-testing/responsive-images/support-ipad.png)
 ![Support Tickets - Mac](/documentation/images/manual-testing/responsive-images/support-mac.png)
 
+## Support Ticket Detail
+![Support Ticket Detail - iPhone](/documentation/images/manual-testing/responsive-images/support-detail-iphone.png)
+![Support Ticket Detail - Pixel](/documentation/images/manual-testing/responsive-images/support-detail-pixel.png)
+![Support Ticket Detail - iPad](/documentation/images/manual-testing/responsive-images/support-detail-ipad.png)
+![Support Ticket Detail - Mac](/documentation/images/manual-testing/responsive-images/support-detail-mac.png)
+
 ## Basket
 ![Basket - iPhone](/documentation/images/manual-testing/responsive-images/basket-iphone.png)
 ![Basket - Pixel](/documentation/images/manual-testing/responsive-images/basket-pixel.png)
