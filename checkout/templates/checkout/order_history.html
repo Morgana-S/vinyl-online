@@ -11,7 +11,7 @@
         <h1 class="text-white category-header"> ORDER HISTORY </h1>
         <p><a class="text-white" href="{% url 'profile' %}">Back to Profile</a></p>
     </div>
-    <!-- Order History & Support -->
+    <!-- Order History  -->
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             {% if orders %}
@@ -39,4 +39,5 @@
             <p class="text-white">You do not currently have any orders.</p>
             {% endif %}
         </div>
-{% endblock %}
+    </div>
+    {% endblock %}
