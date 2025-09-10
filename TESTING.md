@@ -9,6 +9,7 @@ During the writing of functions and models, a red-green-refactor approach was ta
 ### Jest and JavaScript/jQuery Testing
 
 Jest was used to test each JavaScript and jQuery function utilised throughout the site. These tests remain in the source code for greater detail, but the results of each page can be found here.
+
 ![base.js Testing](/documentation/images/automated-testing/base-js-testing.png)
 
 ![artist_detail.js Testing](/documentation/images/automated-testing/artist-detail-js-testing.png)
