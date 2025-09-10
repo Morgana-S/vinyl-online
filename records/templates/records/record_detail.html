@@ -54,6 +54,9 @@
         {% if user.is_anonymous %}
         <p class="text-white text-center">Only <a class="text-danger" href="{% url 'account_login' %}" aria-label="Click here to sign in">signed in</a> users can leave reviews. If you don't have an account, <a class="text-danger" href="{% url 'account_signup' %}" aria-label="Click here to sign up">sign up here.</a></p>
         {% endif %}
+        {% if not approved_reviews %}
+        <p class="text-white text-center">Nobody has left a review for this record yet. {% if is_reviewable and not has_reviewed %} <a class="text-danger" href="{% url 'add_review' record.slug %}">Why not be the first?</a> {% endif %}</p>
+        {% endif %}
         {% if is_reviewable and not has_reviewed %}
         <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
         {% endif %}
@@ -63,11 +66,6 @@
             <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
             <p class="text-white text-center">Average User Rating</p>
         </div>
-        {% endif %}
-        {% if not approved_reviews %}
-        {% if not has_reviewed %}
-        <p class="text-white text-center">Nobody has left a review for this record yet. {% if is_reviewable and not has_reviewed %} <a class="text-danger" href="{% url 'add_review' record.slug %}">Why not be the first?</a> {% endif %}</p>
-        {% endif %}
         {% endif %}
         <!-- Reviews -->
         <div id="review-cards" class="row justify-content-evenly">
