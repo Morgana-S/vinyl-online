@@ -6,41 +6,46 @@
 {% endblock %}
 
 {% block content %}
-<div id="profile-information" class="container text-center mt-2 mb-5">
-    <div class="row">
-        <h1 class="text-white category-header"> YOUR PROFILE </h1>
-        <p><a class="text-white" href="{% url 'account_change_password' %}">Change Password</a></p>
-    </div>
-    <div class="row mb-2">
-        <div class="col-12 col-lg-6 mx-auto">
-            <h2 class="text-white category-header">PERSONAL INFO</h2>
-            {% if profile %}
-            <div class="card bg-black border-danger border-2 text-white">
-                <p class="mb-0"><strong>Name</strong></p>
-                <p>{{ profile.full_name }}</p>
-                <p class="mb-0"><strong>Contact Phone Number</strong></p>
-                <p>{{ profile.contact_phone_number}}</p>
-                <p class="mb-0"><strong>Contact Email</strong></p>
-                <p>{{ profile.contact_email }}</p>
-                <div class="row mx-auto mb-2">
-                    <div class="col-6">
-                        <a href="{% url 'create_edit_profile' %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Profile Information"><i class="fa-solid fa-pencil"></i></a>
-                    </div>
-                </div>
-            </div>
-            {% else %}
-            <div class="card bg-black border-danger border-2 text-white">
-                <p><strong>No User Profile Found</strong></p>
-                <p>Why not add your contact details? It makes checkout easier, and helps us get in contact with you about your delivery.</p>
-                <div class="row mx-auto mb-2">
-                    <div class="col-6">
-                        <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Profile Information" href="{% url 'create_edit_profile' %}"><i class="fa-solid fa-plus text-white"></i></a>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
+<!-- Personal Profile -->
+<section>
+    <div id="profile-information" class="container text-center mt-2 mb-5">
+        <div class="row">
+            <h1 class="text-white category-header"> YOUR PROFILE </h1>
+            <p><a class="text-white" href="{% url 'account_change_password' %}">Change Password</a></p>
         </div>
-    </div>
+        <div class="row mb-2">
+            <div class="col-12 col-lg-6 mx-auto">
+                <h2 class="text-white category-header">PERSONAL INFO</h2>
+                {% if profile %}
+                <div class="card bg-black border-danger border-2 text-white">
+                    <p class="mb-0"><strong>Name</strong></p>
+                    <p>{{ profile.full_name }}</p>
+                    <p class="mb-0"><strong>Contact Phone Number</strong></p>
+                    <p>{{ profile.contact_phone_number}}</p>
+                    <p class="mb-0"><strong>Contact Email</strong></p>
+                    <p>{{ profile.contact_email }}</p>
+                    <div class="row mx-auto mb-2">
+                        <div class="col-6">
+                            <a href="{% url 'create_edit_profile' %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Profile Information"><i class="fa-solid fa-pencil"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="card bg-black border-danger border-2 text-white">
+                    <p><strong>No User Profile Found</strong></p>
+                    <p>Why not add your contact details? It makes checkout easier, and helps us get in contact with you about your delivery.</p>
+                    <div class="row mx-auto mb-2">
+                        <div class="col-6">
+                            <a class="btn btn-success" data-bs-toggle="tooltip" title="Add Profile Information" href="{% url 'create_edit_profile' %}"><i class="fa-solid fa-plus text-white"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+</section>
+<!-- Delivery Addresses -->
+<section>
     <div class="row">
         <div class="col-12">
             <h3 class="text-white category-header">DELIVERY ADDRESSES</h3>
@@ -96,7 +101,9 @@
         </div>
         {% endif %}
     </div>
-    <!-- Order History & Support -->
+</section>
+<!-- Order History  -->
+<section>
     <div class="row">
         <div class="col-12 col-lg-6">
             <h3 class="text-white category-header">ORDER HISTORY</h3>
@@ -126,58 +133,63 @@
             <p class="text-white">You do not currently have any orders.</p>
             {% endif %}
         </div>
-        <div class="col-12 col-lg-6">
-            <h3 class="text-white category-header">YOUR SUPPORT TICKETS</h3>
-            {% if support_tickets %}
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Status</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ticket in support_tickets %}
-                    <tr>
-                        <td>{{ ticket.status }}</td>
-                        <td>{{ ticket.category }}</td>
-                        <td>{{ ticket.pk }}</td>
-                        <td><a data-bs-toggle="tooltip" title="View Ticket" class="text-white" href="{% url 'ticket_detail' ticket.pk %}"><i class="fa-solid fa-eye"></i></a>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <p><a class="text-white" href="{% url 'support_ticket_history' %}">View All Support Tickets</a></p>
-            {% else %}
-            <p class="text-white">You do not currently have any support tickets.</p>
-            {% endif %}
-            <a class="btn btn-success mb-2" data-bs-toggle="tooltip" title="Create New Support Ticket" href="{% url 'create_support_ticket' %}"><i class="fa-solid fa-plus text-white"></i></a>
-        </div>
+</section>
+<!-- Support Tickets -->
+<section>
+    <div class="col-12 col-lg-6">
+        <h3 class="text-white category-header">YOUR SUPPORT TICKETS</h3>
+        {% if support_tickets %}
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in support_tickets %}
+                <tr>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.category }}</td>
+                    <td>{{ ticket.pk }}</td>
+                    <td><a data-bs-toggle="tooltip" title="View Ticket" class="text-white" href="{% url 'ticket_detail' ticket.pk %}"><i class="fa-solid fa-eye"></i></a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a class="text-white" href="{% url 'support_ticket_history' %}">View All Support Tickets</a></p>
+        {% else %}
+        <p class="text-white">You do not currently have any support tickets.</p>
+        {% endif %}
+        <a class="btn btn-success mb-2" data-bs-toggle="tooltip" title="Create New Support Ticket" href="{% url 'create_support_ticket' %}"><i class="fa-solid fa-plus text-white"></i></a>
     </div>
-</div>
+</section>
+
 <!-- Delete Address Modal -->
-<div class="modal fade" id="delete-address-modal" tabindex="-1" aria-labelledby="delete-address-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-                <h5 class="modal-title" id="delete-address-modal-label">Confirm Deletion</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you wish to delete this address?
-            </div>
-            <div class="modal-footer">
-                <form id="delete-address-form" method="POST">
-                    {% csrf_token %}
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+<dialog>
+    <div class="modal fade" id="delete-address-modal" tabindex="-1" aria-labelledby="delete-address-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-address-modal-label">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to delete this address?
+                </div>
+                <div class="modal-footer">
+                    <form id="delete-address-form" method="POST">
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</dialog>
 {% endblock %}
 
 {% block custom-scripts %}
