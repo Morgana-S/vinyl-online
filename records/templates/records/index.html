@@ -6,83 +6,91 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid bg-danger">
-    <p class="text-white text-center"><strong>Please note that at present Vinyl Online is only available to UK customers. We plan to open internationally in the future!</strong></p>
-</div>
+<aside>
+    <div class="container-fluid bg-danger">
+        <p class="text-white text-center"><strong>Please note that at present Vinyl Online is only available to UK customers. We plan to open internationally in the future!</strong></p>
+    </div>
+</aside>
 <!-- Hero Image / Rotating Links -->
-<div id="hero-carousel" class="carousel slide carousel-fade mx-auto" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <a href="{% url 'all_records' %}" aria-label="Click here to browse all records">
-            <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258903/rocco-dipoppa-_uDj_lyPVpA-unsplash_pgsa90.png" alt="Image of Band" class="d-block w-100">
-            </a>
+<section>
+    <div id="hero-carousel" class="carousel slide carousel-fade mx-auto" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="{% url 'all_records' %}" aria-label="Click here to browse all records">
+                    <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258903/rocco-dipoppa-_uDj_lyPVpA-unsplash_pgsa90.png" alt="Image of Band" class="d-block w-100">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="{% url 'artist_detail' 'frank-sinatra' %}" aria-label="Click here to go to the artist page for Frank Sinatra">
+                    <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258902/frank-sinatra-1958_0-3068868390_krfatv.png" alt="Image of Frank Sinatra" class="d-block w-100">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="{% url 'record_detail' 'man-alive' %}" aria-label="Click here to go to the record detail page for the EE album 'Man Alive'">
+                    <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258903/3af001dfcca365a43d096754c1eead4b.1000x1000x1-1063539069_j4z5c4.png" alt="Image of EE Album 'Man Alive'" class="d-block w-100">
+                </a>
+            </div>
         </div>
-        <div class="carousel-item">
-            <a href="{% url 'artist_detail' 'frank-sinatra' %}" aria-label="Click here to go to the artist page for Frank Sinatra">
-                <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258902/frank-sinatra-1958_0-3068868390_krfatv.png" alt="Image of Frank Sinatra" class="d-block w-100">
-            </a>
-        </div>
-        <div class="carousel-item">
-            <a href="{% url 'record_detail' 'man-alive' %}" aria-label="Click here to go to the record detail page for the EE album 'Man Alive'">
-                <img src="https://res.cloudinary.com/dum08a287/image/upload/v1755258903/3af001dfcca365a43d096754c1eead4b.1000x1000x1-1063539069_j4z5c4.png" alt="Image of EE Album 'Man Alive'" class="d-block w-100">
-            </a>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+</section>
 <!-- Out Now -->
-<div id="out-now" class="mt-4">
-    <div class="row">
-        <h1 class="text-white text-center category-header mb-2">OUT NOW</h1>
-    </div>
-    <div class="row text-center text-white">
-        {% for record in latest_releases %}
-        <div class="col">
-            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
-                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            
-            <p><strong>{{ record.title }}</strong></p>
-            <p>{{ record.artist.name }}</p>
-            <p>£{{ record.price }}</p>
-            </a>
+<section>
+    <div id="out-now" class="mt-4">
+        <div class="row">
+            <h1 class="text-white text-center category-header mb-2">OUT NOW</h1>
         </div>
-        {% endfor %}
-    </div>
-    <div class="row text-center">
-        <div class="col">
-            <a href="{% url 'latest_releases' %}" aria-label="Click here to view all latest releases" class="view-all-link text-white fs-3">VIEW ALL NEW RELEASES</a>
+        <div class="row text-center text-white">
+            {% for record in latest_releases %}
+            <div class="col">
+                <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+                    <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+
+                    <p><strong>{{ record.title }}</strong></p>
+                    <p>{{ record.artist.name }}</p>
+                    <p>£{{ record.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a href="{% url 'latest_releases' %}" aria-label="Click here to view all latest releases" class="view-all-link text-white fs-3">VIEW ALL NEW RELEASES</a>
+            </div>
         </div>
     </div>
-</div>
+</section>
 <!-- Best Of: Featured Genre -->
-<div id="featured-genre" class="mt-4 mb-4">
-    <div class="row">
-        <h1 class="text-white text-center category-header mb-2">BEST OF {{ featured_genre|upper }}</h1>
-    </div>
-    <div class="row text-center text-white">
-        {% for record in featured_genre_records %}
-        <div class="col">
-            <a class="text-decoration-none text-white" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
-                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            
-            <p><strong>{{ record.title }}</strong></p>
-            <p>{{ record.artist.name }}</p>
-            <p>£{{ record.price }}</p>
-            </a>
+<section>
+    <div id="featured-genre" class="mt-4 mb-4">
+        <div class="row">
+            <h1 class="text-white text-center category-header mb-2">BEST OF {{ featured_genre|upper }}</h1>
         </div>
-        {% endfor %}
-    </div>
-    <div class="row text-center">
-        <div class="col">
-            <a href="{% url 'browse_by_genre' 'pop' %}" class="view-all-link text-white fs-3">VIEW ALL {{ featured_genre|upper }}</a>
+        <div class="row text-center text-white">
+            {% for record in featured_genre_records %}
+            <div class="col">
+                <a class="text-decoration-none text-white" href="{% url 'record_detail' record.slug %}" aria-label="Click here to go to the record details page for {{ record.title }}">
+                    <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+
+                    <p><strong>{{ record.title }}</strong></p>
+                    <p>{{ record.artist.name }}</p>
+                    <p>£{{ record.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a href="{% url 'browse_by_genre' 'pop' %}" class="view-all-link text-white fs-3">VIEW ALL {{ featured_genre|upper }}</a>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

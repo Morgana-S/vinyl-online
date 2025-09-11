@@ -7,77 +7,81 @@
 
 {% block content %}
 <!-- Artist Information -->
-<div id="artist-information" class="container text-center">
-    <div class="row">
-        <h1 class="text-white category-header mt-4"> {{ artist.name }}</h1>
-    </div>
-    {% if user.is_authenticated and user.is_staff %}
-    <!-- Artist Management -->
-    <div class="row justify-content-center mb-2">
-        <div class="col-auto"><a href="{% url 'edit_artist' artist.slug %}" data-bs-toggle="tooltip" title="Edit Artist" class="btn bg-warning text-black rounded"><i class="fa-solid fa-pencil"></i></a></div>
-        <div class="col-auto"><button type="button" id="delete-button" data-url="{% url 'delete_artist' artist.slug %}" data-bs-toggle="tooltip" title="Delete Artist" class="btn bg-danger text-white rounded"><i class="fa-solid fa-trash"></i></button></div>
-    </div>
-    {% endif %}
-    <!-- Artist Image -->
-    <div class="row justify-content-center mb-2">
-        <img src="{{ artist.image.url }}" alt="{{ artist.name }}" class="img img-fluid artist-profile">
-    </div>
-    <!-- Artist Information -->
-    <div class="row text-white">
-        <div class="col">
-            <h2 class="category-header">
-                Debut Year: {{ artist.debut_year }}
-            </h2>
-            <p>
-                {{ artist.bio|safe }}
-            </p>
-            <h3 class="category-header">
-                Genres
-            </h3>
-            <p>
-                {% for genre in artist.genres %}
-                <a href="{% url 'browse_by_genre' genre.slug %}" class="btn text-black border-0 rounded-pill btn-opacity-hover" style="background-color: {{ genre.color }}"> {{ genre.name }}</a>
-                {% endfor %}
-            </p>
+<section>
+    <div id="artist-information" class="container text-center">
+        <div class="row">
+            <h1 class="text-white category-header mt-4"> {{ artist.name }}</h1>
+        </div>
+        {% if user.is_authenticated and user.is_staff %}
+        <!-- Artist Management -->
+        <div class="row justify-content-center mb-2">
+            <div class="col-auto"><a href="{% url 'edit_artist' artist.slug %}" data-bs-toggle="tooltip" title="Edit Artist" class="btn bg-warning text-black rounded"><i class="fa-solid fa-pencil"></i></a></div>
+            <div class="col-auto"><button type="button" id="delete-button" data-url="{% url 'delete_artist' artist.slug %}" data-bs-toggle="tooltip" title="Delete Artist" class="btn bg-danger text-white rounded"><i class="fa-solid fa-trash"></i></button></div>
+        </div>
+        {% endif %}
+        <!-- Artist Image -->
+        <div class="row justify-content-center mb-2">
+            <img src="{{ artist.image.url }}" alt="{{ artist.name }}" class="img img-fluid artist-profile">
+        </div>
+        <!-- Artist Information -->
+        <div class="row text-white">
+            <div class="col">
+                <h2 class="category-header">
+                    Debut Year: {{ artist.debut_year }}
+                </h2>
+                <p>
+                    {{ artist.bio|safe }}
+                </p>
+                <h3 class="category-header">
+                    Genres
+                </h3>
+                <p>
+                    {% for genre in artist.genres %}
+                    <a href="{% url 'browse_by_genre' genre.slug %}" class="btn text-black border-0 rounded-pill btn-opacity-hover" style="background-color: {{ genre.color }}"> {{ genre.name }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <!-- Records -->
+        <div class="row justify-content-center mx-auto">
+            <h3 class="category-header text-white">Records</h3>
+            {% for record in record_results %}
+            <div class="col-6 col-md-3 text-center text-white">
+                <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
+                    <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+
+                    <p class="mb-0"><strong>{{ record.title }}</strong></p>
+                    <p class="mb-0">{{ record.artist.name }}</p>
+                    <p>£{{ record.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Records -->
-    <div class="row justify-content-center mx-auto">
-        <h3 class="category-header text-white">Records</h3>
-        {% for record in record_results %}
-        <div class="col-6 col-md-3 text-center text-white">
-            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
-                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            
-            <p class="mb-0"><strong>{{ record.title }}</strong></p>
-            <p class="mb-0">{{ record.artist.name }}</p>
-            <p>£{{ record.price }}</p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+</section>
 <!-- Delete Artist Modal -->
-<div class="modal fade" id="delete-artist-modal" tabindex="-1" aria-labelledby="delete-artist-modal-label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-                <h5 class="modal-title" id="delete-artist-modal-label">Confirm Deletion</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you wish to delete this artist?
-            </div>
-            <div class="modal-footer">
-                <form id="delete-artist-form" method="POST">
-                    {% csrf_token %}
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+<dialog>
+    <div class="modal fade" id="delete-artist-modal" tabindex="-1" aria-labelledby="delete-artist-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-artist-modal-label">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to delete this artist?
+                </div>
+                <div class="modal-footer">
+                    <form id="delete-artist-form" method="POST">
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</dialog>
 {% endblock %}
 {% block custom-scripts %}
 <script src="{% static 'js/artist_detail.js' %}"></script>

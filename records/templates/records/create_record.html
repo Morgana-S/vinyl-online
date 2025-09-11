@@ -6,36 +6,39 @@
 {% endblock %}
 
 {% block content %}
-<div id="create-record" class="container text-center mt-2 mb-5">
-    <div class="row">
-        <h1 class="text-white category-header">CREATE RECORD</h1>
-        <p class="text-white small">All fields with an asterisk next to the label are required.</p>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6 mx-auto">
-            <form method="POST" class="text-white" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="mb-3">
-                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.help_text %}
-                    <small class="form-text text-white">{{ field.help_text }}</small>
-                    {% endif %}
-                    {% for error in field.errors %}
-                    <div class="text-danger">{{ error }}</div>
+<!-- Create Record -->
+<section>
+    <div id="create-record" class="container text-center mt-2 mb-5">
+        <div class="row">
+            <h1 class="text-white category-header">CREATE RECORD</h1>
+            <p class="text-white small">All fields with an asterisk next to the label are required.</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+                <form method="POST" class="text-white" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <small class="form-text text-white">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
                     {% endfor %}
-                </div>
-                {% endfor %}
-                {{ formset.management_form }}
-                {% for subform in formset %}
-                <div class="image-form">
-                    {{ subform.as_p }}
-                </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-danger">Create Record</button>
-            </form>
+                    {{ formset.management_form }}
+                    {% for subform in formset %}
+                    <div class="image-form">
+                        {{ subform.as_p }}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-danger">Create Record</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

@@ -8,49 +8,51 @@
 {% block content %}
 {% if records_results %}
 <!-- Query Results - Records -->
-<div id="all-records" class="mt-4 mb-4">
-    <h2 class="text-white text-center category-header">SHOWING ALL RECORDS - {{ records|length }} FOUND</h2>
-    <!-- Records Sort By Selector -->
-    <form method="get" id="sort-form-records" class="text-center mb-4">
-        <label for="sort-records" class="text-white">Sort Records By:</label>
-        <select name="sort_record" id="sort-records" onchange="document.getElementById('sort-form-records').submit();">
-            <option value="title_asc" {% if request.GET.sort_record == "title_asc" %} selected {% endif %}>Title A-Z</option>
-            <option value="title_desc" {% if request.GET.sort_record == "title_desc" %} selected {% endif %}>Title Z-A</option>
-            <option value="release_year_asc" {% if request.GET.sort_record == "release_year_asc" %} selected {% endif %}>Earliest Release</option>
-            <option value="release_year_desc" {% if request.GET.sort_record == "release_year_desc" %} selected {% endif %}>Latest Release</option>
-            <option value="price_asc" {% if request.GET.sort_record == "price_asc" %} selected {% endif %}>Lowest Price</option>
-            <option value="price_desc" {% if request.GET.sort_record == "price_desc" %} selected {% endif %}>Highest Price</option>
-        </select>
-    </form>
-    <div class="row justify-content-center mx-auto">
-        {% for record in records_results %}
-        <div class="col-6 col-md-3 text-center text-white">
-            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
-                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-            
-            <p class="mb-0"><strong>{{ record.title }}</strong></p>
-            <p class="mb-0">{{ record.artist.name }}</p>
-            <p>£{{ record.price }}</p>
-            </a>
+<section>
+    <div id="all-records" class="mt-4 mb-4">
+        <h2 class="text-white text-center category-header">SHOWING ALL RECORDS - {{ records|length }} FOUND</h2>
+        <!-- Records Sort By Selector -->
+        <form method="get" id="sort-form-records" class="text-center mb-4">
+            <label for="sort-records" class="text-white">Sort Records By:</label>
+            <select name="sort_record" id="sort-records" onchange="document.getElementById('sort-form-records').submit();">
+                <option value="title_asc" {% if request.GET.sort_record=="title_asc" %} selected {% endif %}>Title A-Z</option>
+                <option value="title_desc" {% if request.GET.sort_record=="title_desc" %} selected {% endif %}>Title Z-A</option>
+                <option value="release_year_asc" {% if request.GET.sort_record=="release_year_asc" %} selected {% endif %}>Earliest Release</option>
+                <option value="release_year_desc" {% if request.GET.sort_record=="release_year_desc" %} selected {% endif %}>Latest Release</option>
+                <option value="price_asc" {% if request.GET.sort_record=="price_asc" %} selected {% endif %}>Lowest Price</option>
+                <option value="price_desc" {% if request.GET.sort_record=="price_desc" %} selected {% endif %}>Highest Price</option>
+            </select>
+        </form>
+        <div class="row justify-content-center mx-auto">
+            {% for record in records_results %}
+            <div class="col-6 col-md-3 text-center text-white">
+                <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
+                    <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+
+                    <p class="mb-0"><strong>{{ record.title }}</strong></p>
+                    <p class="mb-0">{{ record.artist.name }}</p>
+                    <p>£{{ record.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-<!-- Records Pagination -->
-<div id="pagination-records" class="text-center text-white mb-4">
-    {% if records_results.has_previous %}
-    <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
-    {% endif%}
-    <span>{{ records_results.number }} of {{ records_results.paginator.num_pages }}</span>
-    {% if records_results.has_next %}
-    <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
-    {% endif %}
-</div>
-{% else %}
-<!-- No Results Found -->
-<div id="no-results" class="mt-4 mb-5 pb-5">
-    <h2 class="text-white text-center category-header">No Results Found</h2>
-    <p class="text-white text-center">There are no records yet. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
-</div>
+    <!-- Records Pagination -->
+    <div id="pagination-records" class="text-center text-white mb-4">
+        {% if records_results.has_previous %}
+        <a href="?records_page={{ records_results.previous_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Previous Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
+        {% endif%}
+        <span>{{ records_results.number }} of {{ records_results.paginator.num_pages }}</span>
+        {% if records_results.has_next %}
+        <a href="?records_page={{ records_results.next_page_number }}&sort_record={{ request.GET.sort_record}}" aria-label="Next Records Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
+        {% endif %}
+    </div>
+    {% else %}
+    <!-- No Results Found -->
+    <div id="no-results" class="mt-4 mb-5 pb-5">
+        <h2 class="text-white text-center category-header">No Results Found</h2>
+        <p class="text-white text-center">There are no records yet. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
+    </div>
+</section>
 {% endif %}
 {% endblock %}
