@@ -6,25 +6,28 @@
 {% endblock %}
 
 {% block content %}
-<div id="ticket-detail" class="container text-center mt-2 mb-5">
-    <div class="row">
-        <h1 class="text-white category-header">SUPPORT TICKET</h1>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6 text-white mx-auto">
-            <p class="mb-0"><strong>Ticket Ref.</strong></p>
-            <p>{{ ticket.pk }}</p>
-            <p class="mb-0"><strong>Status</strong></p>
-            <p>{{ ticket.status.capitalize }}</p>
-            <p class="mb-0"><strong>Name</strong></p>
-            <p>{{ ticket.name }}</p>
-            <p class="mb-0"><strong>Preferred Contact Email</strong></p>
-            <p>{{ ticket.email }}</p>
-            <p class="mb-0"><strong>Category</strong></p>
-            <p>{{ ticket.category.capitalize }}</p>
-            <p class="mb-0"><strong>Description</strong></p>
-            <p>{{ ticket.description }}</p>
+<!-- Support Ticket Details -->
+<section>
+    <div id="ticket-detail" class="container text-center mt-2 mb-5">
+        <div class="row">
+            <h1 class="text-white category-header">SUPPORT TICKET</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 text-white mx-auto">
+                <p class="mb-0"><strong>Ticket Ref.</strong></p>
+                <p>{{ ticket.pk }}</p>
+                <p class="mb-0"><strong>Status</strong></p>
+                <p>{{ ticket.status.capitalize }}</p>
+                <p class="mb-0"><strong>Name</strong></p>
+                <p>{{ ticket.name }}</p>
+                <p class="mb-0"><strong>Preferred Contact Email</strong></p>
+                <p>{{ ticket.email }}</p>
+                <p class="mb-0"><strong>Category</strong></p>
+                <p>{{ ticket.category.capitalize }}</p>
+                <p class="mb-0"><strong>Description</strong></p>
+                <p>{{ ticket.description }}</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
