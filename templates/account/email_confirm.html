@@ -8,29 +8,31 @@
 
 {% block content %}
 <!-- Confirm Email -->
-<div class="container mt-2 mb-5 pb-5">
-    <div class="row">
-        <div class="col-12 col-md-4 text-center mx-auto">
-            <h1 class="text-white category-header text-center mb-5">Confirm Email Address</h1>
-            {% if confirmation %}
-            {% if can_confirm %}
-            <p class="text-white">
-                Please confirm your email: <a class="text-white" href="{{ activate_url }}">{{ confirmation.email_address.email }}</a>
-            </p>
-            <form action="{% url 'account_confirm_email' confirmation.key %}" method="POST">
-                {% csrf_token %}
-                <button class="btn btn-danger" type="submit">Confirm Email</button>
-            </form>
-            {% else %}
-            <p class="text-white">
-                This email has already been confirmed or the link is invalid.
-                Please <a href="{% url 'account_email' %}" aria-label="Click here to log in and request a new confirmation">request a new confirmation</a>, or <a href="{% url 'create_support_ticket' %}" aria-label="Click here to create a support ticket">contact support</a> if the issue persists.
-            </p>
-            {% endif %}
-            {% else %}
-            <p class="text-white">Invalid confirmation. Please <a href="{% url 'account_email' %}">request a new confirmation</a>.</p>
-            {% endif %}
+<section>
+    <div class="container mt-2 mb-5 pb-5">
+        <div class="row">
+            <div class="col-12 col-md-4 text-center mx-auto">
+                <h1 class="text-white category-header text-center mb-5">Confirm Email Address</h1>
+                {% if confirmation %}
+                {% if can_confirm %}
+                <p class="text-white">
+                    Please confirm your email: <a class="text-white" href="{{ activate_url }}">{{ confirmation.email_address.email }}</a>
+                </p>
+                <form action="{% url 'account_confirm_email' confirmation.key %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Confirm Email</button>
+                </form>
+                {% else %}
+                <p class="text-white">
+                    This email has already been confirmed or the link is invalid.
+                    Please <a href="{% url 'account_email' %}" aria-label="Click here to log in and request a new confirmation">request a new confirmation</a>, or <a href="{% url 'create_support_ticket' %}" aria-label="Click here to create a support ticket">contact support</a> if the issue persists.
+                </p>
+                {% endif %}
+                {% else %}
+                <p class="text-white">Invalid confirmation. Please <a href="{% url 'account_email' %}">request a new confirmation</a>.</p>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
