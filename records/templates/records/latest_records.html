@@ -8,31 +8,27 @@
 {% block content %}
 {% if records %}
 <!-- Query Results - Records -->
-<section>
-    <div id="latest-records" class="mt-4 mb-4">
-        <h2 class="text-white text-center category-header mb-4">LATEST RELEASES</h2>
-        <div class="row justify-content-center mx-auto">
-            {% for record in records %}
-            <div class="col-6 col-lg-3 text-center text-white">
-                <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
-                    <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
-
-                    <p class="mb-0"><strong>{{ record.title }}</strong></p>
-                    <p class="mb-0">{{ record.artist.name }}</p>
-                    <p>£{{ record.price }}</p>
-                </a>
-            </div>
-            {% endfor %}
+<div id="latest-records" class="mt-4 mb-4">
+    <h2 class="text-white text-center category-header mb-4">LATEST RELEASES</h2>
+    <div class="row justify-content-center mx-auto">
+        {% for record in records %}
+        <div class="col-6 col-lg-3 text-center text-white">
+            <a class="text-white text-decoration-none link-danger" href="{% url 'record_detail' record.slug %}">
+                <img src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }}" class="record-thumbnail">
+            
+            <p class="mb-0"><strong>{{ record.title }}</strong></p>
+            <p class="mb-0">{{ record.artist.name }}</p>
+            <p>£{{ record.price }}</p>
+            </a>
         </div>
+        {% endfor %}
     </div>
-</section>
+</div>
 {% else %}
 <!-- No Results Found -->
-<section>
-    <div id="no-results" class="mt-4 mb-5 pb-5">
-        <h2 class="text-white text-center category-header">No Results Found</h2>
-        <p class="text-white text-center">There are no records yet. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
-    </div>
-</section>
+<div id="no-results" class="mt-4 mb-5 pb-5">
+    <h2 class="text-white text-center category-header">No Results Found</h2>
+    <p class="text-white text-center">There are no records yet. Please click <a href="{% url 'index' %}" class="text-decoration-underline text-white">here</a> to return to the home page.</p>
+</div>
 {% endif %}
 {% endblock %}

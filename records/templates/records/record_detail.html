@@ -7,183 +7,174 @@
 
 {% block content %}
 <!-- Record Information -->
-<section>
-    <div id="record-information" class="container mt-4 d-flex flex-column flex-md-row">
-        <div class="row gx-3">
-            <!-- Record Images -->
-            <div class="col-12 col-md-6 d-flex flex-column flex-md-row">
-                <!-- Thumbnail Gallery -->
-                <div id="record-thumbnails" class="d-flex flex-row flex-md-column order-2 order-md-0 gap-2 mt-2 mb-2 mt-md-0 justify-content-between justify-content-md-start">
-                    {% for image in record.images.all %}
-                    <img src="{{ image.image.url }}" alt="{{ record.title }} - {{image.image_type}} Image" class="rounded clickable">
-                    {% endfor %}
-                </div>
-                <div class="flex-grow-1 order-1 order-md-0">
-                    <img id="main-image" class="img img-fluid rounded" src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }} - Front Cover Image">
-                </div>
-            </div>
-            <!-- Record Descriptions -->
-            <div class="col-xs-12 col-md-6 ml-0 text-white">
-                <h1 class="category-header">{{ record.title }} {% if request.user.is_staff %} <a href="{% url 'edit_record' record.slug %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Record Information" aria-label="Click here to edit this record's information."><i class="fa-solid fa-pencil"></i></a> <button type="button" id="delete-button" data-bs-toggle="tooltip" title="Delete Record" data-url="{% url 'delete_record' record.slug %}" class="btn btn-danger" aria-label="Click here to delete this record."><i class="fa-solid fa-trash"></i></button>{% endif %}</h1>
-                <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}" data-bs-toggle="tooltip" title="View Artist Page" class="btn btn-danger"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
-                <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
-                <p>{% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill btn-opacity-hover" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
-                <div class="d-flex align-items-center gap-3">
-                    <h3 class="category-header">£{{ record.price}}</h3>
-                    <form action="{% url 'add_to_basket' %}" method="POST" class="d-flex align-items-center add-to-basket-form">
-                        {% csrf_token %}
-                        <input type="hidden" name="record_id" value="{{ record.id }}">
-                        <div class="input-group">
-                            <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
-                            <input type="number" name="quantity" value="1" min="1" max="9" class="form-control form-control-sm text-center qty_input w-25">
-                            <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Increase quantity"><i class="fa-solid fa-plus"></i></button>
-                            <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="Add to basket"><i class="fa-solid fa-basket-shopping"></i></button>
-                        </div>
-                    </form>
-                </div>
-                <p class="small text-white">For the sake of fairness, there is a maximum of 9 records of the same type per order.</p>
-                <div id="record-description">
-                    {{ record.description|safe }}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Reviews -->
-<section>
-    <div id="record-reviews" class="container mt-4 mb-5">
-        <!-- Average User Rating -->
-        <div class="row">
-            <h3 class="category-header text-white text-center">REVIEWS</h3>
-            {% if user.is_anonymous %}
-            <p class="text-white text-center">Only <a class="text-danger" href="{% url 'account_login' %}" aria-label="Click here to sign in">signed in</a> users can leave reviews. If you don't have an account, <a class="text-danger" href="{% url 'account_signup' %}" aria-label="Click here to sign up">sign up here.</a></p>
-            {% endif %}
-            {% if not approved_reviews %}
-            <p class="text-white text-center">Nobody has left a review for this record yet. {% if is_reviewable and not has_reviewed %} <a class="text-danger" href="{% url 'add_review' record.slug %}">Why not be the first?</a> {% endif %}</p>
-            {% endif %}
-            {% if is_reviewable and not has_reviewed %}
-            <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
-            {% endif %}
-            {% if reviews %}
-            {% if approved_reviews %}
-            <div class="text-center">
-                <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
-                <p class="text-white text-center">Average User Rating</p>
-            </div>
-            {% endif %}
-            <!-- Reviews -->
-            <div id="review-cards" class="row justify-content-evenly">
-                {% for review in reviews_page %}
-                {% if review.is_approved %}
-                <div class="card text-center col-md-4 border-danger border-2">
-                    <div class="card-body">
-                        <p>
-                            <strong>Record Rating: {{ review.record_rating_stars }}</strong>
-                        </p>
-                        <p>
-                            <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
-                        </p>
-                        <p>
-                            <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
-                        </p>
-                        {% if review.review_text %}
-                        <p>
-                            {{ review.review_text|safe }}
-                        </p>
-                        {% endif %}
-                    </div>
-                    <div class="card-footer">
-                        <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
-                    </div>
-                </div>
-                {% elif not review.is_approved and review.author == request.user %}
-                <div class="card text-center col-md-4 border-danger border-2">
-                    <div class="card-body">
-                        <p>
-                            <strong>Record Rating: {{ review.record_rating_stars }}</strong>
-                        </p>
-                        <p>
-                            <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
-                        </p>
-                        <p>
-                            <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
-                        </p>
-                        {% if review.review_text %}
-                        <p>
-                            {{ review.review_text|safe }}
-                        </p>
-                        <p class="small text-muted">This review is currently awaiting approval and is only visible to you.</p>
-                        {% endif %}
-                    </div>
-                    <div class="card-footer">
-                        <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
-                    </div>
-                </div>
-                {% endif %}
+<div id="record-information" class="container mt-4 d-flex flex-column flex-md-row">
+    <div class="row gx-3">
+        <!-- Record Images -->
+        <div class="col-12 col-md-6 d-flex flex-column flex-md-row">
+            <!-- Thumbnail Gallery -->
+            <div id="record-thumbnails" class="d-flex flex-row flex-md-column order-2 order-md-0 gap-2 mt-2 mb-2 mt-md-0 justify-content-between justify-content-md-start">
+                {% for image in record.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ record.title }} - {{image.image_type}} Image" class="rounded clickable">
                 {% endfor %}
             </div>
-            {% if approved_reviews %}
-            <!-- Review Pagination Controls -->
-            <div id="pagination-reviews" class="text-center text-white mt-4">
-                {% if reviews_page.has_previous %}
-                <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Previous Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
-                {% endif%}
-                <span>{{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}</span>
-                {% if reviews_page.has_next %}
-                <a href="?page={{ reviews_page.next_page_number }}" aria-label="Next Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
-                {% endif %}
+            <div class="flex-grow-1 order-1 order-md-0">
+                <img id="main-image" class="img img-fluid rounded" src="{{ record.get_front_cover.image.url }}" alt="{{ record.title }} - Front Cover Image">
             </div>
-            {% endif %}
-            {% endif %}
+        </div>
+        <!-- Record Descriptions -->
+        <div class="col-xs-12 col-md-6 ml-0 text-white">
+            <h1 class="category-header">{{ record.title }} {% if request.user.is_staff %} <a href="{% url 'edit_record' record.slug %}" class="btn btn-warning" data-bs-toggle="tooltip" title="Edit Record Information" aria-label="Click here to edit this record's information."><i class="fa-solid fa-pencil"></i></a> <button type="button" id="delete-button" data-bs-toggle="tooltip" title="Delete Record" data-url="{% url 'delete_record' record.slug %}" class="btn btn-danger" aria-label="Click here to delete this record."><i class="fa-solid fa-trash"></i></button>{% endif %}</h1>
+            <h2 class="category-header">{{ record.artist.name }} <a href="{% url 'artist_detail' record.artist.slug %}" data-bs-toggle="tooltip" title="View Artist Page" class="btn btn-danger"><i class="fa-solid fa-eye text-white fs-4"></i></a></h2>
+            <p><strong>Size: {{ record.size}} | RPM: {{record.rpm}} | Release Year: {{record.release_year}} </strong></p>
+            <p>{% for genre in record.genre.all %} <a href="{% url 'browse_by_genre' genre.slug %}" class="btn btn-sm text-black border-0 rounded-pill btn-opacity-hover" style="background-color: {{genre.color}}">{{ genre.name }}</a>{% endfor %}</p>
+            <div class="d-flex align-items-center gap-3">
+                <h3 class="category-header">£{{ record.price}}</h3>
+                <form action="{% url 'add_to_basket' %}" method="POST" class="d-flex align-items-center add-to-basket-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="record_id" value="{{ record.id }}">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" name="quantity" value="1" min="1" max="9" class="form-control form-control-sm text-center qty_input w-25">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" title="Add to basket"><i class="fa-solid fa-basket-shopping"></i></button>
+                    </div>
+                </form>
+            </div>
+            <p class="small text-white">For the sake of fairness, there is a maximum of 9 records of the same type per order.</p>
+            <div id="record-description">
+                {{ record.description|safe }}
+            </div>
         </div>
     </div>
-</section>
+</div>
+<div id="record-reviews" class="container mt-4 mb-5">
+    <!-- Average User Rating -->
+    <div class="row">
+        <h3 class="category-header text-white text-center">REVIEWS</h3>
+        {% if user.is_anonymous %}
+        <p class="text-white text-center">Only <a class="text-danger" href="{% url 'account_login' %}" aria-label="Click here to sign in">signed in</a> users can leave reviews. If you don't have an account, <a class="text-danger" href="{% url 'account_signup' %}" aria-label="Click here to sign up">sign up here.</a></p>
+        {% endif %}
+        {% if not approved_reviews %}
+        <p class="text-white text-center">Nobody has left a review for this record yet. {% if is_reviewable and not has_reviewed %} <a class="text-danger" href="{% url 'add_review' record.slug %}">Why not be the first?</a> {% endif %}</p>
+        {% endif %}
+        {% if is_reviewable and not has_reviewed %}
+        <div class="col-12 text-center"><a href="{% url 'add_review' record.slug %}" class="btn btn-success" data-bs-toggle="tooltip" title="Leave a review"><i class="fa-solid fa-plus"></i></a></div>
+        {% endif %}
+        {% if reviews %}
+        {% if approved_reviews %}
+        <div class="text-center">
+            <div id="average-user-rating" class="fs-3" aria-label="Average User Rating: {{ record.get_average_rating }}" data-average-rating="{{ record.get_average_rating }}"></div>
+            <p class="text-white text-center">Average User Rating</p>
+        </div>
+        {% endif %}
+        <!-- Reviews -->
+        <div id="review-cards" class="row justify-content-evenly">
+            {% for review in reviews_page %}
+            {% if review.is_approved %}
+            <div class="card text-center col-md-4 border-danger border-2">
+                <div class="card-body">
+                    <p>
+                        <strong>Record Rating: {{ review.record_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
+                    </p>
+                    {% if review.review_text %}
+                    <p>
+                        {{ review.review_text|safe }}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
+                </div>
+            </div>
+            {% elif not review.is_approved and review.author == request.user %}
+            <div class="card text-center col-md-4 border-danger border-2">
+                <div class="card-body">
+                    <p>
+                        <strong>Record Rating: {{ review.record_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Delivery Rating: {{ review.delivery_rating_stars }}</strong>
+                    </p>
+                    <p>
+                        <strong>Quality Rating: {{ review.quality_rating_stars }}</strong>
+                    </p>
+                    {% if review.review_text %}
+                    <p>
+                        {{ review.review_text|safe }}
+                    </p>
+                    <p class="small text-muted">This review is currently awaiting approval and is only visible to you.</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small>Review by: {{ review.author.username}} | {{ review.created_at|date:"d M, Y" }} {% if review.is_deletable %}<button type="button" id="delete-review-button" data-bs-toggle="tooltip" title="Delete Review" data-url="{% url 'delete_review' review.id %}" class="btn text-danger" aria-label="Click here to delete this review."><i class="fa-solid fa-trash"></i></button>{% endif %}</small>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% if approved_reviews %}
+        <!-- Review Pagination Controls -->
+        <div id="pagination-reviews" class="text-center text-white mt-4">
+            {% if reviews_page.has_previous %}
+            <a href="?page={{ reviews_page.previous_page_number }}" aria-label="Previous Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-left"></i></a>
+            {% endif%}
+            <span>{{ reviews_page.number }} of {{ reviews_page.paginator.num_pages }}</span>
+            {% if reviews_page.has_next %}
+            <a href="?page={{ reviews_page.next_page_number }}" aria-label="Next Reviews Page" class="text-decoration-none text-white fw-bold"><i class="fa-solid fa-chevron-right"></i></a>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
 <!-- Delete Record Modal -->
-<dialog>
-    <div class="modal fade" id="delete-record-modal" tabindex="-1" aria-labelledby="delete-record-modal-label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="delete-record-modal-label">Confirm Deletion</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you wish to delete this record?
-                </div>
-                <div class="modal-footer">
-                    <form id="delete-record-form" method="POST">
-                        {% csrf_token %}
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
+<div class="modal fade" id="delete-record-modal" tabindex="-1" aria-labelledby="delete-record-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-record-modal-label">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this record?
+            </div>
+            <div class="modal-footer">
+                <form id="delete-record-form" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
-</dialog>
+</div>
 <!-- Delete Review Modal -->
-<dialog>
-    <div class="modal fade" id="delete-review-modal" tabindex="-1" aria-labelledby="delete-review-modal-label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="delete-review-modal-label">Confirm Deletion</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you wish to delete this Review?
-                </div>
-                <div class="modal-footer">
-                    <form id="delete-review-form" method="POST">
-                        {% csrf_token %}
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
+<div class="modal fade" id="delete-review-modal" tabindex="-1" aria-labelledby="delete-review-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-review-modal-label">Confirm Deletion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this Review?
+            </div>
+            <div class="modal-footer">
+                <form id="delete-review-form" method="POST">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
-</dialog>
+</div>
 {% endblock %}
 {% block custom-scripts %}
 <script src="{% static 'js/record_detail.js' %}"></script>
