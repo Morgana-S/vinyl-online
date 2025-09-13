@@ -48,6 +48,7 @@
                         <div class="text-danger">{{ error }}</div>
                         {% endfor %}
                     </div>
+                    <p class="text-white small">Only UK format phone numbers are accepted, e.g. +441234567890, 0121 234 5678</p>
                 </div>
                 <h3 class="category-header text-white">DELIVERY INFORMATION</h3>
                 {% if form.saved_address and form.fields.saved_address.queryset.exists %}
