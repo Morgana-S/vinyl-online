@@ -423,6 +423,10 @@ At present, the view basket screen is functional but minimal on mobile screens. 
 
 Currently, the dropdown menu in the navbar employs some sketchy techniques to allow for the ul menu to be broken up into three columns. While this works on a technical level, it is bad form to have anything other than li elements in a ul element and can lead to rendering issues in browsers. While none of these errors were encountered when rendering the site during my tests, refactoring this to be better formatted and conform to HTML standards would be in line with best practice.
 
+## Semantic Elements overhaul
+
+An attempt to add semantic elements in near the end of the project lead to a lot of broken formatting, with resulted in a reversion of these changes. A template-by-template assessment of better semantic element placement would improve SEO and also increase the accessibility of the website.
+
 # Deployment
 
 ## Deployment to Heroku
