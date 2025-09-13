@@ -5,71 +5,72 @@
 {% endblock %}
 
 {% block content %}
-<!-- Order Confirmation -->
-<section>
-    <div class="container text-center mt-5 mb-5">
-        <h1 class="category-header text-white">{% if from_checkout %}THANK YOU{% else %}YOUR ORDER DETAILS{% endif %}</h1>
-        <p class="text-white">{% if from_checkout %}Your order has been successfully placed. Please see below for details of your order. {% else %} Please see below for details of your order. {% endif %}</p>
-        <p class="text-white">Order Number: <strong>{{ order.uuid }}</strong></p>
-        <p class="text-white">Order Status: <strong>{{ order.status }}</strong></p>
-        <hr class="border-light">
-        <div class="row">
-            <!-- Delivery Info -->
-            <div class="col-12 col-md-4">
-                <div class="text-white mb-4 border border-danger border-2 rounded p-2">
-                    <h4 class="category-header">DELIVERY INFORMATION</h4>
-                    <p><strong>Name:</strong> {{ order.full_name }}</p>
-                    <p><strong>Phone:</strong> {{ order.phone_number }}</p>
-                    <p><strong>Email:</strong> {{ order.email }}</p>
-                    <p><strong>Address:</strong> {{ order.address_line1 }}{% if order.address_line2 %}, {{ order.address_line2 }}{% endif %}, {{ order.city }}, {{ order.postcode }}</p>
-                </div>
+<div class="container text-center mt-5 mb-5">
+    <h1 class="category-header text-white">{% if from_checkout %}THANK YOU{% else %}YOUR ORDER DETAILS{% endif %}</h1>
+    <p class="text-white">{% if from_checkout %}Your order has been successfully placed. Please see below for details of your order. {% else %} Please see below for details of your order. {% endif %}</p>
+    <p class="text-white">Order Number: <strong>{{ order.uuid }}</strong></p>
+    <p class="text-white">Order Status: <strong>{{ order.status }}</strong></p>
+    <hr class="border-light">
+    <div class="row">
+        <!-- Delivery Info -->
+        <div class="col-12 col-md-4">
+            <div class="text-white mb-4 border border-danger border-2 rounded p-2">
+                <h4 class="category-header">DELIVERY INFORMATION</h4>
+                <p><strong>Name:</strong> {{ order.full_name }}</p>
+                <p><strong>Phone:</strong> {{ order.phone_number }}</p>
+                <p><strong>Email:</strong> {{ order.email }}</p>
+                <p><strong>Address:</strong> {{ order.address_line1 }}{% if order.address_line2 %}, {{ order.address_line2 }}{% endif %}, {{ order.city }}, {{ order.postcode }}</p>
             </div>
-            <!-- Order Summary -->
-            <div class="col-12 col-md-8">
-                <h4 class="category-header text-white">ORDER INFORMATION</h4>
-                <div class="table-responsive mb-4">
-                    <table class="table table-bordered table-striped table-dark text-center align-middle">
-                        <thead>
-                            <tr>
-                                <th>Record</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for item in order.items.all %}
-                            <tr>
-                                <td><a class="text-white" aria-label="Click here to go to the record detail page for {{ item.record.title }}" target="_blank" href="{% url 'record_detail' item.record.slug %}">{{ item.record.title }}</a></td>
-                                <td>£{{ item.record.price }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>£{{ item.item_total }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <!-- Totals -->
-                    <div class="d-flex justify-content-end mb-3">
-                        <div class="text-white border border-danger border-2 p-3 rounded text-end">
-                            <p><strong>Subtotal:</strong> £{{ order.subtotal_cost }}</p>
-                            <p><strong>Delivery:</strong> {% if order.delivery_cost == 0 %}Free{% else %}£{{ order.delivery_cost }}{% endif %}</p>
-                            <p><strong>Grand Total:</strong> £{{ order.grand_total_cost }}</p>
-                        </div>
+        </div>
+        <!-- Order Summary -->
+        <div class="col-12 col-md-8">
+            <h4 class="category-header text-white">ORDER INFORMATION</h4>
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered table-striped table-dark text-center align-middle">
+                    <thead>
+                        <tr>
+                            <th>Record</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.items.all %}
+                        <tr>
+                            <td><a class="text-white" aria-label="Click here to go to the record detail page for {{ item.record.title }}" target="_blank" href="{% url 'record_detail' item.record.slug %}">{{ item.record.title }}</a></td>
+                            <td>£{{ item.record.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>£{{ item.item_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- Totals -->
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="text-white border border-danger border-2 p-3 rounded text-end">
+                        <p><strong>Subtotal:</strong> £{{ order.subtotal_cost }}</p>
+                        <p><strong>Delivery:</strong> {% if order.delivery_cost == 0 %}Free{% else %}£{{ order.delivery_cost }}{% endif %}</p>
+                        <p><strong>Grand Total:</strong> £{{ order.grand_total_cost }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        {% if from_checkout %}
-        <div class="row" id="newsletter-promo">
-            <div class="col-12 mx-auto">
-                <h3 class="category-header text-white">INTERESTED IN DISCOUNTS AND CONCERT TICKETS?</h3>
-            </div>
-            <div class="col-12 mx-auto">
-                <p class="text-white"><a class="text-white" href="{% url 'newsletter' %}">Join our newsletter.</a> It's a great way to keep up to date on discounts, new releases, and take part in our concert ticket giveaways.</p>
-            </div>
-        </div>
-        {% endif %}
-        <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
+
     </div>
-</section>
+
+{% if from_checkout %}
+<div class="row" id="newsletter-promo">
+    <div class="col-12 mx-auto">
+        <h3 class="category-header text-white">INTERESTED IN DISCOUNTS AND CONCERT TICKETS?</h3>
+    </div>
+    <div class="col-12 mx-auto">
+        <p class="text-white"><a class="text-white" href="{% url 'newsletter' %}">Join our newsletter.</a> It's a great way to keep up to date on discounts, new releases, and take part in our concert ticket giveaways.</p>
+    </div>
+</div>
+{% endif %}
+
+
+    <a href="{% url 'index' %}" aria-label="Click here to continue shopping." class="btn btn-danger"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
+</div>
 {% endblock%}
