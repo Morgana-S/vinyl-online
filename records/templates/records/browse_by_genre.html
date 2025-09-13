@@ -15,12 +15,12 @@
         <form method="get" id="sort-form-records" class="text-center mb-4">
             <label for="sort-records" class="text-white">Sort Records By:</label>
             <select name="sort_record" id="sort-records" onchange="document.getElementById('sort-form-records').submit();">
-                <option value="title_asc" {% if request.GET.sort_record=="title_asc" %} selected {% endif %}>Title A-Z</option>
-                <option value="title_desc" {% if request.GET.sort_record=="title_desc" %} selected {% endif %}>Title Z-A</option>
-                <option value="release_year_asc" {% if request.GET.sort_record=="release_year_asc" %} selected {% endif %}>Earliest Release</option>
-                <option value="release_year_desc" {% if request.GET.sort_record=="release_year_desc" %} selected {% endif %}>Latest Release</option>
-                <option value="price_asc" {% if request.GET.sort_record=="price_asc" %} selected {% endif %}>Lowest Price</option>
-                <option value="price_desc" {% if request.GET.sort_record=="price_desc" %} selected {% endif %}>Highest Price</option>
+                <option value="title_asc" {% if request.GET.sort_record ==  "title_asc" %} selected {% endif %}>Title A-Z</option>
+                <option value="title_desc" {% if request.GET.sort_record == "title_desc" %} selected {% endif %}>Title Z-A</option>
+                <option value="release_year_asc" {% if request.GET.sort_record == "release_year_asc" %} selected {% endif %}>Earliest Release</option>
+                <option value="release_year_desc" {% if request.GET.sort_record == "release_year_desc" %} selected {% endif %}>Latest Release</option>
+                <option value="price_asc" {% if request.GET.sort_record == "price_asc" %} selected {% endif %}>Lowest Price</option>
+                <option value="price_desc" {% if request.GET.sort_record == "price_desc" %} selected {% endif %}>Highest Price</option>
             </select>
         </form>
         <div class="row justify-content-center mx-auto">
