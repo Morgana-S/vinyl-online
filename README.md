@@ -415,6 +415,10 @@ A lot of the forms on the site have labels that are pointing to non-existent ele
 
 The lighthouse reports for the site are conspicuously low scoring in some aspects; for example, a lot of images are not served by cloudinary with HTTPS. Action should be taken to address the issues in lighthouse reports on the site pages.
 
+## Basket renovation for mobile screens
+
+At present, the view basket screen is functional but minimal on mobile screens. If the user wishes to change the quantity of an item, they must change it by typing the new quantity in, rather than hitting a plus or minus quantity button. This decision was made due to spacing constraints on vertical mobile screens - a full reassessment of a more mobile friendly basket screen would allow this issue to be addressed.
+
 # Deployment
 
 ## Deployment to Heroku
