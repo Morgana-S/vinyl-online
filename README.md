@@ -419,6 +419,10 @@ The lighthouse reports for the site are conspicuously low scoring in some aspect
 
 At present, the view basket screen is functional but minimal on mobile screens. If the user wishes to change the quantity of an item, they must change it by typing the new quantity in, rather than hitting a plus or minus quantity button. This decision was made due to spacing constraints on vertical mobile screens - a full reassessment of a more mobile friendly basket screen would allow this issue to be addressed.
 
+## Navigation improvements for dropdown menus
+
+Currently, the dropdown menu in the navbar employs some sketchy techniques to allow for the ul menu to be broken up into three columns. While this works on a technical level, it is bad form to have anything other than li elements in a ul element and can lead to rendering issues in browsers. While none of these errors were encountered when rendering the site during my tests, refactoring this to be better formatted and conform to HTML standards would be in line with best practice.
+
 # Deployment
 
 ## Deployment to Heroku
