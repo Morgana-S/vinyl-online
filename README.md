@@ -427,6 +427,10 @@ Currently, the dropdown menu in the navbar employs some sketchy techniques to al
 
 An attempt to add semantic elements in near the end of the project lead to a lot of broken formatting, with resulted in a reversion of these changes. A template-by-template assessment of better semantic element placement would improve SEO and also increase the accessibility of the website.
 
+## Form validation and feedback
+
+Some elements of the forms on the site, particularly in the checkout app, do not have good user feedback in terms of errors with forms. Phone numbers, due to the widget used for uk phone numbers, are a particular example of this. A revamp of the forms with better help text and user feedback would also make the user experience better.
+
 # Deployment
 
 ## Deployment to Heroku
